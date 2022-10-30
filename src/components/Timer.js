@@ -27,9 +27,9 @@ const Timer = (props, {expiryTimerstamp}) => {
       <button onClick={() => {
         // Restarts to 1 minute timer
         const time = new Date();
-        time.setSeconds(time.getSeconds() + 60);
+        time.setSeconds(time.getSeconds() + 59);
         restart(time)
-      }}>Restart</button>
+      }}>Start Timer</button>
 		</>
 	)
 }
