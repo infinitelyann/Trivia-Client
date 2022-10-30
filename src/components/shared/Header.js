@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+// import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 const linkStyle = {
     color: 'white',
@@ -44,11 +45,11 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
-		<Navbar.Brand>
+		<Navbar>
             <Link to='/' style={linkStyle}>
                 react-auth-template
             </Link>
-        </Navbar.Brand>
+        </Navbar>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
