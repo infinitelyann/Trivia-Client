@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../home.css'
@@ -7,6 +8,7 @@ const Home = (props) => {
 	console.log('props in home', props)
 
 	return (
+
 		
 		<main>
 		<div className='title1'>
@@ -24,6 +26,7 @@ const Home = (props) => {
 		</main>
 		
 		
+
 	)
 }
 
