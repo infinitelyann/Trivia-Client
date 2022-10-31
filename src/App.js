@@ -16,6 +16,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import Timer from './components/Timer'
 import CreateQuestion from './components/CreateQuestion'
 import GamePlay from './components/GamePlay'
+import PlayerLanding from './components/PlayerLanding'
 
 const App = () => {
 
@@ -58,7 +59,7 @@ const App = () => {
 						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
 					/>
 					<Route
-					path='/home'
+					path='/'
 					/>
           <Route
             path='/sign-out'
@@ -86,7 +87,15 @@ const App = () => {
 			element={
 				<CreateQuestion/>
 			}
+			/>	
+
+           <Route
+				path='/homepage'
+				element={
+					<PlayerLanding/>
+				}
 			/>		  
+
 			<Route
 			path='/game'
 		  element={
