@@ -1,58 +1,36 @@
-import { useState } from "react"
-
-
- 
+import { useState } from "react";
 
 const categories = [
-    'Any',
-    'General Knowledge',
-    'Entertainment: Books',
-    'Entertainment: Film',
-    'Entertainment: Music',
-    'Entertainment: Musicals & Theatres',
-    'Entertainment: Television',
-    'Entertainment: Video Games',
-    'Entertainment: Board Games',
-    'Science & Nature',
-    'Science: Computers',
-    'Science: Mathematics',
-    'Science: Gadgets',
-    'Mythology',
-    'Sports',
-    'Geography',
-    'History',
-    'Politics',
-    'Art',
-    'Celebrities',
-    'Animals',
-    'Vehicles',
-    'Entertainment: Comics',
-    'Entertainment: Japanese Anime & Manga',
-    'Entertainment: Cartoon & Animations'    
-]
+  "Any",
+  "General Knowledge",
+  "Entertainment: Books",
+  "Entertainment: Film",
+  "Entertainment: Music",
+  "Entertainment: Musicals & Theatres",
+  "Entertainment: Television",
+  "Entertainment: Video Games",
+  "Entertainment: Board Games",
+  "Science & Nature",
+  "Science: Computers",
+  "Science: Mathematics",
+  "Science: Gadgets",
+  "Mythology",
+  "Sports",
+  "Geography",
+  "History",
+  "Politics",
+  "Art",
+  "Celebrities",
+  "Animals",
+  "Vehicles",
+  "Entertainment: Comics",
+  "Entertainment: Japanese Anime & Manga",
+  "Entertainment: Cartoon & Animations",
+];
 
-const difficulties = [
-    'Easy',
-    'Medium',
-    'Hard'
-]
-   
+const difficulties = ["Easy", "Medium", "Hard"];
 
-
-const amounts =[
-    '5', 
-    '10',
-    '15',
-    '20'
-]
-
-
-const GameInputs = ({setFilterOptions}) =>{
-
-    const [difficulty, setDifficulty] = useState(difficulties[0])
-    const [category, setCategory] = useState(null)
-    const [amount, setAmount] = useState(amounts[0])
-
+const amounts = ["5", "10", "15", "20"];
 
     const handleDifficultyChange = (e) => {
         setFilterOptions({
@@ -89,30 +67,114 @@ const GameInputs = ({setFilterOptions}) =>{
             ))}
            </select>
         </div>
-    
+
         <div className="dropdown">
-           <select value={difficulty} onChange={handleDifficultyChange}>
-           { difficulties.map((difficulty, idx) =>(
-                <option value={difficulty} key={idx}>{difficulty}</option>
-            ))}
-           </select>
+          <button
+            className="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Choose Difficulty
+          </button>
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <button
+                className="dropdown-item"
+                type="radio"
+                name="difficulty"
+                onClick={settingChoice}
+                value="Easy"
+              >
+                Easy
+              </button>
+            </li>
+            <li>
+              <button
+                className="dropdown-item"
+                type="radio"
+                name="difficulty"
+                onClick={settingChoice}
+                value="Medium"
+              >
+                Medium
+              </button>
+            </li>
+            <li>
+              <button
+                className="dropdown-item"
+                type="radio"
+                name="difficulty"
+                onClick={settingChoice}
+                value="Hard"
+              >
+                Hard
+              </button>
+            </li>
+          </ul>
         </div>
-  
-    <div className="dropdown">
-           <select value={amount} onChange={handleAmountChange}>
-           {amounts.map((amount, idx) =>(
-                <option value={amount} key={idx}>{amount}</option>
-            ))}
-           </select>
+
+        <div className="dropdown">
+          <button
+            className="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            # of Questions
+          </button>
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <button
+                className="dropdown-item"
+                type="radio"
+                name="number"
+                onClick={settingChoice}
+                value="5"
+              >
+                5
+              </button>
+            </li>
+            <li>
+              <button
+                className="dropdown-item"
+                type="radio"
+                name="number"
+                onClick={settingChoice}
+                value="5"
+              >
+                10
+              </button>
+            </li>
+            <li>
+              <button
+                className="dropdown-item"
+                type="radio"
+                name="number"
+                onClick={settingChoice}
+                value="5"
+              >
+                15
+              </button>
+            </li>
+            <li>
+              <button
+                className="dropdown-item"
+                type="radio"
+                name="number"
+                onClick={settingChoice}
+                value="5"
+              >
+                20
+              </button>
+            </li>
+          </ul>
         </div>
-   </form>
-  
+      </form>
     </>
+  );
+};
 
- 
-   )
-
-
-}
-
-export default GameInputs
+export default GameInputs;
