@@ -24,6 +24,11 @@ const authenticatedOptions = (
 				Create Game
 			</Link>
 		</Nav.Item>
+		<Nav.Item>
+			<Link to='user-created-games' style={linkStyle}>
+				User Games
+			</Link>
+		</Nav.Item>
 	</>
 )
 
