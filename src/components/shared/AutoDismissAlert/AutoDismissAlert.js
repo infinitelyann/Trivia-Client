@@ -1,5 +1,6 @@
 import React from 'react'
 import Alert from 'react-bootstrap/Alert'
+// import { Modal } from 'semantic-ui-react'
 
 import './AutoDismissAlert.scss'
 
@@ -39,7 +40,7 @@ class AutoDismissAlert extends React.Component {
 				variant={variant}
 				onClose={this.handleClose}>
 				<div className='container'>
-					<Alert.Heading>{heading}</Alert.Heading>
+					<Alert.Header>{heading}</Alert.Header>
 					<p className='alert-body'>{message}</p>
 				</div>
 			</Alert>

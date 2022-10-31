@@ -7,6 +7,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+// import { Button, Form } from 'semantic-ui-react'
 
 const SignUp = (props) => {
 	// constructor(props) {
@@ -56,8 +57,8 @@ const SignUp = (props) => {
 
 
     return (
-        <div className='row'>
-            <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+        <div className='row' style={{textAlign: 'center'}}>
+            <div className='col-sm-10 col-md-3 mx-auto mt-5'>
                 <h3>Sign Up</h3>
                 <Form onSubmit={onSignUp}>
                     <Form.Group controlId='email'>
@@ -93,7 +94,7 @@ const SignUp = (props) => {
                             onChange={e => setPasswordConfirmation(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button variant='primary' type='submit' className='btn mt-2'>
                         Submit
                     </Button>
                 </Form>

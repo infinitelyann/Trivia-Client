@@ -23,6 +23,7 @@ export const signIn = (credentials) => {
 			credentials: {
 				email: credentials.email,
 				password: credentials.password,
+				// playerStats: null
 			},
 		},
 	})
