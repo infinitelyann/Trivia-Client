@@ -5,6 +5,7 @@ import '../home.css'
 import GameInputs from './GameInputs'
 
 const Home = (props) => {
+	
 	// const { msgAlert, user } = props
 	console.log('props in home', props)
 
