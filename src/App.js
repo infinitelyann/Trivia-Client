@@ -21,6 +21,7 @@ import PlayerLanding from './components/PlayerLanding'
 =======
 import CreateQuestion from './components/CreateQuestion'
 import GameCreate from './components/GameCreate'
+import GameIndex from './components/UserGameIndex'
 
 >>>>>>> b5c6c37 (creating game with form functioning)
 
@@ -114,7 +115,17 @@ const App = () => {
 					  <GameCreate msgAlert={msgAlert} user={user} />
 					</RequireAuth>}
 			/>
+<<<<<<< HEAD
 >>>>>>> b5c6c37 (creating game with form functioning)
+=======
+			<Route 
+				path='/user-created-games'
+				element={
+					<RequireAuth user={user}>
+					  <GameIndex msgAlert={msgAlert} user={user} />
+					</RequireAuth>}
+			/>
+>>>>>>> dc6483a (started user games index)
 
 				</Routes>
 				{msgAlerts.map((msgAlert) => (

@@ -19,9 +19,19 @@ const GameIndex = ( {user, msgAlert }) => {
                 })
             })
     }, [])
+
+    const gamePreview = allGames.map(game => (
+        <Card key= {game.id}>
+            <Card.Header>{ game.name }</Card.Header>
+                <Card.Text> This is a game </Card.Text>
+        </Card>
+    ))
+
+    return (
+        <div>
+            { gamePreview }
+        </div>
+    )
 }
 
-const gamePreview = allGames.map(game => (
-    <Card key= {game.id}>
-    </Card>
-))
+export default GameIndex
