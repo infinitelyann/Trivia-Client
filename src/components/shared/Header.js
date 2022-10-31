@@ -29,6 +29,7 @@ const authenticatedOptions = (
 				User Games
 			</Link>
 		</Nav.Item>
+		
 	</>
 )
 
@@ -46,17 +47,23 @@ const unauthenticatedOptions = (
 const alwaysOptions = (
 	<>
 		<Nav.Link>
-			<Link to='/' style={linkStyle}>
+			<Link to='/homepage' style={linkStyle}>
 				Home
 			</Link>
 		</Nav.Link>
+		<Nav.Link>
+			<Link to='/game' style={linkStyle}>
+				Game
+			</Link>
+		</Nav.Link>
+
 	</>
 )
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar>
-            <Link to='/' style={linkStyle}>
+            <Link to='/homepage' style={linkStyle}>
                 react-auth-template
             </Link>
         </Navbar>

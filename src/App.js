@@ -3,6 +3,7 @@ import React, { useState, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
+
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/shared/Header'
@@ -12,6 +13,10 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import Timer from './components/Timer'
+import CreateQuestion from './components/CreateQuestion'
+import GamePlay from './components/GamePlay'
+import PlayerLanding from './components/PlayerLanding'
 import CreateQuestion from './components/CreateQuestion'
 import GameCreate from './components/GameCreate'
 import GameIndex from './components/UserGameIndex'
@@ -57,6 +62,9 @@ const App = () => {
 						path='/sign-in'
 						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
 					/>
+					<Route
+					path='/'
+					/>
           <Route
             path='/sign-out'
             element={
@@ -80,20 +88,26 @@ const App = () => {
 				<CreateQuestion/>
 			}
 			/>
-			<Route 
-				path='/create-game'
-				element={
-					<RequireAuth user={user}>
-					  <GameCreate msgAlert={msgAlert} user={user} />
-					</RequireAuth>}
+					  <Route
+		  	path='/create-question'
+			element={
+				<CreateQuestion/>
+			}
 			/>
-			<Route 
-				path='/user-created-games'
+
+           <Route
+				path='/homepage'
 				element={
-					<RequireAuth user={user}>
-					  <GameIndex msgAlert={msgAlert} user={user} />
-					</RequireAuth>}
-			/>
+					<PlayerLanding/>
+				}
+			/>		  
+
+			<Route
+			path='/game'
+		  element={
+			  <GamePlay/>
+		  }
+		  />
 
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
