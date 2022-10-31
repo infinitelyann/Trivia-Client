@@ -1,10 +1,60 @@
-body {
-    background-color: #7552f2;
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+
+    
+
+
+
+.title1 {
+    position: flex;
+    justify-content: center;
     text-align: center;
-    font-size: 100px;
+    margin-top: 100px;
+    font-size: 60px;
+    color:purple;
+    font-family: 'Rubik Mono One', sans-serif;
+}
+
+.title1 span {
+    position: relative;
+    display: inline-block;
+    animation: title1 1s ease-in-out infinite;
+}
+
+.title1 span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.title1 span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.title1 span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.title1 span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+@keyframes title1 {
+    0%, 40%, 100% {
+        transform: translateY(0)
+    } 20% {
+        transform: translateY(-20px)
+    }
 }
 
 .buttons {
-    margin: 10px;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 
+
+}
+
+.btn {
+    margin: 10px;
 }

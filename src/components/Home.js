@@ -7,8 +7,9 @@ const Home = (props) => {
 	console.log('props in home', props)
 
 	return (
-		<body>
-		<div className='title'>
+		
+		<main>
+		<div className='title1'>
 			<span>T</span>
 			<span>E</span>
 			<span>S</span>
@@ -16,11 +17,13 @@ const Home = (props) => {
 			
 		</div>
 		<div className='buttons'>
-		    <Link className='btn btn-success' to='sign-up'>Sign-Up</Link>
+		    <Link className='btn' to='sign-up' style={{backgroundColor: '#7552f2', color: 'white'}}>Sign-Up</Link>
 			
-			<Link className='btn btn-success' to='sign-in'>Sign-In</Link>
+			<Link className='btn' to='sign-in' style={{backgroundColor: '#7552f2', color: 'white'}}>Sign-In</Link>
 		</div>
-		</body>
+		</main>
+		
+		
 	)
 }
 
