@@ -1,7 +1,7 @@
 import apiUrl from "../apiConfig";
 import axios from "axios";
 
-const createGame = (data, user) => {
+export const createGame = (data, user) => {
     return axios({
         method: 'POST',
         url: apiUrl + '/games',

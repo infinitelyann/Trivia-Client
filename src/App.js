@@ -12,6 +12,9 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import CreateQuestion from './components/CreateQuestion'
+import GameCreate from './components/GameCreate'
+
 
 const App = () => {
 
@@ -68,17 +71,20 @@ const App = () => {
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
           />
-		  <Route
-		  	path='/timer'
-			element={
-				<Timer/>
-			}
-			/>
+
+
 					  <Route
 		  	path='/create-question'
 			element={
 				<CreateQuestion/>
 			}
+			/>
+			<Route 
+				path='/create-game'
+				element={
+					<RequireAuth user={user}>
+					  <GameCreate msgAlert={msgAlert} user={user} />
+					</RequireAuth>}
 			/>
 
 				</Routes>
