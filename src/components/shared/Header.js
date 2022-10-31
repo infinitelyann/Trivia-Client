@@ -19,7 +19,15 @@ const authenticatedOptions = (
 				Sign Out
 			</Link>
 		</Nav.Item>
+<<<<<<< HEAD
 		
+=======
+		<Nav.Item>
+			<Link to='create-game' style={linkStyle}>
+				Create Game
+			</Link>
+		</Nav.Item>
+>>>>>>> b5c6c37 (creating game with form functioning)
 	</>
 )
 

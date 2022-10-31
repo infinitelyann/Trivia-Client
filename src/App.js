@@ -13,10 +13,16 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+<<<<<<< HEAD
 import Timer from './components/Timer'
 import CreateQuestion from './components/CreateQuestion'
 import GamePlay from './components/GamePlay'
 import PlayerLanding from './components/PlayerLanding'
+=======
+import CreateQuestion from './components/CreateQuestion'
+import GameCreate from './components/GameCreate'
+
+>>>>>>> b5c6c37 (creating game with form functioning)
 
 const App = () => {
 
@@ -76,17 +82,14 @@ const App = () => {
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
           />
-		  <Route
-		  	path='/timer'
-			element={
-				<Timer/>
-			}
-			/>
+
+
 					  <Route
 		  	path='/create-question'
 			element={
 				<CreateQuestion/>
 			}
+<<<<<<< HEAD
 			/>	
 
            <Route
@@ -102,6 +105,16 @@ const App = () => {
 			  <GamePlay/>
 		  }
 		  />
+=======
+			/>
+			<Route 
+				path='/create-game'
+				element={
+					<RequireAuth user={user}>
+					  <GameCreate msgAlert={msgAlert} user={user} />
+					</RequireAuth>}
+			/>
+>>>>>>> b5c6c37 (creating game with form functioning)
 
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
