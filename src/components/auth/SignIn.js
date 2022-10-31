@@ -6,7 +6,6 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-// import { Button, Form } from 'semantic-ui-react'
 
 const SignIn = (props) => {
 	// constructor(props) {

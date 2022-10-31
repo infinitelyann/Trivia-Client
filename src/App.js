@@ -13,6 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import Timer from './components/Timer'
+import CreateQuestion from './components/CreateQuestion'
 
 const App = () => {
 
@@ -75,6 +76,13 @@ const App = () => {
 				<Timer/>
 			}
 			/>
+					  <Route
+		  	path='/create-question'
+			element={
+				<CreateQuestion/>
+			}
+			/>
+
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
