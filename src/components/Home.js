@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-const Home = (props) => {
-=======
->>>>>>> main
 
 import React from 'react'
 import { Link } from 'react-router-dom'
@@ -13,12 +8,6 @@ const Home = (props) => {
 	console.log('props in home', props)
 
 	return (
-<<<<<<< HEAD
-		<>
-			<h2>Home Page</h2>
-		
-		</>
-=======
 
 		
 		<main>
@@ -38,7 +27,6 @@ const Home = (props) => {
 		
 		
 
->>>>>>> main
 	)
 }
 
