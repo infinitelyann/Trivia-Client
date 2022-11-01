@@ -12,7 +12,7 @@ const Home = (props) => {
 	return (
 
 		
-		<main>
+		<div className='background'>
 		<div className='title1'>
 			<span>T</span>
 			<span>E</span>
@@ -27,7 +27,7 @@ const Home = (props) => {
 		</div>
 		
 		<GameInputs/>
-		</main>
+		</div>
 		
 		
 

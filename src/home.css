@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 
-
+div .background {
+    background-color: bisque;
+    height: 100vh;
+}
     
 
 
@@ -9,7 +12,7 @@
     position: flex;
     justify-content: center;
     text-align: center;
-    margin-top: 100px;
+    padding-top: 100px;
     font-size: 60px;
     color:purple;
     font-family: 'Rubik Mono One', sans-serif;
