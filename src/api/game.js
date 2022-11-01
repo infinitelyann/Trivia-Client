@@ -31,3 +31,28 @@ export const gameShow = (user, id) => {
         url: apiUrl + '/games/' + id
     })
 }
+
+// updating the name of the game
+export const gameUpdate = (data, user, id) => {
+    return axios({
+        method: 'PATCH',
+        url: apiUrl + '/games/' + id,
+        data: {
+            game: data
+        },
+        headers: {
+			Authorization: `Token token=${user.token}`,
+		}
+    })
+}
+
+// deleting the whole game
+export const gameDelete = (user, id) => {
+    return axios({
+        method: 'DELETE',
+        url: apiUrl + '/games/' + id,
+        headers: {
+			Authorization: `Token token=${user.token}`,
+		}
+    })
+}

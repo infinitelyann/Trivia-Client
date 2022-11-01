@@ -18,8 +18,8 @@ export const createQuestion = (data, user) => {
 // this is the api call to update a question
 export const updateQuestion = (user, gameId, updatedQuestion) => {
     return axios({
-        url: `${apiUrl}/questions/${updatedQuestion._id}`,
         method:'PATCH',
+        url: `${apiUrl}/questions/${gameId}/${updatedQuestion._id}`,
         headers: {
 			Authorization: `Token token=${user.token}`,
 		},
@@ -27,3 +27,13 @@ export const updateQuestion = (user, gameId, updatedQuestion) => {
     })
 }
 
+// this is the api call to delete a question
+export const deleteQuestion = (user, gameId, questionId) => {
+    return axios({
+        method: 'DELETE',
+        url: `${apiUrl}/questions//${gameId}/${questionId}`,
+		headers: {
+			Authorization: `Token token=${user.token}`,
+		}
+    })
+}
