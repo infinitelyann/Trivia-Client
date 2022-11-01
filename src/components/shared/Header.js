@@ -9,24 +9,24 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
 		</Nav.Item>
-		<Nav.Item>
-			<Link to='sign-out' style={linkStyle}>
-				Sign Out
-			</Link>
-		</Nav.Item>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='create-game' style={linkStyle}>
 				Create Game
 			</Link>
 		</Nav.Item>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='games' style={linkStyle}>
 				User Games
+			</Link>
+		</Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to='sign-out' style={linkStyle}>
+				Sign Out
 			</Link>
 		</Nav.Item>
 		
@@ -63,8 +63,8 @@ const alwaysOptions = (
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar>
-            <Link to='/homepage' style={linkStyle}>
-                react-auth-template
+            <Link to='/homepage' style={linkStyle} className='m-2'>
+                Trivia
             </Link>
         </Navbar>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
