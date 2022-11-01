@@ -1,1 +1,0 @@
-export default getOpenDBUrl = ({ category, difficulty, number}) => `https://opendb.com/api.php?category=${category}&difficulty=${difficulty}&number=${number}`

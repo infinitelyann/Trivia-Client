@@ -4,6 +4,7 @@ import { useState } from "react"
  
 
 const categories = [
+    'Any',
     'General Knowledge',
     'Entertainment: Books',
     'Entertainment: Film',
@@ -38,43 +39,59 @@ const difficulties = [
    
 
 
-const numbers =[
+const amounts =[
     '5', 
     '10',
     '15',
     '20'
 ]
-const listCategories = categories.map((category) => 
-    <li className="dropdown-item" type="radio" name="category">{category}</li>
-)
-const listDifficulty = difficulties.map((difficulty) =>
-    <li className="dropdown-item" type="radio" name="difficulty">{difficulty}</li>
-)
-const listNumbers = numbers.map((number)=>
-    <li className="dropdown-item" type="radio" name="number">{number}</li>
-)
 
 
-const GameInputs = () =>{
+const GameInputs = ({setFilterOptions}) =>{
 
     const [difficulty, setDifficulty] = useState(difficulties[0])
+    const [category, setCategory] = useState(null)
+    const [amount, setAmount] = useState(amounts[0])
 
 
-    const handleChange = (e) =>{setDifficulty(e.target.value)}
+    const handleDifficultyChange = (e) => {
+        setFilterOptions({
+           difficulty: e.target.value,
+           category,
+           amount
+         })
+      }
+    const handleCategoryChange = (e) =>{
+        console.log(categories.findIndex(category => category === e.target.value) + 8)
+        setFilterOptions({
+            difficulty,
+            category:categories.findIndex(category => category === e.target.value) + 8,
+            amount
+          })
+
+    }
+
+    const handleAmountChange = (e) =>{
+        setFilterOptions({
+            difficulty,
+            category,
+            amount: Number.parseInt(e.target.value),
+          })
+    }
    
    return(
     <>
     <form>
         <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                data-bs-toggle="dropdown" aria-expanded="false">Category</button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-               {listCategories}
-            </ul>
+        <select value={category} onChange={handleCategoryChange}>
+           { categories.map((category, idx) =>(
+                <option value={category} key={idx}>{category}</option>
+            ))}
+           </select>
         </div>
     
         <div className="dropdown">
-           <select value={difficulty} onChange={handleChange}>
+           <select value={difficulty} onChange={handleDifficultyChange}>
            { difficulties.map((difficulty, idx) =>(
                 <option value={difficulty} key={idx}>{difficulty}</option>
             ))}
@@ -82,11 +99,11 @@ const GameInputs = () =>{
         </div>
   
     <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                data-bs-toggle="dropdown" aria-expanded="false">Number</button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                {listNumbers}
-            </ul>
+           <select value={amount} onChange={handleAmountChange}>
+           {amounts.map((amount, idx) =>(
+                <option value={amount} key={idx}>{amount}</option>
+            ))}
+           </select>
         </div>
    </form>
   
