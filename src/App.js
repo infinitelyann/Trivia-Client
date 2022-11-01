@@ -13,10 +13,12 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-import Timer from './components/Timer'
-import CreateQuestion from './components/CreateQuestion'
+import QuestionCreate from './components/QuestionCreate'
 import GamePlay from './components/GamePlay'
 import PlayerLanding from './components/PlayerLanding'
+import GameCreate from './components/GameCreate'
+import GameIndex from './components/UserGameIndex'
+
 
 const App = () => {
 
@@ -76,26 +78,37 @@ const App = () => {
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
           />
-		  <Route
-		  	path='/timer'
-			element={
-				<Timer/>
-			}
-			/>
+
+
 					  <Route
 		  	path='/create-question'
 			element={
-				<CreateQuestion/>
+				<QuestionCreate/>
 			}
-			/>	
+			/>
+					  <Route
+		  	path='/create-game'
+			element={
+				<GameCreate/>
+			}
+			/>
 
            <Route
 				path='/homepage'
 				element={
 					<PlayerLanding/>
 				}
-			/>		  
+			/>	
 
+           <Route
+				path='/games'
+				element={
+					
+					<GameIndex msgAlert={msgAlert} user={user} />
+				
+				  }
+				
+			/>	
 			<Route
 			path='/game'
 		  element={
