@@ -3,7 +3,10 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { gameIndex } from '../api/game'
 
+// this is the component to index all games
 const UserGameIndex = ({ user, msgAlert }) => {
+    
+    //state
     const [allGames, setAllGames] = useState([])
 
     useEffect(()=> {

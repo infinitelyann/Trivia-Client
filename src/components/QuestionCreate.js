@@ -1,8 +1,9 @@
 import React from 'react'
-import { Button, Checkbox, Form, Radio} from 'semantic-ui-react'
+// import { Button, Checkbox, Form, Radio} from 'semantic-ui-react'
+import { Button, Form } from 'react-bootstrap'
 
 
-const CreateQuestion = (props, user) => {
+const QuestionCreate = (props, user) => {
         console.log(user)
 //     state = {}
 //   handleChange = (e, { value }) => this.setState({ value })
@@ -12,18 +13,7 @@ const CreateQuestion = (props, user) => {
 
         <Form>
             <Form.Field>
-                <Radio
-                    label='Multiple Choice'
-                    name='radioGroup'
-                    value='Multiple Choice'
 
-                />
-                  <Radio
-                    label='Multiple Choice'
-                    name='radioGroup'
-                    value='True / False'
-
-                />
             </Form.Field>
             <Form.Field>
             <label>Question:</label>
@@ -46,4 +36,4 @@ const CreateQuestion = (props, user) => {
 
 }
 
-export default CreateQuestion
+export default QuestionCreate
