@@ -1,5 +1,7 @@
 import React from "react"
 import { useTimer } from "react-timer-hook"
+
+// this is currently unimplemented but could be used to lock out of questions
 const Timer = (props, {expiryTimerstamp}) => {
 	// const { msgAlert, user } = props
 	console.log('props in timer', props)

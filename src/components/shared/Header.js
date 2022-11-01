@@ -19,33 +19,27 @@ const authenticatedOptions = (
 				Sign Out
 			</Link>
 		</Nav.Item>
-<<<<<<< HEAD
+
 		<Nav.Item>
 			<Link to='create-game' style={linkStyle}>
 				Create Game
 			</Link>
 		</Nav.Item>
 		<Nav.Item>
-			<Link to='games' style={linkStyle}>
+			<Link to='user-created-games' style={linkStyle}>
 				User Games
 			</Link>
 		</Nav.Item>
 		
-=======
+
 		<Nav.Item>
 			<Link to='create-game' style={linkStyle}>
 				Create Game
 			</Link>
 		</Nav.Item>
-<<<<<<< HEAD
->>>>>>> b5c6c37 (creating game with form functioning)
-=======
-		<Nav.Item>
-			<Link to='games' style={linkStyle}>
-				User Games
-			</Link>
-		</Nav.Item>
->>>>>>> dc6483a (started user games index)
+
+
+
 	</>
 )
 
