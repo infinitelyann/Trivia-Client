@@ -27,7 +27,8 @@ import GamePlay from './components/GamePlay'
 import PlayerLanding from './components/PlayerLanding'
 >>>>>>> 8bf65ae (user gamesIndex functioning)
 import GameCreate from './components/GameCreate'
-import GameIndex from './components/UserGameIndex'
+import UserGameIndex from './components/UserGameIndex'
+import UserGameShow from './components/UserGameShow'
 
 >>>>>>> b5c6c37 (creating game with form functioning)
 
@@ -104,7 +105,9 @@ const App = () => {
 					  <Route
 		  	path='/create-game'
 			element={
-				<GameCreate/>
+				<RequireAuth user={user}>
+					<GameCreate msgAlert={msgAlert} user={user}/>
+				</RequireAuth>
 			}
 			/>
 >>>>>>> 8bf65ae (user gamesIndex functioning)
@@ -112,18 +115,24 @@ const App = () => {
            <Route
 				path='/homepage'
 				element={
-					<PlayerLanding/>
+					<RequireAuth user={user}>
+
+						<PlayerLanding msgAlert={msgAlert} user={user}/>
+					</RequireAuth>
 				}
 			/>	
 
            <Route
 				path='/games'
 				element={
-					
-					<GameIndex msgAlert={msgAlert} user={user} />
-				
+					<UserGameIndex msgAlert={msgAlert} user={user} />
 				  }
-				
+			/>	
+			           <Route
+				path='/games/:id'
+				element={
+					<UserGameShow msgAlert={msgAlert} user={user} />
+				  }
 			/>	
 			<Route
 			path='/game'
