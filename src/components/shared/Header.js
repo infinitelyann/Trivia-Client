@@ -31,7 +31,7 @@ const authenticatedOptions = (
 >>>>>>> b5c6c37 (creating game with form functioning)
 =======
 		<Nav.Item>
-			<Link to='user-created-games' style={linkStyle}>
+			<Link to='games' style={linkStyle}>
 				User Games
 			</Link>
 		</Nav.Item>

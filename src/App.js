@@ -14,12 +14,18 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Timer from './components/Timer'
 import CreateQuestion from './components/CreateQuestion'
 import GamePlay from './components/GamePlay'
 import PlayerLanding from './components/PlayerLanding'
 =======
 import CreateQuestion from './components/CreateQuestion'
+=======
+import QuestionCreate from './components/QuestionCreate'
+import GamePlay from './components/GamePlay'
+import PlayerLanding from './components/PlayerLanding'
+>>>>>>> 8bf65ae (user gamesIndex functioning)
 import GameCreate from './components/GameCreate'
 import GameIndex from './components/UserGameIndex'
 
@@ -88,18 +94,37 @@ const App = () => {
 					  <Route
 		  	path='/create-question'
 			element={
-				<CreateQuestion/>
+				<QuestionCreate/>
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			/>	
+=======
+			/>
+					  <Route
+		  	path='/create-game'
+			element={
+				<GameCreate/>
+			}
+			/>
+>>>>>>> 8bf65ae (user gamesIndex functioning)
 
            <Route
 				path='/homepage'
 				element={
 					<PlayerLanding/>
 				}
-			/>		  
+			/>	
 
+           <Route
+				path='/games'
+				element={
+					
+					<GameIndex msgAlert={msgAlert} user={user} />
+				
+				  }
+				
+			/>	
 			<Route
 			path='/game'
 		  element={
