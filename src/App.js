@@ -17,7 +17,8 @@ import QuestionCreate from './components/QuestionCreate'
 import GamePlay from './components/GamePlay'
 import PlayerLanding from './components/PlayerLanding'
 import GameCreate from './components/GameCreate'
-import GameIndex from './components/UserGameIndex'
+import UserGameIndex from './components/UserGameIndex'
+import UserGameShow from './components/UserGameShow'
 
 
 const App = () => {
@@ -89,25 +90,33 @@ const App = () => {
 					  <Route
 		  	path='/create-game'
 			element={
-				<GameCreate/>
+				<RequireAuth user={user}>
+					<GameCreate msgAlert={msgAlert} user={user}/>
+				</RequireAuth>
 			}
 			/>
 
            <Route
 				path='/homepage'
 				element={
-					<PlayerLanding/>
+					<RequireAuth user={user}>
+
+						<PlayerLanding msgAlert={msgAlert} user={user}/>
+					</RequireAuth>
 				}
 			/>	
 
            <Route
 				path='/games'
 				element={
-					
-					<GameIndex msgAlert={msgAlert} user={user} />
-				
+					<UserGameIndex msgAlert={msgAlert} user={user} />
 				  }
-				
+			/>	
+			           <Route
+				path='/games/:id'
+				element={
+					<UserGameShow msgAlert={msgAlert} user={user} />
+				  }
 			/>	
 			<Route
 			path='/game'
