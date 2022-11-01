@@ -14,10 +14,13 @@ const Home = (props) => {
 		
 		<div className='background'>
 		<div className='title1'>
-			<span>T</span>
-			<span>E</span>
-			<span>S</span>
-			<span>T</span>
+			<span>Q</span>
+			<span>U</span>
+			<span>I</span>
+			<span>Z</span>
+			<span>A</span>
+			<span>R</span>
+			<span>D</span>
 			
 		</div>
 		<div className='buttons'>

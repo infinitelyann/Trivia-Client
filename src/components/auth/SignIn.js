@@ -35,7 +35,8 @@ const SignIn = (props) => {
         const credentials = {email, password}
 
 		signIn(credentials)
-			.then((res) => setUser(res.data.user))
+			.then((res) =>  setUser(res.data.user))
+
 			.then(() =>
 				msgAlert({
 					heading: 'Sign In Success',
@@ -70,7 +71,7 @@ const SignIn = (props) => {
                             value={email}
                             placeholder='Enter email'
                             onChange={e => setEmail(e.target.value)}
-                            // style={{backgroundColor: '#242423', border: '2px solid #7552f2'}}
+                            style={{ border: '5px solid lightgray'}}
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
@@ -82,7 +83,7 @@ const SignIn = (props) => {
                             type='password'
                             placeholder='Password'
                             onChange={e => setPassword(e.target.value)}
-                            // style={{backgroundColor: '#242423', border: '2px solid #7552f2'}}
+                            style={{ border: '5px solid lightgray'}}
                         />
                     </Form.Group>
                     <Button variant='primary' type='submit' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #ffc300'}}>
