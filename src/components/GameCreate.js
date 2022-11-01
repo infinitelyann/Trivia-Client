@@ -6,15 +6,16 @@ import GameForm from './GameForm'
 const GameCreate = ({user, msgAlert} ) => {
     const navigate = useNavigate()
 
+    // setting the name of game to empty
     const defaultGame = {
         name: ''
     }
 
+    // state
     const [game, setGame] = useState(defaultGame)
 
+    // handling typing change
     const handleChange = (e) => {
-
-
         setGame(prevGame => {
             const updatedName = e.target.name
             let updatedValue = e.target.value
@@ -24,6 +25,7 @@ const GameCreate = ({user, msgAlert} ) => {
         })
     }
 
+    //calling api on submit
     const handleCreateGame = (e) => {
         console.log("name?",e.target)
         e.preventDefault()
@@ -45,6 +47,7 @@ const GameCreate = ({user, msgAlert} ) => {
                 handleChange = { handleChange }
                 handleSubmit = { handleCreateGame }
             />
+
 
         </>
     )

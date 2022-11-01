@@ -13,22 +13,12 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-<<<<<<< HEAD
-<<<<<<< HEAD
-import QuestionCreate from './components/QuestionCreate'
-import GamePlay from './components/GamePlay'
-import PlayerLanding from './components/PlayerLanding'
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> main
 import Timer from './components/Timer'
-import CreateQuestion from './components/CreateQuestion'
-import GamePlay from './components/GamePlay'
-import PlayerLanding from './components/PlayerLanding'
-<<<<<<< HEAD
-=======
+import GameCreate from './components/GameCreate'
+import UserGameIndex from './components/UserGameIndex'
+import UserGameShow from './components/UserGameShow'
+
+
 
 import CreateQuestion from './components/CreateQuestion'
 
@@ -41,7 +31,6 @@ import UserGameIndex from './components/UserGameIndex'
 import UserGameShow from './components/UserGameShow'
 
 
->>>>>>> main
 
 const App = () => {
 
@@ -106,29 +95,17 @@ const App = () => {
 			element={
 				<Timer/>
 			}
-			/>
-					  <Route
-		  	path='/create-question'
-			element={
-				<CreateQuestion/>
-			}
-<<<<<<< HEAD
-			/>	
-=======
 
 			
 
 			/>
 					  <Route
-		  	path='/create-game'
+		  	path='/create-question'
 			element={
-				<RequireAuth user={user}>
-					<GameCreate msgAlert={msgAlert} user={user}/>
-				</RequireAuth>
+				<QuestionCreate/>
 			}
 			/>
 
->>>>>>> main
 
            <Route
 				path='/homepage'
@@ -137,12 +114,7 @@ const App = () => {
 				}
 			/>		  
 
-           <Route
-				path='/games'
-				element={
-					<UserGameIndex msgAlert={msgAlert} user={user} />
-				  }
-			/>	
+
 			           <Route
 				path='/games/:id'
 				element={
@@ -168,7 +140,7 @@ const App = () => {
 				path='/user-created-games'
 				element={
 					<RequireAuth user={user}>
-					  <GameIndex msgAlert={msgAlert} user={user} />
+					  <UserGameIndex msgAlert={msgAlert} user={user} />
 					</RequireAuth>}
 			/>
 

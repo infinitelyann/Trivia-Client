@@ -1,4 +1,5 @@
 import { Form, Button, Container } from 'react-bootstrap'
+import QuestionCreate from './QuestionCreate'
 
 const GameForm = (props) => {
     const { game, handleChange, handleSubmit } = props
@@ -16,6 +17,7 @@ const GameForm = (props) => {
                     
                     />
                     <Button type='submit'>Submit</Button>
+               
                 </Form>
             </Container>
 
