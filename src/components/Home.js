@@ -2,7 +2,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../home.css'
-import GameInputs from './GameInputs'
+
 
 const Home = (props) => {
 	
@@ -21,12 +21,10 @@ const Home = (props) => {
 			
 		</div>
 		<div className='buttons'>
-		    <Link className='btn' to='sign-up' style={{backgroundColor: '#7552f2', color: 'white'}}>Sign-Up</Link>
+		    <Link className='btn' to='sign-up' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #7552f2',}}>Sign-Up</Link>
 			
-			<Link className='btn' to='sign-in' style={{backgroundColor: '#7552f2', color: 'white'}}>Sign-In</Link>
+			<Link className='btn' to='sign-in' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #7552f2'}}>Sign-In</Link>
 		</div>
-		
-		<GameInputs/>
 		</div>
 		
 		

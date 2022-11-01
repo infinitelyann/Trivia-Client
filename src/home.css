@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 
 div .background {
-    background-color: bisque;
+    background-color: #240046;
     height: 100vh;
 }
     
@@ -60,4 +60,9 @@ div .background {
 
 .btn {
     margin: 10px;
+}
+
+.signup:hover {
+    color: black;
+    background-color: yellow;
 }

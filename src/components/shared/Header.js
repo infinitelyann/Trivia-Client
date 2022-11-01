@@ -35,11 +35,11 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Item>
-		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
+        <Nav.Item className='m-2'>
+		    <Link to='sign-up' style={linkStyle} >Sign Up</Link>
         </Nav.Item>
-        <Nav.Item>
-		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
+        <Nav.Item className='m-2'>
+		    <Link to='sign-in' style={linkStyle} >Sign In</Link>
         </Nav.Item>
 	</>
 )
@@ -61,7 +61,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar bg='dark' variant='dark' expand='md'>
 		<Navbar>
             <Link to='/homepage' style={linkStyle} className='m-2'>
                 Trivia

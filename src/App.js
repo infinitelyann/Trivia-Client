@@ -63,6 +63,7 @@ const App = () => {
 					<Route
 					path='/'
 					/>
+					
           <Route
             path='/sign-out'
             element={
