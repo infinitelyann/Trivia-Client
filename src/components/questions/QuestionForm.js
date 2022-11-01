@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Radio, Button, ButtonGroup, Container, ToggleButton } from 'react-bootstrap'
+import GameInputs from '../GameInputs'
 
 const QuestionForm = (props) => {
     const { question, handleChange, handleSubmit} = props
@@ -94,6 +95,7 @@ const QuestionForm = (props) => {
             <>
                 {incorrectAnswers}
             </>
+            <GameInputs/>
             <Button type='submit'>Add</Button>
             </Form>
         </Container>
