@@ -19,6 +19,7 @@ export const gameIndex = (user) => {
     return axios({
         method: 'GET',
         url: apiUrl + '/games'
+
     })
 }
 
