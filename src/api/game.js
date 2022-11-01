@@ -1,7 +1,8 @@
 import apiUrl from "../apiConfig";
 import axios from "axios";
 
-const createGame = (data, user) => {
+
+export const createGame = (data, user) => {
     return axios({
         method: 'POST',
         url: apiUrl + '/games',
@@ -11,6 +12,14 @@ const createGame = (data, user) => {
         headers: {
             Authorization: `Token token=${user.token}`
         }
+    })
+}
+
+export const gameIndex = (user) => {
+    return axios({
+        method: 'GET',
+        url: apiUrl + '/games'
+
     })
 }
 
