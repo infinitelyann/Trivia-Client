@@ -13,8 +13,8 @@ div .background {
     justify-content: center;
     text-align: center;
     padding-top: 100px;
-    font-size: 60px;
-    color:purple;
+    font-size: 100px;
+    color: #7552f2;
     font-family: 'Rubik Mono One', sans-serif;
 }
 
@@ -54,15 +54,14 @@ div .background {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-
-
+    
 }
 
 .btn {
     margin: 10px;
 }
 
-.signup:hover {
+.btn:hover {
     color: black;
     background-color: yellow;
 }

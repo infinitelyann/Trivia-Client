@@ -21,9 +21,9 @@ const Home = (props) => {
 			
 		</div>
 		<div className='buttons'>
-		    <Link className='btn' to='sign-up' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #7552f2',}}>Sign-Up</Link>
+		    <Link className='btn' to='sign-up' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #ffc300', fontSize: '20px'}}>Sign-Up</Link>
 			
-			<Link className='btn' to='sign-in' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #7552f2'}}>Sign-In</Link>
+			<Link className='btn' to='sign-in' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #ffc300', fontSize: '20px'}}>Sign-In</Link>
 		</div>
 		</div>
 		

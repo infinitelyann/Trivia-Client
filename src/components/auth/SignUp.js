@@ -57,10 +57,11 @@ const SignUp = (props) => {
 
 
     return (
-        <div className='row' style={{textAlign: 'center'}}>
-            <div className='col-sm-10 col-md-3 mx-auto mt-5'>
-                <h3>Sign Up</h3>
-                <Form onSubmit={onSignUp}>
+        <div style={{backgroundColor: '#240046', height: '100vh'}}>
+        <div className='row' style={{textAlign: 'center', paddingTop: '50px', color: 'white'}}>
+            <div className='col-sm-10 col-md-3 mx-auto mt-5' style={{ width: '300px'}}>
+                <h3 style={{paddingTop: '10px'}}>Sign Up</h3>
+                <Form onSubmit={onSignUp} style={{padding: '20px'}}>
                     <Form.Group controlId='email'>
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
@@ -70,6 +71,7 @@ const SignUp = (props) => {
                             value={email}
                             placeholder='Enter email'
                             onChange={e => setEmail(e.target.value)}
+                            // style={{ border: '2px solid #7552f2'}}
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
@@ -81,6 +83,7 @@ const SignUp = (props) => {
                             type='password'
                             placeholder='Password'
                             onChange={e => setPassword(e.target.value)}
+                            // style={{ border: '2px solid #7552f2'}}
                         />
                     </Form.Group>
                     <Form.Group controlId='passwordConfirmation'>
@@ -92,13 +95,15 @@ const SignUp = (props) => {
                             type='password'
                             placeholder='Confirm Password'
                             onChange={e => setPasswordConfirmation(e.target.value)}
+                            // style={{border: '2px solid #7552f2'}}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit' className='btn mt-2'>
-                        Submit
+                    <Button variant='primary' type='submit' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #ffc300'}}>
+                        Sign Up
                     </Button>
                 </Form>
             </div>
+        </div>
         </div>
     )
 
