@@ -43,15 +43,16 @@ const GamePlay = (props) => {
 
 
   return (
-    <>
+    <div>
       <GameInputs setFilterOptions={setFilterOptions} />
       {err && <h2>{err}</h2>}
 
       <button onClick={handleClick}>Fetch data</button>
-      {isLoading && <h2>Loading...</h2>}
-      
-    </>
-    )
+      <GameCarousel gameData={data} />
+    </div>
+  )
+    // <div>
+    //   {err && <h2>{err}</h2>}
 
 
   // }else{
