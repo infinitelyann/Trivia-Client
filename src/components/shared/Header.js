@@ -74,7 +74,7 @@ const Header = ({ user }) => (
 	<Navbar bg='dark' variant='dark' expand='md'>
 		<Navbar>
             <Navbar.Brand className='m-1'>
-                Quizzard
+                Quizard
             </Navbar.Brand>
         </Navbar>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
