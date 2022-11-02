@@ -13,7 +13,7 @@ const UserGameShow = ({ user, msgAlert }) => {
     const [deleted, setDeleted] = useState(false)
 
     const  { id } = useParams()
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         gameShow(user, id)
@@ -51,12 +51,12 @@ const UserGameShow = ({ user, msgAlert }) => {
             })
     }
     let allQuestions
-    if (!allQuestions === null){
-        <>
-            Nothing here yet
-        </>
-    } 
-
+    // if (!allQuestions === null){
+    //     <>
+    //         Nothing here yet
+    //     </>
+    // } 
+    if(deleted)navigate('/user-created-games')
     if(!game){
         return (
             <>

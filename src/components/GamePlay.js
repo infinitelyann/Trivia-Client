@@ -48,7 +48,7 @@ const GamePlay = (props) => {
       {err && <h2>{err}</h2>}
 
       <button onClick={handleClick}>Fetch data</button>
-      <GameCarousel gameData={data} />
+
     </div>
   )
     // <div>
