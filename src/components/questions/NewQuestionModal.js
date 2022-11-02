@@ -18,15 +18,17 @@ const NewQuestionModal = (props) => {
             let value = e.target.value
 
             const updatedQuestion = { [question]: value}
+            
             return {
                 ...prevQuestion, ...updatedQuestion
             }
+            
         })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        createQuestion(user, game, question)
+        createQuestion(user, game._id, question)
             .then(()=> handleClose())
             .then(()=> {
                 msgAlert({
@@ -43,7 +45,6 @@ const NewQuestionModal = (props) => {
                     variant: 'danger'
                 })
             )
-        
     }
     return(
         <Modal show={ show } onHide = { handleClose }>

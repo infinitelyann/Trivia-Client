@@ -8,13 +8,13 @@ const GameCarousel = (props) => {
     let gameQ
     // console.log("look here",gameQs)
 
-    setGameQ(gameQs => ({
-      ...gameQs, ...defaultData
-    }))
-    // useEffect (() => {
-    //   setGameQ(gameData)
-    //   console.log("how bout this",  gameData)
-    // }, [])
+    // setGameQ(gameQs => ({
+    //   ...gameQs, ...defaultData
+    // }))
+    useEffect (() => {
+      setGameQ(gameData)
+      console.log("how bout this",  gameData)
+    }, [])
     if(!gameQs){
       gameQ = 
       <>

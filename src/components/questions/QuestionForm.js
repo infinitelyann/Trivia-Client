@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Form, Radio, Button, ButtonGroup, Container, ToggleButton } from 'react-bootstrap'
+import { Form, Button, ButtonGroup, Container } from 'react-bootstrap'
 import GameInputs from '../GameInputs'
 
 const QuestionForm = (props) => {
     const { question, handleChange, handleSubmit} = props
 
-        const [checked, setRadioValue] = useState({typeOfQuestion: "", another: "another"})
+        const [checked, setRadioValue] = useState({typeOfQuestion: "Multiple Choice", another: "another"})
         const { typeOfQuestion } = checked
         const handleButtonChange = (e) => {
             e.persist()

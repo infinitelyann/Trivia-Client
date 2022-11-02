@@ -5,7 +5,7 @@ import axios from "axios";
 export const createQuestion = (data, gameId, user) => {
     return axios({
         method: 'POST',
-        url: apiUrl + 'questions' + gameId,
+        url: apiUrl + '/questions/' + gameId,
         data: {
             question: data
         },
