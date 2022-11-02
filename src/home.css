@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 
-
+div .background {
+    background-color: #240046;
+    height: 100vh;
+}
     
 
 
@@ -9,9 +12,9 @@
     position: flex;
     justify-content: center;
     text-align: center;
-    margin-top: 100px;
-    font-size: 60px;
-    color:purple;
+    padding-top: 100px;
+    font-size: 100px;
+    color: #7552f2;
     font-family: 'Rubik Mono One', sans-serif;
 }
 
@@ -37,6 +40,19 @@
     animation-delay: 0.3s;
 }
 
+.title1 span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.title1 span:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+.title1 span:nth-child(7) {
+    animation-delay: 0.6s;
+}
+
+
 @keyframes title1 {
     0%, 40%, 100% {
         transform: translateY(0)
@@ -51,10 +67,10 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
-
-
+    
 }
 
 .btn {
     margin: 10px;
 }
+

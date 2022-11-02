@@ -3,7 +3,10 @@ import { Form } from "react-bootstrap";
 import GameInputs from "./GameInputs";
 import { getOpenDBUrl } from "../utils/openDB";
 
+
+
 const GamePlay = (props) => {
+  const [filterOptions, setFilterOptions] = useState({});
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");

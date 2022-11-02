@@ -51,7 +51,7 @@ const App = () => {
 	}
 
 		return (
-			<Fragment>
+			<Fragment style={{backgroundColor: ''}}>
 				<Header user={user} />
 				<Routes>
 					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
@@ -66,6 +66,7 @@ const App = () => {
 					<Route
 					path='/'
 					/>
+					
           <Route
             path='/sign-out'
             element={

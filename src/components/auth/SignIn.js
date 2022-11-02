@@ -35,7 +35,8 @@ const SignIn = (props) => {
         const credentials = {email, password}
 
 		signIn(credentials)
-			.then((res) => setUser(res.data.user))
+			.then((res) =>  setUser(res.data.user))
+
 			.then(() =>
 				msgAlert({
 					heading: 'Sign In Success',
@@ -56,10 +57,11 @@ const SignIn = (props) => {
 	}
 
     return (
-        <div className='row' style={{textAlign: 'center'}}>
-            <div className='col-sm-10 col-md-3 mx-auto mt-5'>
-                <h3>Sign In</h3>
-                <Form onSubmit={onSignIn}>
+        <div style={{backgroundColor: '#240046', height: '100vh'}}>
+        <div className='row' style={{textAlign: 'center', paddingTop: '50px', color: 'white'}}>
+            <div className='col-sm-10 col-md-3 mx-auto mt-5' style={{ width: '300px'}}>
+                <h3 style={{paddingTop: '10px'}}>Sign In</h3>
+                <Form onSubmit={onSignIn} style={{padding: '20px'}}>
                     <Form.Group controlId='email'>
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
@@ -69,6 +71,7 @@ const SignIn = (props) => {
                             value={email}
                             placeholder='Enter email'
                             onChange={e => setEmail(e.target.value)}
+                            style={{ border: '5px solid lightgray'}}
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
@@ -80,13 +83,15 @@ const SignIn = (props) => {
                             type='password'
                             placeholder='Password'
                             onChange={e => setPassword(e.target.value)}
+                            style={{ border: '5px solid lightgray'}}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
-                        Submit
+                    <Button variant='primary' type='submit' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #ffc300'}}>
+                        Sign In
                     </Button>
                 </Form>
             </div>
+        </div>
         </div>
     )
 }

@@ -26,23 +26,21 @@ const SignOut = (props) => {
     }
 
     const onCancel = () => {
-        navigate('/')
+        navigate('/homepage')
     }
 
 	return (
 		<>
-            <div className='row'>
+            <div className='row' style={{textAlign: 'center'}}>
                 <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                     <h2>Are you sure you want to sign out?</h2>
-                    <small>We hate to see you go...</small><br/>
-                    <ButtonGroup>
-                        <Button variant='danger' onClick={onSignOut}>
-                            Sign Out
+                        <Button variant='white' onClick={onSignOut} style={{ color: 'black', border:'2px solid #ffc300'}}>
+                            True
                         </Button>
-                        <Button variant='warning' onClick={onCancel}>
-                            Cancel
+                        <Button variant='white' onClick={onCancel}  style={{ color: 'black', border:'2px solid #ffc300'}}>
+                            False
                         </Button>
-                    </ButtonGroup>
+                    
                 </div>
             </div>
 		</>
