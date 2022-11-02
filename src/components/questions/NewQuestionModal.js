@@ -7,18 +7,19 @@ import QuestionForm from './QuestionForm'
 
 const NewQuestionModal = (props) => {
 
-
+    // properties
     const { user, show, game, handleClose, msgAlert, triggerRefresh } = props
    
     const [question, setQuestion] = useState(
         {
-            answer: "",
+            correctAnswer: "",
             incorrectAnswers: [],
             category: '',
             type: '',
             difficulty: ''
         })
 
+ 
     const handleChange =  (e) => {
         setQuestion(prevQuestion => {
             const question = e.target.name

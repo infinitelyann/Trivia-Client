@@ -139,7 +139,7 @@ const QuestionForm = (props) => {
                 checked={typeOfQuestion ==="True / False"}
                 />
             </Form.Group>
-            <Form.Label>Enter the Answer</Form.Label>
+            <Form.Label>Enter the Correct Answer</Form.Label>
             <Form.Control 
                     placeholder='enter the answer'
                     name='answer'
