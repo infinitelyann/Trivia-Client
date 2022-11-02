@@ -46,8 +46,8 @@ const UserGameShow = ({ user, msgAlert }) => {
         // this needs to be changed to its own component
         <>
             <div key={question._id}>
-                <h1>Question {index+1}</h1>
-                <h3>
+                <h1 key={index}>Question {index+1}</h1>
+                <h3 key={index + "question"}>
                     {question.question}
                 </h3>
                 {question.correctAnswer}

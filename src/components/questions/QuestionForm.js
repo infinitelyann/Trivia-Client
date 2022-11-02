@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Form, Radio, Button, ButtonGroup, Container, ToggleButton } from 'react-bootstrap'
+import { Form, Button, ButtonGroup, Container, Dropdown } from 'react-bootstrap'
 import GameInputs from '../GameInputs'
 
 const QuestionForm = (props) => {
-    const { question, handleChange, handleSubmit} = props
+    const { question, handleChange, handleSubmit } = props
 
-        const [checked, setRadioValue] = useState({typeOfQuestion: "", another: "another"})
+        const [checked, setRadioValue] = useState({typeOfQuestion: "Multiple Choice", another: "another"})
         const { typeOfQuestion } = checked
         const handleButtonChange = (e) => {
             e.persist()
@@ -19,7 +19,7 @@ const QuestionForm = (props) => {
 
         // make an if statement for
         let incorrectAnswers 
-        if(checked === 'Multiple Choice'){
+        if(typeOfQuestion === 'Multiple Choice'){
                 incorrectAnswers = 
                 <>
                     <Form.Label>Enter the Incorrect Answer(s)</Form.Label>
@@ -66,6 +66,7 @@ const QuestionForm = (props) => {
                     name='question'
                     id='question'
                     onChange={handleChange}
+                    value={question.question}
                 />
             <Form.Group controlId="kindOfStand">
                 <Form.Check
@@ -95,7 +96,18 @@ const QuestionForm = (props) => {
             <>
                 {incorrectAnswers}
             </>
-            <GameInputs/>
+            {/* <GameInputs/> */}
+            <Dropdown>
+                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                    Choose Category
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
             <Button type='submit'>Add</Button>
             </Form>
         </Container>

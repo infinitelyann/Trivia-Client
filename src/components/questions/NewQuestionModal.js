@@ -9,7 +9,7 @@ const NewQuestionModal = (props) => {
 
 
     const { user, show, game, handleClose, msgAlert, triggerRefresh } = props
-
+   
     const [question, setQuestion] = useState({})
 
     const handleChange =  (e) => {
@@ -18,9 +18,11 @@ const NewQuestionModal = (props) => {
             let value = e.target.value
 
             const updatedQuestion = { [question]: value}
+            
             return {
                 ...prevQuestion, ...updatedQuestion
             }
+            
         })
     }
 
@@ -43,15 +45,15 @@ const NewQuestionModal = (props) => {
                     variant: 'danger'
                 })
             )
-        
     }
     return(
-        <Modal show={ show } onHide = { handleClose }>
+        <Modal show={ show } onHide = { handleClose } user={user}>
             <Modal.Header/>
             <QuestionForm
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
-                
+                user={user}
+                question={question}
             />
         </Modal>
     )
