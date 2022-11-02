@@ -1,4 +1,5 @@
 import { useState } from "react";
+import GamePlay from "./GamePlay";
 
 const categories = [
   "Any",
@@ -32,18 +33,12 @@ const difficulties = ["Easy", "Medium", "Hard"];
 
 const amounts = ["5", "10", "15", "20"];
 
-const GameInputs = ({ setFilterOptions }) => {
-  const [difficulty, setDifficulty] = useState(difficulties[0]);
-  const [category, setCategory] = useState("");
-  const [amount, setAmount] = useState(amounts[0]);
+const GameInputs = ({ setFilterOptions }, props) => {
+  const { handleClick, isLoading, err } = props
+  const [difficulty, setDifficulty] = useState('');
+  const [category, setCategory] = useState('');
+  const [amount, setAmount] = useState('');
 
-  const handleDifficultyChange = (e) => {
-    setFilterOptions({
-      difficulty: e.target.value,
-      category,
-      amount,
-    });
-  };
   const handleCategoryChange = (e) => {
     console.log(
       categories.findIndex((category) => category === e.target.value) + 8
@@ -54,7 +49,18 @@ const GameInputs = ({ setFilterOptions }) => {
         categories.findIndex((category) => category === e.target.value) + 8,
       amount,
     });
+    // setCategory(e.target.value)
+    console.log(e.target.value)
   };
+  const handleDifficultyChange = (e) => {
+    setFilterOptions({
+      difficulty: e.target.value,
+      category,
+      amount,
+    });
+    // setDifficulty(e.target.value)
+  };
+
 
   const handleAmountChange = (e) => {
     setFilterOptions({
@@ -62,12 +68,13 @@ const GameInputs = ({ setFilterOptions }) => {
       category,
       amount: Number.parseInt(e.target.value),
     });
+    // setAmount(e.target.value)
   };
-
-  return (
-    <>
+  if (category == '') {
+    return (
       <form>
         <div className="dropdown">
+            
           <select value={category} onChange={handleCategoryChange}>
             {categories.map((category, idx) => (
               <option value={category} key={idx}>
@@ -76,7 +83,11 @@ const GameInputs = ({ setFilterOptions }) => {
             ))}
           </select>
         </div>
-
+      </form>
+    );
+  } else if (difficulty == '' ) {
+    return (
+      <form>
         <div className="dropdown">
           <select value={difficulty} onChange={handleDifficultyChange}>
             {difficulties.map((difficulty, idx) => (
@@ -86,7 +97,11 @@ const GameInputs = ({ setFilterOptions }) => {
             ))}
           </select>
         </div>
-
+      </form>
+    );
+  } else if (amount == '') {
+    return (
+      <form>
         <div className="dropdown">
           <select value={amount} onChange={handleAmountChange}>
             {amounts.map((amount, idx) => (
@@ -97,8 +112,16 @@ const GameInputs = ({ setFilterOptions }) => {
           </select>
         </div>
       </form>
+    );
+  }else{
+    return(
+    <>
+
+      <GamePlay/>
+     
     </>
-  );
+    )
+  }
 };
 
 export default GameInputs;

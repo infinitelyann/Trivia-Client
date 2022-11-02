@@ -49,6 +49,28 @@ const GamePlay = (props) => {
 
       <button onClick={handleClick}>Fetch data</button>
       {isLoading && <h2>Loading...</h2>}
+      {data.map((question, index) => {
+      const { incorrect_answers, correct_answer } = question;
+      const renderedAnswers = [...incorrect_answers, correct_answer]
+        .map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+        return(
+         
+          <div key={index}>
+            <p>{question.question}</p>
+
+            {renderedAnswers.map((answer, idx) => (
+              <p className="btn btn-outline-dark" key={idx}>
+                {answer}
+              </p>
+            ))}
+
+            <button>next ?</button>
+          </div>
+        )
+        
+    })} 
       
     </>
     )
