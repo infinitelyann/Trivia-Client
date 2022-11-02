@@ -10,7 +10,7 @@ const UserGameShow = ({ user, msgAlert }) => {
     const [game, setGame] = useState(null)
     const [updated, setUpdated] = useState(false)
     const [questionModalShow, setQuestionModalShow] =useState(false)
-
+    const [deleted, setDeleted] = useState(false)
 
     const  { id } = useParams()
     // const navigate = useNavigate()
@@ -28,6 +28,28 @@ const UserGameShow = ({ user, msgAlert }) => {
                 })
             })
     }, [])
+
+    const handleGameDelete = () => {
+        console.log("delete?")
+        console.log(id)
+        console.log(user)
+        gameDelete(user, id)
+            .then(()=> {
+                setDeleted(true)
+                msgAlert({
+                    heading: 'Success',
+                    message: 'Game deleted',
+                    variant: 'success'
+                })
+            })
+            .catch((error) => {
+                msgAlert({
+                    heading: 'Failure',
+                    message: 'Game Delete Failure' + error,
+                    variant: 'danger'
+                })
+            })
+    }
     let allQuestions
     if (!allQuestions === null){
         <>
@@ -61,7 +83,7 @@ const UserGameShow = ({ user, msgAlert }) => {
 
     return (
         <>
-            <Container>
+            <Container className='m-2'>
                 
                 <Card>
                     <Card.Header>{game.name}</Card.Header>
@@ -73,6 +95,9 @@ const UserGameShow = ({ user, msgAlert }) => {
                         <Button
                             onClick={() =>setQuestionModalShow(true)}>
                                 New Question
+                      </Button>
+                      <Button variant='danger' onClick={() => handleGameDelete()}>
+                        Delete Quiz
                       </Button>
                     </Card.Footer>
                 </Card>
