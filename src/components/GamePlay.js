@@ -41,7 +41,7 @@ const GamePlay = (props) => {
   // console.log(data);
 
   return (
-    <div>
+    <>
       <GameInputs setFilterOptions={setFilterOptions} />
       {err && <h2>{err}</h2>}
 
