@@ -10,7 +10,14 @@ const NewQuestionModal = (props) => {
 
     const { user, show, game, handleClose, msgAlert, triggerRefresh } = props
    
-    const [question, setQuestion] = useState({})
+    const [question, setQuestion] = useState(
+        {
+            answer: "",
+            incorrectAnswers: [],
+            category: '',
+            type: '',
+            difficulty: ''
+        })
 
     const handleChange =  (e) => {
         setQuestion(prevQuestion => {
@@ -18,16 +25,27 @@ const NewQuestionModal = (props) => {
             let value = e.target.value
 
             const updatedQuestion = { [question]: value}
-            
+            return {
+                ...prevQuestion, ...updatedQuestion
+            }  
+        })
+    }
+
+    const handleType = (e) => {
+        setQuestion(prevQuestion => {
+            const type = e.target.name
+            let value = e.target.value
+
+            const updatedQuestion = { [question]: value}
             return {
                 ...prevQuestion, ...updatedQuestion
             }
-            
         })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log("the question",question)
         createQuestion(user, game._id, question)
             .then(()=> handleClose())
             .then(()=> {
@@ -47,8 +65,8 @@ const NewQuestionModal = (props) => {
             )
     }
     return(
+
         <Modal show={ show } onHide = { handleClose } user={user}>
-            
                 <Modal.Title className='m2'>Add a question to your quiz</Modal.Title>
             <Modal.Header/>
             
@@ -57,6 +75,7 @@ const NewQuestionModal = (props) => {
                 handleSubmit={handleSubmit}
                 user={user}
                 question={question}
+                handleType={handleType}
             />
         </Modal>
     )

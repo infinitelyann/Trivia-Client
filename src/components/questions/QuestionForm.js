@@ -31,10 +31,12 @@ const categories = [
   ]
 
 const QuestionForm = (props) => {
-    const { question, handleChange, handleSubmit} = props
+    const { question, handleChange, handleSubmit, handleType } = props
 
+        const [submittedQuestion, setQuestion] = useState({})
         const [category, setCategory] = useState("")
         const [difficulty, setDifficulty] = useState('Easy')
+        const [incorrectAnswerSubmissions, setIncorrectAnswers] = useState([])
         const [checked, setRadioValue] = useState({typeOfQuestion: "Multiple Choice", another: "another"})
         const { typeOfQuestion } = checked
 
@@ -57,6 +59,14 @@ const QuestionForm = (props) => {
             // console.log(category)
           }
 
+          const handleDifficultyChange = (e) => {
+            e.persist()
+            
+            console.log(e.target)
+            setDifficulty(e.target.innerText, console.log(category))
+            // console.log(category)
+          }
+
         // make an if statement for
         let incorrectAnswers 
         if(typeOfQuestion === 'Multiple Choice'){
@@ -64,18 +74,21 @@ const QuestionForm = (props) => {
                 <>
                     <Form.Label>Enter the Incorrect Answer(s)</Form.Label>
                     <Form.Control 
+                            key="incorrect2"
+                            placeholder='enter the incorrrect answer'
+                            name='incorrect answer'
+                            id='incorrect answer'
+                            onChange={handleChange}
+                        />
+                    <Form.Control
+                            key="incorrect3"
                             placeholder='enter the incorrrect answer'
                             name='incorrect answer'
                             id='incorrect answer'
                             onChange={handleChange}
                         />
                     <Form.Control 
-                            placeholder='enter the incorrrect answer'
-                            name='incorrect answer'
-                            id='incorrect answer'
-                            onChange={handleChange}
-                        />
-                    <Form.Control 
+                            key="incorrect4"
                             placeholder='enter the incorrrect answer'
                             name='incorrect answer'
                             id='incorrect answer'
@@ -88,6 +101,7 @@ const QuestionForm = (props) => {
             <>
                 <Form.Label>Enter the Incorrect Answer(s)</Form.Label>
                     <Form.Control 
+                            key="incorrect1"
                             placeholder='enter the incorrrect answer'
                             name='incorrect answer'
                             id='incorrect answer'
