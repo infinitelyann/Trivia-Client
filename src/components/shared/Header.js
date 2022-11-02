@@ -73,9 +73,9 @@ const unauthenticatedOptions = (
 const Header = ({ user }) => (
 	<Navbar bg='dark' variant='dark' expand='md'>
 		<Navbar>
-            <Link to='/homepage' style={linkStyle} className='m-3'>
+            <Navbar.Brand className='m-1'>
                 Quizzard
-            </Link>
+            </Navbar.Brand>
         </Navbar>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
