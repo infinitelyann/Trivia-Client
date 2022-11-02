@@ -19,7 +19,7 @@ const QuestionForm = (props) => {
 
         // make an if statement for
         let incorrectAnswers 
-        if(checked === 'Multiple Choice'){
+        if(typeOfQuestion === 'Multiple Choice'){
                 incorrectAnswers = 
                 <>
                     <Form.Label>Enter the Incorrect Answer(s)</Form.Label>

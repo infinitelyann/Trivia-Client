@@ -47,7 +47,7 @@ const UserGameShow = ({ user, msgAlert }) => {
         <>
             <div key={question._id}>
                 <h1>Question {index+1}</h1>
-                <h3>
+                <h3 key={question._id}>
                     {question.question}
                 </h3>
                 {question.correctAnswer}

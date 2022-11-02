@@ -2,10 +2,10 @@ import apiUrl from "../apiConfig";
 import axios from "axios";
 
 // this is the api call to create a question
-export const createQuestion = (data, user) => {
+export const createQuestion = (data, gameId, user) => {
     return axios({
         method: 'POST',
-        url: apiUrl + 'questions',
+        url: apiUrl + 'questions' + gameId,
         data: {
             question: data
         },
