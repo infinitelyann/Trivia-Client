@@ -47,7 +47,7 @@ const NewQuestionModal = (props) => {
             )
     }
     return(
-        <Modal show={ show } onHide = { handleClose } user={user}>
+        <Modal show={ show } onHide = { handleClose } user={user} user={user}>
             
                 <Modal.Title className='m2'>Add a question to your quiz</Modal.Title>
             <Modal.Header/>

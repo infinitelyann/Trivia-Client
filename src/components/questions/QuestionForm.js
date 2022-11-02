@@ -31,7 +31,7 @@ const categories = [
   ]
 
 const QuestionForm = (props) => {
-    const { question, handleChange, handleSubmit } = props
+    const { question, handleChange, handleSubmit} = props
 
         const [category, setCategory] = useState("")
         const [difficulty, setDifficulty] = useState('Easy')
@@ -105,7 +105,7 @@ const QuestionForm = (props) => {
                     name='question'
                     id='question'
                     onChange={handleChange}
-                    
+                    value={question.question}
                 />
             <Form.Group controlId="kindOfStand">
                 <Form.Check

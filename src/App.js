@@ -20,6 +20,7 @@ import PlayerLanding from './components/PlayerLanding'
 import GameCreate from './components/GameCreate'
 import UserGameIndex from './components/UserGameIndex'
 import UserGameShow from './components/UserGameShow'
+import { getOpenDBUrl } from './utils/openDB'
 
 
 
@@ -27,6 +28,40 @@ const App = () => {
 
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [err, setErr] = useState("");
+  const [filterOptions, setFilterOptions] = useState({});
+  
+const handleClick = async () =>{
+	console.log('clicked')
+	if (filterOptions === {}) return;
+	    setIsLoading(true);
+	
+	    try {
+	      const response = await fetch(getOpenDBUrl(filterOptions), {
+	        method: "GET",
+	        headers: {
+	          Accept: "application/json;charset=utf-8",
+	        },
+	      });
+	
+	      if (!response.ok) {
+	        throw new Error(`Error! status: ${response.status}`);
+	      }
+	
+	      const result = await response.json();
+	
+	      setData(result.results);
+	    } catch (err) {
+	      setErr(err.message);
+	    } finally {
+	      setIsLoading(false);
+	    }
+	  };
+	
+
+
 
   console.log('user in app', user)
   console.log('message alerts', msgAlerts)
@@ -116,7 +151,7 @@ const App = () => {
 			<Route
 			path='/game'
 		  element={
-			  <GamePlay/>
+			  <GamePlay setFilterOptions={setFilterOptions} err={err} handleClick={handleClick} isLoading={isLoading} data={data} />
 		  }
 		  />
 
