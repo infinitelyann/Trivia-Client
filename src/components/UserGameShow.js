@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
-import { gameShow } from '../api/game'
+import { gameShow, gameDelete } from '../api/game'
 import QuestionCreate from './QuestionCreate'
 import NewQuestionModal from '../components/questions/NewQuestionModal'
 

@@ -1,12 +1,44 @@
 import React, { useState } from 'react'
-import { Form, Button, ButtonGroup, Container, Dropdown } from 'react-bootstrap'
-import GameInputs from '../GameInputs'
+import { Form, Button, Container, Dropdown } from 'react-bootstrap'
+// import {categories } from '../GameInputs'
+
+const categories = [
+    "Any",
+    "General Knowledge",
+    "Entertainment: Books",
+    "Entertainment: Film",
+    "Entertainment: Music",
+    "Entertainment: Musicals & Theatres",
+    "Entertainment: Television",
+    "Entertainment: Video Games",
+    "Entertainment: Board Games",
+    "Science & Nature",
+    "Science: Computers",
+    "Science: Mathematics",
+    "Science: Gadgets",
+    "Mythology",
+    "Sports",
+    "Geography",
+    "History",
+    "Politics",
+    "Art",
+    "Celebrities",
+    "Animals",
+    "Vehicles",
+    "Entertainment: Comics",
+    "Entertainment: Japanese Anime & Manga",
+    "Entertainment: Cartoon & Animations",
+  ]
 
 const QuestionForm = (props) => {
     const { question, handleChange, handleSubmit } = props
 
+        const [category, setCategory] = useState("")
+        const [difficulty, setDifficulty] = useState('Easy')
         const [checked, setRadioValue] = useState({typeOfQuestion: "Multiple Choice", another: "another"})
         const { typeOfQuestion } = checked
+
+        /// setting state for radio buttons
         const handleButtonChange = (e) => {
             e.persist()
             console.log(e.target.value);
@@ -15,6 +47,14 @@ const QuestionForm = (props) => {
               ...prevState,
               typeOfQuestion: e.target.value
             }))
+          }
+
+          const handleCategoryChange = (e) => {
+            e.persist()
+            
+            console.log(e.target)
+            setCategory(e.target.innerText, console.log(category))
+            // console.log(category)
           }
 
         // make an if statement for
@@ -47,13 +87,12 @@ const QuestionForm = (props) => {
             incorrectAnswers =
             <>
                 <Form.Label>Enter the Incorrect Answer(s)</Form.Label>
-                        <Form.Control 
-                                placeholder='enter the incorrrect answer'
-                                name='incorrect answer'
-                                id='incorrect answer'
-                                onChange={handleChange}
-                            />
-            
+                    <Form.Control 
+                            placeholder='enter the incorrrect answer'
+                            name='incorrect answer'
+                            id='incorrect answer'
+                            onChange={handleChange}
+                        />
             </>
         }
 
@@ -66,7 +105,7 @@ const QuestionForm = (props) => {
                     name='question'
                     id='question'
                     onChange={handleChange}
-                    value={question.question}
+                    
                 />
             <Form.Group controlId="kindOfStand">
                 <Form.Check
@@ -96,17 +135,39 @@ const QuestionForm = (props) => {
             <>
                 {incorrectAnswers}
             </>
-            {/* <GameInputs/> */}
+     
             <Dropdown>
-                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                <Dropdown.Toggle variant="light" id="categories">
                     Choose Category
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                <Dropdown.Menu value={category} onChange={handleCategoryChange}>
+                    {categories.map((category, index) => (
+                        <Dropdown.Item 
+                        value={category} 
+                        index={index}
+                        onClick={handleCategoryChange}
+                        >
+                            {category} 
+                        </Dropdown.Item>
+                    ))}
                 </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown>
+                <Dropdown.Toggle variant="light" id="difficulty">
+                    Choose Difficulty
+                </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item>
+                                Easy
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                                Medium
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                                Hard
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
             </Dropdown>
             <Button type='submit'>Add</Button>
             </Form>
