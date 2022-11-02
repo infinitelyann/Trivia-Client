@@ -20,7 +20,7 @@ const authenticatedOptions = (
 				Game
 			</Link>
 		</Nav.Link>
-		<Nav.Item className='m-2'>
+		<Nav.Item >
 			<Link to='change-password' style={linkStyle}>
 				
 			</Link>
@@ -35,7 +35,7 @@ const authenticatedOptions = (
 				User Games
 			</Link>
 		</Nav.Item>
-		<Nav.Item className='m-2'>
+		<Nav.Item>
 			<Link to='sign-out' style={linkStyle}>
 			</Link>
 		</Nav.Item>
@@ -73,7 +73,7 @@ const unauthenticatedOptions = (
 const Header = ({ user }) => (
 	<Navbar bg='dark' variant='dark' expand='md'>
 		<Navbar>
-            <Link to='' style={linkStyle} className='m-2'>
+            <Link to='/homepage' style={linkStyle} className='m-3'>
                 Quizzard
             </Link>
         </Navbar>
