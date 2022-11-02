@@ -47,12 +47,13 @@ const NewQuestionModal = (props) => {
             )
     }
     return(
-        <Modal show={ show } onHide = { handleClose }>
+        <Modal show={ show } onHide = { handleClose } user={user}>
             <Modal.Header/>
             <QuestionForm
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
-
+                user={user}
+                question={question}
             />
         </Modal>
     )
