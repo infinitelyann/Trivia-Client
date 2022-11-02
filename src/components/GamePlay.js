@@ -1,19 +1,17 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import GameInputs from "./GameInputs";
-import {getOpenDBUrl} from '../utils/openDB'
+import { getOpenDBUrl } from "../utils/openDB";
 import GameCarousel from "./GameCarousel";
 
-const GamePlay = () => {
+const GamePlay = (props) => {
   const [filterOptions, setFilterOptions] = useState({});
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
 
-  
-
   const handleClick = async () => {
-    if(filterOptions === {}) return
+    if (filterOptions === {}) return;
     setIsLoading(true);
 
     try {
@@ -43,8 +41,10 @@ const GamePlay = () => {
   // console.log(data);
 
   return (
-    <>
-      <GameInputs setFilterOptions={setFilterOptions}/>
+    <div>
+      <GameInputs setFilterOptions={setFilterOptions} />
+      {err && <h2>{err}</h2>}
+
       <button onClick={handleClick}>Fetch data</button>
       <GameCarousel gameData={data} />
     </>
