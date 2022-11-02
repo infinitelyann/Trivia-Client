@@ -10,7 +10,7 @@ const PlayerLanding = () => {
             </div>
 
             <div style={{ backgroundColor: '#240046', width: '200px', height: '200px', padding: '30px', border: '4px solid #7552f2', marginLeft: '20px', marginTop: '20px', borderRadius: '10px' }}>
-                <p style={{color: 'white'}}>LeaderBord</p>
+                <p style={{color: 'white'}}>LeaderBoard</p>
             </div>
         </div>
     )
