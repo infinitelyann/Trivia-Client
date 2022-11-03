@@ -37,6 +37,7 @@ const GameInputs = ({setFilterOptions}, props) => {
   const { data, filterOptions } = props
   const [difficulty, setDifficulty] = useState('');
   const [category, setCategory] = useState('');
+  const [categoryName, setCategoryName] = useState('');
   const [amount, setAmount] = useState('');
   const [game, setGame] = useState(false)
 
@@ -47,17 +48,20 @@ const GameInputs = ({setFilterOptions}, props) => {
   }, [amount, difficulty, category]) 
 
   const handleCategoryChange = (e) => {
-    setCategory(e.target.value )
+    let catObject = categories.find(category => {
+      return (category.name == e.target.value)
+    })
+    setCategoryName(e.target.value)
+    setCategory(catObject.value)
     console.log(
-      categories.findIndex((category) => category === e.target.value) + 8
+      categories.findIndex((category) => category.name === e.target.value) + 8
     );
     setFilterOptions({
       difficulty,
       category:
-        categories.findIndex((category) => category === e.target.value) + 8,
+        categories.findIndex((category) => category.name === e.target.value) + 8,
       amount,
     });
-    // setCategory(e.target.value)
     console.log(e.target.value)
   };
   const handleDifficultyChange = (e) => {
@@ -93,10 +97,10 @@ const GameInputs = ({setFilterOptions}, props) => {
       <form>
         <div className="dropdown">
             
-          <select value={category} onChange={handleCategoryChange}>
+          <select value={categoryName} onChange={handleCategoryChange}>
             {categories.map((category, idx) => (
-              <option value={category} key={idx}>
-                {category}
+              <option value={category.name} key={idx}>
+                {category.name}
               </option>
             ))}
           </select>
