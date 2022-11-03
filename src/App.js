@@ -14,12 +14,13 @@ import SignOut from "./components/auth/SignOut";
 import ChangePassword from "./components/auth/ChangePassword";
 import Timer from "./components/Timer";
 import QuestionCreate from "./components/QuestionCreate";
-import GamePlay from "./components/GamePlay";
 import PlayerLanding from "./components/PlayerLanding";
 import GameCreate from "./components/GameCreate";
 import UserGameIndex from "./components/UserGameIndex";
 import UserGameShow from "./components/UserGameShow";
 import { getOpenDBUrl } from "./utils/openDB";
+import GameInputs from "./components/trivia-api/GameInputs";
+import GamePlay from "./components/trivia-api/GamePlay";
 
 const App = () => {
   const [user, setUser] = useState(null);
