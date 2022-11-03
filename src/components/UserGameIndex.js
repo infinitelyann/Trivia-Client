@@ -10,7 +10,7 @@ const UserGameIndex = ({ user, msgAlert }) => {
     const [allGames, setAllGames] = useState([])
 
     useEffect(()=> {
-        console.log("here",user)
+        
         gameIndex(user)
             .then(res => {
                 setAllGames(res.data.games)
@@ -25,6 +25,7 @@ const UserGameIndex = ({ user, msgAlert }) => {
     }, [])
 
     const gamePreview = allGames.map(game => (
+        
         <Card key= {game.id}>
             <Card.Header>{ game.name }</Card.Header>
                 <Card.Text>
@@ -33,7 +34,6 @@ const UserGameIndex = ({ user, msgAlert }) => {
                         user && game.owner && user._id === game.owner._id 
                         ?
                         <>
-                            
                             <Link className='btn btn-info'
                             to={`/games/${game.id}`}>Edit</Link>
                         </>
@@ -41,6 +41,7 @@ const UserGameIndex = ({ user, msgAlert }) => {
                         null
                     }
                 </Card.Text>
+                <Card.Footer></Card.Footer>
         </Card>
     ))
 

@@ -6,10 +6,10 @@ import { updateQuestion } from '../../api/question'
 
 
 const EditQuestionModal = (props) => {
-    const {user, show, handleClose, msgAlert, triggerRefresh, game } = props
+    const {user,  handleClose, msgAlert, triggerRefresh, game , show} = props
 
     const [question, setQuestion] = useState(props.question)
-
+    console.log("huh",question)
     const handleChange =  (e) => {
         console.log(e.target.value)
         console.log(question.difficulty, "change?")
@@ -46,7 +46,6 @@ const EditQuestionModal = (props) => {
                 }
                 
                 if (question.type === 'True / False' && e.target.name === 'incorrectAnswerOne'){
-                    console.log('hi there')
                     value = [e.target.value]
                     name = 'incorrectAnswers'
                 }
@@ -66,8 +65,7 @@ const EditQuestionModal = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        // if ()
-        // /// question values are not ===
+       
         console.log("the question",question)
         updateQuestion(user, game._id, question)
             .then(()=> handleClose())

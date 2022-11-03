@@ -32,8 +32,8 @@ const categories = [
 
 const QuestionForm = (props) => {
     const { question, handleChange, handleSubmit } = props
-
-        const [submittedQuestion, setQuestion] = useState({})
+        console.log(question)
+        const [submittedQuestion, setQuestion] = useState()
         const [category, setCategory] = useState("")
         const [difficulty, setDifficulty] = useState('Easy')
  
@@ -45,7 +45,7 @@ const QuestionForm = (props) => {
         const handleButtonChange = (e) => {
             e.persist()
             console.log(e.target.value);
-        
+
             setRadioValue(prevState => ({
               ...prevState,
               typeOfQuestion: e.target.value
@@ -127,7 +127,7 @@ const QuestionForm = (props) => {
                     name='question'
                     id='question'
                     onChange={handleChange}
-                    value={question.question}
+                    
                 />
             <Form.Group controlId="questionType">
                 <Form.Check

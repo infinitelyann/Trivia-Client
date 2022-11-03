@@ -72,14 +72,24 @@ const UserGameShow = ({ user, msgAlert }) => {
                     <Card.Body>
                         
                         {/* {allQuestions} */}
-                        <ShowQuestion game={game}/>
+                        <ShowQuestion 
+                            user={user}
+                            game={game}
+                            show={questionModalShow}
+                            msgAlert={msgAlert}
+                            triggerRefresh={() => setUpdated(prev=> !prev)}
+                            handleClose = {() => setQuestionModalShow(false)}
+                        />
                     </Card.Body>
                     <Card.Footer>
                         <Button
+                            key="new Question"
                             onClick={() =>setQuestionModalShow(true)}>
                                 New Question
                       </Button>
-                      <Button variant='danger' onClick={() => handleGameDelete()}>
+                      <Button 
+                      variant='danger' 
+                      onClick={() => handleGameDelete()}>
                         Delete Quiz
                       </Button>
                     </Card.Footer>

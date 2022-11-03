@@ -4,8 +4,9 @@ import EditQuestionModal from './EditQuestionModal'
 
 // this might be used later to display individual questions??
 const ShowQuestion = (props) => {
-    const {  game, user, msgAlert,  } = props
+    const {  game, user, msgAlert, triggerRefresh, handleClose, question, show  } = props
 
+    const [editModalShow, setEditModalShow] = useState(false)
     if(!game){
         return (
             <>
@@ -17,8 +18,6 @@ const ShowQuestion = (props) => {
     return (
         allQuestions = game.questions.map((question, index) => (
         <>
-        
-        
             <div key={question._id}>
                 <h1 key={index}>Question {index+1}</h1>
                 <h3 key={index + "question"}>
@@ -29,9 +28,24 @@ const ShowQuestion = (props) => {
                 {question.category}
                 {question.difficulty}
                 {question.type}
+            <EditQuestionModal 
+                user={user}
+                show={editModalShow}
+                handleClose={()=> setEditModalShow(false)}
+                triggerRefresh={triggerRefresh}
+                msgAlert={msgAlert}
+                game={game}
+                question={question}
+            />
             </div>
         
-        
+            <Button
+                className="m-2" 
+                variant="warning"
+                onClick={() => setEditModalShow(true)}  
+            >
+                Edit this Question
+            </Button>
         </>
     )
         ))

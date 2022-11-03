@@ -11,6 +11,7 @@ const NewQuestionModal = (props) => {
 
     const [question, setQuestion] = useState(
         {
+            question:"",
             correctAnswer: "",
             incorrectAnswers: ["","",""],
             category: '',
@@ -21,6 +22,7 @@ const NewQuestionModal = (props) => {
  
     const handleChange =  (e) => {
         console.log(e.target.value)
+        console.log(question.question)
         console.log(question.difficulty, "change?")
         if(e.target.name.includes('incorrectAnswer') && question.type === 'Multiple Choice'){
             
