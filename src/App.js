@@ -86,7 +86,7 @@ const handleClick = async () =>{
 	}
 
 		return (
-			<Fragment style={{backgroundColor: ''}}>
+			<Fragment >
 				<Header user={user} />
 				<Routes>
 					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
@@ -126,12 +126,12 @@ const handleClick = async () =>{
 			
 
 			/>
-					  <Route
+					  {/* <Route
 		  	path='/create-question'
 			element={
-				<QuestionCreate/>
+				<QuestionCreate user={user}/>
 			}
-			/>
+			/> */}
 
 
            <Route

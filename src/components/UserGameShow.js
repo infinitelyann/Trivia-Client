@@ -27,7 +27,7 @@ const UserGameShow = ({ user, msgAlert }) => {
                     variant: 'danger'
                 })
             })
-    }, [])
+    }, [updated])
 
     const handleGameDelete = () => {
         console.log("delete?")
