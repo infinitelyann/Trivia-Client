@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Card } from "react-bootstrap";
 import GameInputs from "./GameInputs";
 import GameCarousel from "./GameCarousel";
 import { getOpenDBUrl } from "../../utils/openDB";
@@ -13,15 +13,17 @@ const GamePlay = (props) => {
 
   return (
    <>
+   
      <GameInputs setFilterOptions={setFilterOptions}/>
+     <GameCarousel data={props.data}/>
       {err && <h2>{err}</h2>}
 
       <button onClick={handleClick}>Fetch data</button>
 
 
       {isLoading && <h2>Loading...</h2>}
-
-
+      <div className="container-sm">
+{/* 
       {data.map((question, index) => {
       const { incorrect_answers, correct_answer } = question;
       const renderedAnswers = [...incorrect_answers, correct_answer]
@@ -29,21 +31,25 @@ const GamePlay = (props) => {
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value);
         return(
-         
+         <Card>
+          <Card.Header></Card.Header>
           <div key={index}>
-            <p>{question.question}</p>
+            <p dangerouslySetInnerHTML={{__html: question.question}}></p>
 
             {renderedAnswers.map((answer, idx) => (
-              <p className="btn btn-outline-dark" key={idx}>
-                {answer}
+              <p dangerouslySetInnerHTML={{__html: answer}}className="btn btn-outline-dark" key={idx}>
+                
               </p>
             ))}
 
-            <button>next ?</button>
+          
           </div>
+         </Card>
         )
         
-    })} 
+    })}  */}
+      </div>
+
       
     </>
     )
