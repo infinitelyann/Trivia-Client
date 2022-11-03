@@ -43,8 +43,8 @@ const GamePlay = (props) => {
 
 
   return (
-    <>
-      <GameInputs setFilterOptions={setFilterOptions} />
+   <>
+     <GameInputs setFilterOptions={setFilterOptions}/>
       {err && <h2>{err}</h2>}
 
       <button onClick={handleClick}>Fetch data</button>
