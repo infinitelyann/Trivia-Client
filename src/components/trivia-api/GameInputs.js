@@ -1,45 +1,53 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GamePlay from "./GamePlay";
 
 const categories = [
-  "Any",
-  "General Knowledge",
-  "Entertainment: Books",
-  "Entertainment: Film",
-  "Entertainment: Music",
-  "Entertainment: Musicals & Theatres",
-  "Entertainment: Television",
-  "Entertainment: Video Games",
-  "Entertainment: Board Games",
-  "Science & Nature",
-  "Science: Computers",
-  "Science: Mathematics",
-  "Science: Gadgets",
-  "Mythology",
-  "Sports",
-  "Geography",
-  "History",
-  "Politics",
-  "Art",
-  "Celebrities",
-  "Animals",
-  "Vehicles",
-  "Entertainment: Comics",
-  "Entertainment: Japanese Anime & Manga",
-  "Entertainment: Cartoon & Animations",
+  {name: "Any", value: 8},
+  {name: "General Knowledge", value: 9 },
+  {name: "Entertainment: Books", value: 10},
+  {name: "Entertainment: Film", value: 11},
+  {name: "Entertainment: Music", value: 12},
+  {name: "Entertainment: Musicals & Theatres", value: 13},
+  {name: "Entertainment: Television", value: 14},
+  {name: "Entertainment: Video Games", value: 15},
+  {name: "Entertainment: Board Games", value: 16},
+  {name: "Science & Nature", value: 17},
+  {name: "Science: Computers", value: 18},
+  {name: "Science: Mathematics", value: 19},
+  {name: "Science: Gadgets", value: 20},
+  {name: "Mythology", value: 21},
+  {name: "Sports", value: 22},
+  {name: "Geography", value: 23},
+  {name: "History", value: 24},
+  {name: "Politics", value: 25},
+  {name: "Art", value: 26},
+  {name: "Celebrities", value: 27},
+  {name: "Animals", value: 28},
+  {name: "Vehicles", value: 29},
+  {name: "Entertainment: Comics", value: 30},
+  {name: "Entertainment: Japanese Anime & Manga", value: 31},
+  {name: "Entertainment: Cartoon & Animations", value: 32},
 ];
 
 const difficulties = ["Easy", "Medium", "Hard"];
 
 const amounts = ["5", "10", "15", "20"];
 
-const GameInputs = ({ setFilterOptions }, props) => {
-  const { handleClick, isLoading, err } = props
+const GameInputs = ({setFilterOptions}, props) => {
+  const { data, filterOptions } = props
   const [difficulty, setDifficulty] = useState('');
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
+  const [game, setGame] = useState(false)
+
+  useEffect(() =>{
+    console.log(`this is the amount ${amount}`)
+    console.log(`this is the category ${category}`)
+    console.log(`this is the difficulty ${difficulty}`)
+  }, [amount, difficulty, category]) 
 
   const handleCategoryChange = (e) => {
+    setCategory(e.target.value )
     console.log(
       categories.findIndex((category) => category === e.target.value) + 8
     );
@@ -53,6 +61,7 @@ const GameInputs = ({ setFilterOptions }, props) => {
     console.log(e.target.value)
   };
   const handleDifficultyChange = (e) => {
+    setDifficulty(e.target.value)
     setFilterOptions({
       difficulty: e.target.value,
       category,
@@ -63,6 +72,7 @@ const GameInputs = ({ setFilterOptions }, props) => {
 
 
   const handleAmountChange = (e) => {
+    setAmount(e.target.value)
     setFilterOptions({
       difficulty,
       category,
@@ -70,7 +80,15 @@ const GameInputs = ({ setFilterOptions }, props) => {
     });
     // setAmount(e.target.value)
   };
-  if (category == '') {
+
+  const handleSubmit = (e) =>{
+    console.log(`category: ${category}, amount: ${amount}, difficulty ${difficulty}`)
+    console.log(filterOptions)
+    e.preventDefault()
+    e.disabled = true
+    setGame(true)
+  }
+  if (category === '' || difficulty === '' || amount === '' || game === false) {
     return (
       <form>
         <div className="dropdown">
@@ -83,11 +101,7 @@ const GameInputs = ({ setFilterOptions }, props) => {
             ))}
           </select>
         </div>
-      </form>
-    );
-  } else if (difficulty == '' ) {
-    return (
-      <form>
+ 
         <div className="dropdown">
           <select value={difficulty} onChange={handleDifficultyChange}>
             {difficulties.map((difficulty, idx) => (
@@ -97,11 +111,7 @@ const GameInputs = ({ setFilterOptions }, props) => {
             ))}
           </select>
         </div>
-      </form>
-    );
-  } else if (amount == '') {
-    return (
-      <form>
+
         <div className="dropdown">
           <select value={amount} onChange={handleAmountChange}>
             {amounts.map((amount, idx) => (
@@ -111,13 +121,14 @@ const GameInputs = ({ setFilterOptions }, props) => {
             ))}
           </select>
         </div>
+        {/* <button onClick={handleSubmit}>submit</button> */}
       </form>
     );
   }else{
     return(
     <>
-
-      <GamePlay/>
+    hey
+    <GamePlay/>
      
     </>
     )
