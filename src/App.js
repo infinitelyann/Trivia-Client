@@ -79,58 +79,76 @@ const App = () => {
     });
   };
 
-  return (
-    <Fragment style={{ backgroundColor: "" }}>
-      <Header user={user} />
-      <Routes>
-        <Route path="/" element={<Home msgAlert={msgAlert} user={user} />} />
-        <Route
-          path="/sign-up"
-          element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
-        />
-        <Route
-          path="/sign-in"
-          element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
-        />
-        <Route path="/" />
+		return (
+			<Fragment >
+				<Header user={user} />
+				<Routes>
+					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
+					<Route
+						path='/sign-up'
+						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
+					/>
+					<Route
+						path='/sign-in'
+						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
+					/>
+					<Route
+					path='/'
+					/>
+					
+          <Route
+            path='/sign-out'
+            element={
+              <RequireAuth user={user}>
+                <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path='/change-password'
+            element={
+              <RequireAuth user={user}>
+                <ChangePassword msgAlert={msgAlert} user={user} />
+              </RequireAuth>}
+          />
+		  <Route
+		  	path='/timer'
+			element={
+				<Timer/>
+			}
 
-        <Route
-          path="/sign-out"
-          element={
-            <RequireAuth user={user}>
-              <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path="/change-password"
-          element={
-            <RequireAuth user={user}>
-              <ChangePassword msgAlert={msgAlert} user={user} />
-            </RequireAuth>
-          }
-        />
-        <Route path="/timer" element={<Timer />} />
-        <Route path="/create-question" element={<QuestionCreate />} />
+			
+
+			/>
+					  {/* <Route
+		  	path='/create-question'
+			element={
+				<QuestionCreate user={user}/>
+			}
+			/> */}
 
         <Route path="/homepage" element={<PlayerLanding />} />
 
-        <Route
-          path="/games/:id"
-          element={<UserGameShow msgAlert={msgAlert} user={user} />}
-        />
-        <Route
-          path="/game"
-          element={
-            <GamePlay
-              setFilterOptions={setFilterOptions}
-              err={err}
-              handleClick={handleClick}
-              isLoading={isLoading}
-              data={data}
-            />
-          }
-        />
+           <Route
+				path='/homepage'
+				element={
+					<PlayerLanding/>
+				}
+			/>		  
+
+
+					<Route
+			path='/games/:id'
+			element={
+				<UserGameShow msgAlert={msgAlert} user={user} />
+				}
+			/>	
+			<Route
+			path='/game'
+		  element={
+			  <GamePlay setFilterOptions={setFilterOptions} err={err} handleClick={handleClick} isLoading={isLoading} data={data} />
+		  }
+		  />
 
         <Route
           path="/create-game"

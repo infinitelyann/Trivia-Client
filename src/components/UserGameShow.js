@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
-import { gameShow } from '../api/game'
+import { gameShow, gameDelete } from '../api/game'
 import QuestionCreate from './QuestionCreate'
 import NewQuestionModal from '../components/questions/NewQuestionModal'
 
@@ -10,10 +10,10 @@ const UserGameShow = ({ user, msgAlert }) => {
     const [game, setGame] = useState(null)
     const [updated, setUpdated] = useState(false)
     const [questionModalShow, setQuestionModalShow] =useState(false)
-
+    const [deleted, setDeleted] = useState(false)
 
     const  { id } = useParams()
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         gameShow(user, id)
@@ -27,14 +27,36 @@ const UserGameShow = ({ user, msgAlert }) => {
                     variant: 'danger'
                 })
             })
-    }, [])
-    let allQuestions
-    if (!allQuestions === null){
-        <>
-            Nothing here yet
-        </>
-    } 
+    }, [updated])
 
+    const handleGameDelete = () => {
+        console.log("delete?")
+        console.log(id)
+        console.log(user)
+        gameDelete(user, id)
+            .then(()=> {
+                setDeleted(true)
+                msgAlert({
+                    heading: 'Success',
+                    message: 'Game deleted',
+                    variant: 'success'
+                })
+            })
+            .catch((error) => {
+                msgAlert({
+                    heading: 'Failure',
+                    message: 'Game Delete Failure' + error,
+                    variant: 'danger'
+                })
+            })
+    }
+    let allQuestions
+    // if (!allQuestions === null){
+    //     <>
+    //         Nothing here yet
+    //     </>
+    // } 
+    if(deleted)navigate('/user-created-games')
     if(!game){
         return (
             <>
@@ -46,8 +68,8 @@ const UserGameShow = ({ user, msgAlert }) => {
         // this needs to be changed to its own component
         <>
             <div key={question._id}>
-                <h1>Question {index+1}</h1>
-                <h3 key={question._id}>
+                <h1 key={index}>Question {index+1}</h1>
+                <h3 key={index + "question"}>
                     {question.question}
                 </h3>
                 {question.correctAnswer}
@@ -61,7 +83,7 @@ const UserGameShow = ({ user, msgAlert }) => {
 
     return (
         <>
-            <Container>
+            <Container className='m-2'>
                 
                 <Card>
                     <Card.Header>{game.name}</Card.Header>
@@ -73,6 +95,9 @@ const UserGameShow = ({ user, msgAlert }) => {
                         <Button
                             onClick={() =>setQuestionModalShow(true)}>
                                 New Question
+                      </Button>
+                      <Button variant='danger' onClick={() => handleGameDelete()}>
+                        Delete Quiz
                       </Button>
                     </Card.Footer>
                 </Card>
