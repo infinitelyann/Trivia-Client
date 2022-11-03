@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { gameIndex } from '../api/game'
 
@@ -29,7 +29,17 @@ const UserGameIndex = ({ user, msgAlert }) => {
             <Card.Header>{ game.name }</Card.Header>
                 <Card.Text>
                      This is a game 
-                    <Link to={`/games/${game.id}`}>View</Link>
+                     { 
+                        user && game.owner && user._id === game.owner._id 
+                        ?
+                        <>
+                            
+                            <Link className='btn btn-info'
+                            to={`/games/${game.id}`}>Edit</Link>
+                        </>
+                        :
+                        null
+                    }
                 </Card.Text>
         </Card>
     ))

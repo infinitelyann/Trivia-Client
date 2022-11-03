@@ -1,24 +1,15 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
-import { createQuestion } from '../../api/question'
+import GameForm from '../GameForm'
 import QuestionForm from './QuestionForm'
+import { updateQuestion } from '../../api/question'
 
 
-const NewQuestionModal = (props) => {
+const EditQuestionModal = (props) => {
+    const {user, show, handleClose, msgAlert, triggerRefresh, game } = props
 
-    // properties
-    const { user, show, game, handleClose, msgAlert, triggerRefresh } = props
+    const [question, setQuestion] = useState(props.question)
 
-    const [question, setQuestion] = useState(
-        {
-            correctAnswer: "",
-            incorrectAnswers: ["","",""],
-            category: '',
-            type: 'Multiple Choice',
-            difficulty: ''
-        })
-
- 
     const handleChange =  (e) => {
         console.log(e.target.value)
         console.log(question.difficulty, "change?")
@@ -72,25 +63,13 @@ const NewQuestionModal = (props) => {
             })
         }
     }
-    const resetIncorrectAnswers = () => {
-        setQuestion(prevQuestion => {
-            const updatedQuestion = {
-                'incorrectAnswers': ["","",""]
-            }
-            return {
-                ...prevQuestion, ...updatedQuestion
-            } 
-        })
-    }
-
-
-
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         // if ()
         // /// question values are not ===
         console.log("the question",question)
-        createQuestion(user, game._id, question)
+        updateQuestion(user, game._id, question)
             .then(()=> handleClose())
             .then(()=> {
                 msgAlert({
@@ -123,7 +102,6 @@ const NewQuestionModal = (props) => {
             />
         </Modal>
     )
-
 }
 
-export default NewQuestionModal
+export default EditQuestionModal
