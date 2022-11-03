@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
 import { gameShow, gameDelete } from '../api/game'
-import QuestionCreate from './QuestionCreate'
 import NewQuestionModal from '../components/questions/NewQuestionModal'
+// import EditQuestionModal from './questions/EditQuestionModal'
+import ShowQuestion from './questions/ShowQuestion'
 
 
 const UserGameShow = ({ user, msgAlert }) => {
@@ -30,7 +31,7 @@ const UserGameShow = ({ user, msgAlert }) => {
     }, [updated])
 
     const handleGameDelete = () => {
-        console.log("delete?")
+        
         console.log(id)
         console.log(user)
         gameDelete(user, id)
@@ -51,11 +52,7 @@ const UserGameShow = ({ user, msgAlert }) => {
             })
     }
     let allQuestions
-    // if (!allQuestions === null){
-    //     <>
-    //         Nothing here yet
-    //     </>
-    // } 
+
     if(deleted)navigate('/user-created-games')
     if(!game){
         return (
@@ -64,22 +61,7 @@ const UserGameShow = ({ user, msgAlert }) => {
             </>
         )
     }
-    allQuestions = game.questions.map((question, index) => (
-        // this needs to be changed to its own component
-        <>
-            <div key={question._id}>
-                <h1 key={index}>Question {index+1}</h1>
-                <h3 key={index + "question"}>
-                    {question.question}
-                </h3>
-                {question.correctAnswer}
-                {question.incorrectAnswers}
-                {question.category}
-                {question.difficulty}
-                {question.type}
-            </div>
-        </>
-    ))
+
 
     return (
         <>
@@ -89,7 +71,8 @@ const UserGameShow = ({ user, msgAlert }) => {
                     <Card.Header>{game.name}</Card.Header>
                     <Card.Body>
                         
-                        {allQuestions}
+                        {/* {allQuestions} */}
+                        <ShowQuestion game={game}/>
                     </Card.Body>
                     <Card.Footer>
                         <Button
@@ -110,7 +93,8 @@ const UserGameShow = ({ user, msgAlert }) => {
                 msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev=> !prev)}
                 handleClose = {() => setQuestionModalShow(false)}
-           />     
+           /> 
+
         </>
     )
 }
