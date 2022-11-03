@@ -1,9 +1,15 @@
-import React from "react";
+import { useState } from "react";
 import { Card } from "react-bootstrap";
 import GamePlay from "./GamePlay";
 
 const GameCarousel = (props) =>{
   const { data } = props
+  const [answer, setAnswer] = useState('')
+
+  const handleClick = () =>{
+    console.log('click')
+
+  }
 
   return (
     <>
@@ -21,7 +27,7 @@ const GameCarousel = (props) =>{
             <p dangerouslySetInnerHTML={{__html: question.question}}></p>
 
             {renderedAnswers.map((answer, idx) => (
-              <p dangerouslySetInnerHTML={{__html: answer}}className="btn btn-outline-dark" key={idx}>
+              <p dangerouslySetInnerHTML={{__html: answer}}className="btn btn-outline-dark" key={idx} onClick={handleClick}>
                 
               </p>
             ))}
