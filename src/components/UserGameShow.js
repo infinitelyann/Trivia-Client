@@ -6,19 +6,27 @@ import NewQuestionModal from '../components/questions/NewQuestionModal'
 // import EditQuestionModal from './questions/EditQuestionModal'
 import ShowQuestion from './questions/ShowQuestion'
 import GameTitleEditModal from './GameTitleEditModal'
+import EditQuestionModal from './questions/EditQuestionModal'
 
 
 const UserGameShow = ({ user, msgAlert }) => {
+    
+    // setter of game data
     const [game, setGame] = useState(null)
     const [updated, setUpdated] = useState(false)
     const [questionModalShow, setQuestionModalShow] =useState(false)
+    const [editQuestionModal, showModal] = useState(false)
+    const [currQuestion, setCurrQuestion] = useState(null)
     const [deleted, setDeleted] = useState(false)
+
+
     const [editGameTitleModalShow, setTitle] = useState(false)
     // modal state set to null
 
     const  { id } = useParams()
     const navigate = useNavigate()
 
+    // api call for game data and setting state thereafter 
     useEffect(() => {
         gameShow(user, id)
             .then((res) => {
@@ -33,8 +41,8 @@ const UserGameShow = ({ user, msgAlert }) => {
             })
     }, [updated])
 
+    // delete function of game
     const handleGameDelete = () => {
-        
         console.log(id)
         console.log(user)
         gameDelete(user, id)
@@ -54,15 +62,22 @@ const UserGameShow = ({ user, msgAlert }) => {
                 })
             })
     }
-    const handleShowTitleModal = (e) => {
-        console.log("clicked",e)
-        setTitle(true)
-    }
+
+    /// still needs work
+    // const handleShowTitleModal = (e) => {
+    //     console.log("clicked",e)
+    //     setTitle(true)
+    // }
     //set modal state
-  
+    const handleShowEditModal = (e) => {
+        //useEffect will go here
+    }
     // let allQuestions
 
+    // navigating away on delete if state is true
     if(deleted)navigate('/user-created-games')
+
+    // showing empty if no game / game state is false
     if(!game){
         return (
             <>
@@ -76,7 +91,7 @@ const UserGameShow = ({ user, msgAlert }) => {
     // use state of question [index]
     // function to trigger modal show, before that use the set function for it's state and pass it down to modal
 
-    console.log(game, "show")
+
     return (
         <>
             <Container className='m-2'>
@@ -89,10 +104,12 @@ const UserGameShow = ({ user, msgAlert }) => {
                         <ShowQuestion 
                             user={user}
                             game={game}
-                            show={questionModalShow}
+                            // show={questionModalShow}
                             msgAlert={msgAlert}
                             triggerRefresh={() => setUpdated(prev=> !prev)}
                             handleClose = {() => setQuestionModalShow(false)}
+                            // pass down show modal function
+                            showModal = { showModal }
                         />
                     </Card.Body>
                     <Card.Footer>
@@ -104,7 +121,8 @@ const UserGameShow = ({ user, msgAlert }) => {
                         <Button
                             variant='warning'
                             key="Change title"
-                            onClick={() => handleShowTitleModal()}>
+                            // onClick={() => handleShowTitleModal()}
+                            >
                                 Change Quiz Title
                         </Button>
                         <Button 
@@ -131,6 +149,10 @@ const UserGameShow = ({ user, msgAlert }) => {
                msgAlert={msgAlert}
                triggerRefresh={() => setUpdated(prev=> !prev)}
                handleClose = {() => setQuestionModalShow(false)} 
+            />
+            <EditQuestionModal 
+
+            
             />
             {/* modal pass down state
                 form is inside modal

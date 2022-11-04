@@ -9,9 +9,9 @@ import { gameShow } from '../../api/game'
 const EditQuestionModal = (props) => {
     const {user,  handleClose, msgAlert, triggerRefresh, game, show, index } = props
 
-    let gameId = game._id
-    console.log("gameId on modal",gameId)
-    console.log("index on modal", index)
+    // let gameId = game._id
+    // console.log("gameId on modal",gameId)
+    // console.log("index on modal", index)
     /// do a get request for individual question and setstate to that
     // query for a single question, get req for game, extract that single question
     // that will have the id which can be used for api delete req
@@ -21,21 +21,21 @@ const EditQuestionModal = (props) => {
     const [question, setQuestion] = useState({})
     // const [updated, setUpdated] = useState(false)
 
-    useEffect(() => {
-        gameShow( user, gameId)
-            .then((res) => {
-                let currQuestion = res.data.game.questions[index]
-                setQuestion(currQuestion)
-                console.log("question from the modal", currQuestion)
-            })
-            .catch((error) => {
-                msgAlert({
-                    heading: 'Failure',
-                    message: 'Show Question Failure' + error,
-                    variant: 'danger'
-                })
-            })
-    }, [])
+    // useEffect(() => {
+    //     gameShow( user, gameId)
+    //         .then((res) => {
+    //             let currQuestion = res.data.game.questions[index]
+    //             setQuestion(currQuestion)
+    //             console.log("question from the modal", currQuestion)
+    //         })
+    //         .catch((error) => {
+    //             msgAlert({
+    //                 heading: 'Failure',
+    //                 message: 'Show Question Failure' + error,
+    //                 variant: 'danger'
+    //             })
+    //         })
+    // }, [])
 
     const handleChange =  (e) => {
         console.log(e.target.value)

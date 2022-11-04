@@ -7,9 +7,9 @@ import { gameDelete } from '../../api/game'
 
 // this might be used later to display individual questions??
 const ShowQuestion = (props) => {
-    const {  game, user, msgAlert, triggerRefresh, handleClose, question, show  } = props
+    const {  game, user, msgAlert, triggerRefresh, handleClose, question, showModal  } = props
 
-    const [editModalShow, setEditModalShow] = useState(false)
+    
     const [element, setElement] = useState()
 
     const handleGameDelete = (e) => {
@@ -33,10 +33,12 @@ const ShowQuestion = (props) => {
     }
 
     const handleClick = (e) => {
-        setElement((e.target.id))
-        // console.log("id",e.target)
-        setEditModalShow(true)
-        // console.log(element, "the element")
+        console.log("edit")
+        showModal(true)
+        // id needs to be sent up
+        console.log(e.target.id)
+        // calls the setter for data 
+        // passes index for curr question clicked
     }
 
     if(!game){
@@ -60,16 +62,7 @@ const ShowQuestion = (props) => {
                 {question.category}
                 {question.difficulty}
                 {question.type}
-            {/* <EditQuestionModal 
-                user={user}
-                show={editModalShow}
-                handleClose={()=> setEditModalShow(false)}
-                triggerRefresh={triggerRefresh}
-                msgAlert={msgAlert}
-                question={'put id here'}
-                index={element}
-                game={game}
-            /> */}
+ 
             </div>
         
             <Button
@@ -77,7 +70,7 @@ const ShowQuestion = (props) => {
                 variant="warning"
                 // value={question._id}
                 id={index}
-                onClick={handleClick}  
+                onClick={(e) => handleClick (e)}  
                 // setter function
                 >
                 Edit this Question
