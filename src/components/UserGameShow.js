@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
-import { gameShow, gameDelete } from '../api/game'
+import { gameShow, gameDelete, gameUpdate } from '../api/game'
 import NewQuestionModal from '../components/questions/NewQuestionModal'
 // import EditQuestionModal from './questions/EditQuestionModal'
 import ShowQuestion from './questions/ShowQuestion'
@@ -12,6 +12,7 @@ const UserGameShow = ({ user, msgAlert }) => {
     const [updated, setUpdated] = useState(false)
     const [questionModalShow, setQuestionModalShow] =useState(false)
     const [deleted, setDeleted] = useState(false)
+    const [editGameTitleModalShow, setTitle] = useState(false)
 
     const  { id } = useParams()
     const navigate = useNavigate()
@@ -86,12 +87,18 @@ const UserGameShow = ({ user, msgAlert }) => {
                             key="new Question"
                             onClick={() =>setQuestionModalShow(true)}>
                                 New Question
-                      </Button>
-                      <Button 
-                      variant='danger' 
-                      onClick={() => handleGameDelete()}>
-                        Delete Quiz
-                      </Button>
+                        </Button>
+                        <Button
+                            variant='warning'
+                            key="new Question"
+                            onClick={() =>setQuestionModalShow(true)}>
+                                Change Quiz Title
+                        </Button>
+                        <Button 
+                            variant='danger' 
+                            onClick={() => handleGameDelete()}>
+                                Delete Quiz
+                        </Button>
                     </Card.Footer>
                 </Card>
                 

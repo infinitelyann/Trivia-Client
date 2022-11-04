@@ -33,13 +33,13 @@ const categories = [
 const QuestionForm = (props) => {
     const { question, handleChange, handleSubmit, index } = props
     
-        console.log(question, "form")
-        const [category, setCategory] = useState("")
-        const [difficulty, setDifficulty] = useState('Easy')
-        console.log(question, index, "form")
-        const [incorrectAnswerSubmissions, setIncorrectAnswers] = useState([])
-        const [checked, setRadioValue] = useState({typeOfQuestion: "Multiple Choice", another: "another"})
-        const { typeOfQuestion } = checked
+    const [category, setCategory] = useState("")
+    const [difficulty, setDifficulty] = useState('Easy')
+    const [incorrectAnswerSubmissions, setIncorrectAnswers] = useState([])
+    const [checked, setRadioValue] = useState({typeOfQuestion: "Multiple Choice", another: "another"})
+    const { typeOfQuestion } = checked
+    console.log(question, index, "form")
+
 
         /// setting state for radio buttons
         const handleButtonChange = (e) => {
