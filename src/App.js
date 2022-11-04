@@ -21,6 +21,7 @@ import UserGameShow from "./components/UserGameShow";
 import { getOpenDBUrl } from "./utils/openDB";
 import GameInputs from "./components/trivia-api/GameInputs";
 import GamePlay from "./components/trivia-api/GamePlay";
+import Leaderboard from "./components/Leaderboard";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -84,6 +85,7 @@ const App = () => {
 			<Fragment >
 				<Header user={user} />
 				<Routes>
+          <Route path='/leaderboard' element={<Leaderboard />} />
 					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
 					<Route
 						path='/sign-up'
