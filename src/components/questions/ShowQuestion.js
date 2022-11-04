@@ -60,7 +60,7 @@ const ShowQuestion = (props) => {
                 {question.category}
                 {question.difficulty}
                 {question.type}
-            <EditQuestionModal 
+            {/* <EditQuestionModal 
                 user={user}
                 show={editModalShow}
                 handleClose={()=> setEditModalShow(false)}
@@ -69,7 +69,7 @@ const ShowQuestion = (props) => {
                 question={'put id here'}
                 index={element}
                 game={game}
-            />
+            /> */}
             </div>
         
             <Button
@@ -77,8 +77,8 @@ const ShowQuestion = (props) => {
                 variant="warning"
                 // value={question._id}
                 id={index}
-                
                 onClick={handleClick}  
+                // setter function
                 >
                 Edit this Question
             </Button>

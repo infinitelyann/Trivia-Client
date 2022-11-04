@@ -44,9 +44,7 @@ export const gameUpdate = (data, user, id) => {
         data: {
             game: data
         },
-        headers: {
-			Authorization: `Token token=${user.token}`,
-		}
+
     })
 }
 

@@ -17,7 +17,7 @@ const GameCarousel = (props) =>{
   }
   ansersArr.push(answer)
   
- correct.filter()
+//  correct.filter()
 
 
   return (

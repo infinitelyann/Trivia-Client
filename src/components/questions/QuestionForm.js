@@ -38,7 +38,7 @@ const QuestionForm = (props) => {
     const [incorrectAnswerSubmissions, setIncorrectAnswers] = useState([])
     const [checked, setRadioValue] = useState({typeOfQuestion: "Multiple Choice", another: "another"})
     const { typeOfQuestion } = checked
-    console.log(question, index, "form")
+    console.log(question, index, props, "form")
 
 
         /// setting state for radio buttons

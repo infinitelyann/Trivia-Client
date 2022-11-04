@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Container, Card, Button } from 'react-bootstrap'
+import { Container, Card, Button, Modal } from 'react-bootstrap'
 import { gameShow, gameDelete, gameUpdate } from '../api/game'
 import NewQuestionModal from '../components/questions/NewQuestionModal'
 // import EditQuestionModal from './questions/EditQuestionModal'
 import ShowQuestion from './questions/ShowQuestion'
+import GameTitleEditModal from './GameTitleEditModal'
 
 
 const UserGameShow = ({ user, msgAlert }) => {
@@ -13,6 +14,7 @@ const UserGameShow = ({ user, msgAlert }) => {
     const [questionModalShow, setQuestionModalShow] =useState(false)
     const [deleted, setDeleted] = useState(false)
     const [editGameTitleModalShow, setTitle] = useState(false)
+    // modal state set to null
 
     const  { id } = useParams()
     const navigate = useNavigate()
@@ -52,7 +54,13 @@ const UserGameShow = ({ user, msgAlert }) => {
                 })
             })
     }
-    let allQuestions
+    const handleShowTitleModal = (e) => {
+        console.log("clicked",e)
+        setTitle(true)
+    }
+    //set modal state
+  
+    // let allQuestions
 
     if(deleted)navigate('/user-created-games')
     if(!game){
@@ -64,6 +72,11 @@ const UserGameShow = ({ user, msgAlert }) => {
     }
 
 
+    /// one modal in usergameshow to populate when 
+    // use state of question [index]
+    // function to trigger modal show, before that use the set function for it's state and pass it down to modal
+
+    console.log(game, "show")
     return (
         <>
             <Container className='m-2'>
@@ -90,8 +103,8 @@ const UserGameShow = ({ user, msgAlert }) => {
                         </Button>
                         <Button
                             variant='warning'
-                            key="new Question"
-                            onClick={() =>setQuestionModalShow(true)}>
+                            key="Change title"
+                            onClick={() => handleShowTitleModal()}>
                                 Change Quiz Title
                         </Button>
                         <Button 
@@ -111,7 +124,17 @@ const UserGameShow = ({ user, msgAlert }) => {
                 triggerRefresh={() => setUpdated(prev=> !prev)}
                 handleClose = {() => setQuestionModalShow(false)}
            /> 
-
+           <GameTitleEditModal 
+               user={user}
+               game={game}
+               show={editGameTitleModalShow}
+               msgAlert={msgAlert}
+               triggerRefresh={() => setUpdated(prev=> !prev)}
+               handleClose = {() => setQuestionModalShow(false)} 
+            />
+            {/* modal pass down state
+                form is inside modal
+            */}
         </>
     )
 }
