@@ -1,11 +1,11 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const getLeaderboard = (data) => {
+export const getLeaderboard = (category) => {
     console.log(data)
     return axios({
         method: 'POST',
-        data: {category: data},
+        data: {category: category},
         url: apiUrl + '/leaderboard'
 
     })
