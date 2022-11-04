@@ -11,7 +11,7 @@ const GameForm = (props) => {
         return (
             <>
                 <Container>
-                    <Form onSubmit={ handleSubmit }>
+                    <Form onSubmit={ handleSubmit } className='m-2'>
                         <Form.Label>Name of Game:</Form.Label>
                         <Form.Control
                             placeholder='What is the theme of this game'
