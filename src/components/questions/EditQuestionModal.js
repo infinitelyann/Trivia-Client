@@ -1,14 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal } from 'react-bootstrap'
 import GameForm from '../GameForm'
 import QuestionForm from './QuestionForm'
 import { updateQuestion } from '../../api/question'
+import { gameShow } from '../../api/game'
 
 
 const EditQuestionModal = (props) => {
-    const {user, show, handleClose, msgAlert, triggerRefresh, game } = props
+    const {user,  handleClose, msgAlert, triggerRefresh, game, show, index } = props
 
-    const [question, setQuestion] = useState(props.question)
+    let gameId = game._id
+    console.log("gameId",gameId)
+    console.log("index modal", index)
+    /// do a get request for individual question and setstate to that
+    // query for a single question, get req for game, extract that single question
+    // that will have the id which can be used for api delete req
+    /// get request for game and filter
+    /// api call goes here
+    
+    const [question, setQuestion] = useState({})
+    // const [updated, setUpdated] = useState(false)
+
+    useEffect(() => {
+        gameShow( user, gameId)
+            .then((res) => {
+                let currQuestion = res.data.game.questions[index]
+                setQuestion(currQuestion)
+            })
+            .catch((error) => {
+                msgAlert({
+                    heading: 'Failure',
+                    message: 'Show Question Failure' + error,
+                    variant: 'danger'
+                })
+            })
+    }, [])
 
     const handleChange =  (e) => {
         console.log(e.target.value)
@@ -46,13 +72,12 @@ const EditQuestionModal = (props) => {
                 }
                 
                 if (question.type === 'True / False' && e.target.name === 'incorrectAnswerOne'){
-                    console.log('hi there')
                     value = [e.target.value]
                     name = 'incorrectAnswers'
                 }
                 if(value === 'True / False'){
                     console.log("huh?")
-                    // resetIncorrectAnswers()
+                    
 
                 }
     
@@ -66,15 +91,14 @@ const EditQuestionModal = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        // if ()
-        // /// question values are not ===
+       
         console.log("the question",question)
         updateQuestion(user, game._id, question)
             .then(()=> handleClose())
             .then(()=> {
                 msgAlert({
-                    heading: "Question added",
-                    message: 'Question added to game!',
+                    heading: "Question updated",
+                    message: 'Question updated',
                     variant: 'success'
                 })
             })
@@ -98,7 +122,7 @@ const EditQuestionModal = (props) => {
                 handleSubmit={handleSubmit}
                 user={user}
                 question={question}
-            
+                index={index}
             />
         </Modal>
     )

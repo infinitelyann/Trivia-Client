@@ -31,12 +31,10 @@ export const updateQuestion = (user, gameId, updatedQuestion) => {
 }
 
 // this is the api call to delete a question
-export const deleteQuestion = (user, gameId, questionId) => {
+export const deleteQuestion = ( gameId, questionId) => {
     return axios({
         method: 'DELETE',
-        url: `${apiUrl}/questions//${gameId}/${questionId}`,
-		headers: {
-			Authorization: `Token token=${user.token}`,
-		}
+        url: `${apiUrl}/questions/${gameId}/${questionId}`,
+
     })
 }
