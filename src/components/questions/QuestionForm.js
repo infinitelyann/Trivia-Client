@@ -31,12 +31,12 @@ const categories = [
   ]
 
 const QuestionForm = (props) => {
-    const { question, handleChange, handleSubmit } = props
-
-        const [submittedQuestion, setQuestion] = useState({})
+    const { question, handleChange, handleSubmit, index } = props
+    
+        console.log(question, "form")
         const [category, setCategory] = useState("")
         const [difficulty, setDifficulty] = useState('Easy')
- 
+        console.log(question, index, "form")
         const [incorrectAnswerSubmissions, setIncorrectAnswers] = useState([])
         const [checked, setRadioValue] = useState({typeOfQuestion: "Multiple Choice", another: "another"})
         const { typeOfQuestion } = checked
@@ -45,7 +45,7 @@ const QuestionForm = (props) => {
         const handleButtonChange = (e) => {
             e.persist()
             console.log(e.target.value);
-        
+
             setRadioValue(prevState => ({
               ...prevState,
               typeOfQuestion: e.target.value
@@ -66,8 +66,6 @@ const QuestionForm = (props) => {
             console.log(e.target)
             setCategory(e.target.innerText)
           }
-
-        //// ..... prevIncorrect, ...updatedIncorrect
         
         const handleDifficultyChange = (e) => {
             console.log(question)
@@ -127,7 +125,7 @@ const QuestionForm = (props) => {
                     name='question'
                     id='question'
                     onChange={handleChange}
-                    value={question.question}
+                    
                 />
             <Form.Group controlId="questionType">
                 <Form.Check
