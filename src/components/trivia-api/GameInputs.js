@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import GamePlay from "./GamePlay";
+
 
 const categories = [
   {name: "Any", value: 8},
@@ -34,13 +34,12 @@ const difficulties = ["Easy", "Medium", "Hard"];
 const amounts = ["5", "10", "15", "20"];
 
 const GameInputs = ({setFilterOptions}, props) => {
-  const { data, filterOptions } = props
+  // const { filterOptions } = props
   const [difficulty, setDifficulty] = useState('');
   const [category, setCategory] = useState('');
   const [categoryName, setCategoryName] = useState('');
   const [amount, setAmount] = useState('');
-  const [game, setGame] = useState(false)
-
+ 
   useEffect(() =>{
     console.log(`this is the amount ${amount}`)
     console.log(`this is the category ${category}`)
@@ -49,7 +48,7 @@ const GameInputs = ({setFilterOptions}, props) => {
 
   const handleCategoryChange = (e) => {
     let catObject = categories.find(category => {
-      return (category.name == e.target.value)
+      return (category.name === e.target.value)
     })
     setCategoryName(e.target.value)
     setCategory(catObject.value)
@@ -71,7 +70,7 @@ const GameInputs = ({setFilterOptions}, props) => {
       category,
       amount,
     });
-    // setDifficulty(e.target.value)
+   
   };
 
 
@@ -82,17 +81,10 @@ const GameInputs = ({setFilterOptions}, props) => {
       category,
       amount: Number.parseInt(e.target.value),
     });
-    // setAmount(e.target.value)
+   
   };
 
-  const handleSubmit = (e) =>{
-    console.log(`category: ${category}, amount: ${amount}, difficulty ${difficulty}`)
-    console.log(filterOptions)
-    e.preventDefault()
-    e.disabled = true
-    setGame(true)
-  }
-  if (category === '' || difficulty === '' || amount === '' || game === false) {
+
     return (
       <form>
         <div className="dropdown">
@@ -125,18 +117,8 @@ const GameInputs = ({setFilterOptions}, props) => {
             ))}
           </select>
         </div>
-        {/* <button onClick={handleSubmit}>submit</button> */}
       </form>
     );
-  }else{
-    return(
-    <>
-    hey
-    <GamePlay/>
-     
-    </>
-    )
-  }
 };
 
 export default GameInputs;
