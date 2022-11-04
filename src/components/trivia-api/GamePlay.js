@@ -1,7 +1,8 @@
 import { Link } from 'react'
 import GameInputs from "./GameInputs";
-import GameCarousel from "./GameCarousel";
+import GameCarousel from './GameCarousel'
 import { Card } from "react-bootstrap";
+// import './gameInputs.css'
 
 const GamePlay = (props) => {
  
@@ -11,14 +12,19 @@ const GamePlay = (props) => {
   // }
   if (data.length < 1) {
     return (
-      <>
+      <div className='anotherContainer'>
+      <div className="inputsContainer">
+         <form className="gameForm">
         <GameInputs setFilterOptions={setFilterOptions} />
         {err && <h2>{err}</h2>}
 
-        <button onClick={handleClick}>Fetch data</button>
+        <button onClick={handleClick}>Fetch</button>
 
         {isLoading && <h2>Loading...</h2>}
-      </>
+        </form>
+       </div>
+       </div>
+     
     );
   } else {
     return (

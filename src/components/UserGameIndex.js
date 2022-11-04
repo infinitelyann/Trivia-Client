@@ -26,7 +26,7 @@ const UserGameIndex = ({ user, msgAlert }) => {
 
     const gamePreview = allGames.map(game => (
         
-        <Card key= {game.id}>
+        <Card key= {game.id} className='m-4' style={{width: '200px', display: 'flex'}}>
             <Card.Header>{ game.name }</Card.Header>
                 <Card.Text>
                      This is a game 

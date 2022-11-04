@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import './gameInputs.css'
 
 
 const categories = [
@@ -86,10 +87,11 @@ const GameInputs = ({setFilterOptions}, props) => {
 
 
     return (
-      <form>
-        <div className="dropdown">
+      <div>
+      {/* <form className="gameForm"> */}
+        <div >
             
-          <select value={categoryName} onChange={handleCategoryChange}>
+          <select value={categoryName} onChange={handleCategoryChange} id='category' placeholder="">
             {categories.map((category, idx) => (
               <option value={category.name} key={idx}>
                 {category.name}
@@ -98,8 +100,8 @@ const GameInputs = ({setFilterOptions}, props) => {
           </select>
         </div>
  
-        <div className="dropdown">
-          <select value={difficulty} onChange={handleDifficultyChange}>
+        <div >
+          <select value={difficulty} onChange={handleDifficultyChange} id='gameDifficulty'>
             {difficulties.map((difficulty, idx) => (
               <option value={difficulty} key={idx}>
                 {difficulty}
@@ -108,8 +110,8 @@ const GameInputs = ({setFilterOptions}, props) => {
           </select>
         </div>
 
-        <div className="dropdown">
-          <select value={amount} onChange={handleAmountChange}>
+        <div>
+          <select value={amount} onChange={handleAmountChange} id='amount'>
             {amounts.map((amount, idx) => (
               <option value={amount} key={idx}>
                 {amount}
@@ -117,7 +119,8 @@ const GameInputs = ({setFilterOptions}, props) => {
             ))}
           </select>
         </div>
-      </form>
+      {/* </form> */}
+      </div>
     );
 };
 

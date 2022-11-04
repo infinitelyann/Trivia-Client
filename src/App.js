@@ -149,8 +149,10 @@ const App = () => {
 			<Route
 			path='/game'
 		  element={
+        // <RequireAuth user={user}>
 			  <GamePlay setFilterOptions={setFilterOptions} err={err} handleClick={handleClick} isLoading={isLoading} data={data} />
-		  }
+        // </RequireAuth> 
+      }
 		  />
 
         <Route
