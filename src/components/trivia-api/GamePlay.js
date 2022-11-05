@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 
 const GamePlay = (props) => {
  
-  const { setFilterOptions, err, handleClick, isLoading, data, setData} = props;
+  const { setFilterOptions, err, handleClick, isLoading, data} = props;
   // const handleEnd = () =>{
   //   setData([])
   // }
@@ -23,7 +23,7 @@ const GamePlay = (props) => {
   } else {
     return (
       <>
-        <GameCarousel data={props.data} />
+        <GameCarousel  data={props.data} />
         <Card>
           <Card.Header>
             Finished?

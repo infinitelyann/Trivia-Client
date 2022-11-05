@@ -149,7 +149,8 @@ const App = () => {
 			<Route
 			path='/game'
 		  element={
-			  <GamePlay setFilterOptions={setFilterOptions} err={err} handleClick={handleClick} isLoading={isLoading} data={data} />
+			  <GamePlay setFilterOptions={setFilterOptions} err={err} handleClick={handleClick} isLoading={isLoading} data={data} 
+        />
 		  }
 		  />
 
