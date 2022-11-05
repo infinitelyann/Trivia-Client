@@ -30,20 +30,20 @@ const SignOut = (props) => {
     }
 
 	return (
-		<>
+		<div style={{backgroundColor: '#240046', height: '100vh'}}>
             <div className='row' style={{textAlign: 'center'}}>
                 <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                    <h2>Are you sure you want to sign out?</h2>
-                        <Button variant='white' onClick={onSignOut} style={{ color: 'black', border:'2px solid #ffc300'}}>
+                    <h2 style={{color: 'white'}}>Are you sure you want to sign out?</h2>
+                        <Button variant='white' onClick={onSignOut} className='signoutButton' style={{ color: 'white', border:'2px solid #ffc300'}}>
                             True
                         </Button>
-                        <Button variant='white' onClick={onCancel}  style={{ color: 'black', border:'2px solid #ffc300'}}>
+                        <Button variant='white' onClick={onCancel} className='cancelButton'  style={{ color: 'white', border:'2px solid #ffc300'}}>
                             False
                         </Button>
                     
                 </div>
             </div>
-		</>
+		</div>
 	)
 }
 
