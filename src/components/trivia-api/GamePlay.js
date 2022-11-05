@@ -17,18 +17,20 @@ const GamePlay = (props) => {
   // }
   if (data.length < 1) {
     return (
-      <div className='anotherContainer'>
+      <div className='firstContainer'>
       <div className="inputsContainer">
-         <form className="gameForm">
+      <p className='gameTitle'>Pick your set of questions:</p>
+      
         <GameInputs setFilterOptions={setFilterOptions} />
         {err && <h2>{err}</h2>}
 
-        <button onClick={handleClick}>Fetch</button>
+        <button onClick={handleClick} className='fetchButton'>Start</button>
 
         {isLoading && <h2>Loading...</h2>}
-        </form>
+        
+    
        </div>
-       </div>
+     </div>
      
     );
   } else {
