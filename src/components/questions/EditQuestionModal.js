@@ -15,7 +15,20 @@ const EditQuestionModal = (props) => {
                 
             // }
 
-        )
+    useEffect(() => {
+        gameShow( user, gameId)
+            .then((res) => {
+                let currQuestion = res.data.game.questions[index]
+                setQuestion(currQuestion)
+            })
+            .catch((error) => {
+                msgAlert({
+                    heading: 'Failure',
+                    message: 'Show Question Failure' + error,
+                    variant: 'danger'
+                })
+            })
+    }, [])
 
         const [formQ, setFormQ] = useState(null)
         const [formType, setFormType] = useState({type:'Multiple Choice'})
