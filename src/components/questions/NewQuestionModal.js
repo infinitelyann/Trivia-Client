@@ -138,28 +138,6 @@ const NewQuestionModal = (props) => {
     // change the bool of submitted to true
     // 
 
-    const handleQuestionObject = () => {
-        let incArr
-        if(formType.type === 'Multiple Choice'){
-            incArr = [formIncA1.updatedInc1.incorrectAnswerOne, formIncA2.updatedInc2.incorrectAnswerTwo, formIncA3.updatedInc3.incorrectAnswerThree]
-        } else {
-            incArr = [formIncA1.updatedInc1.incorrectAnswerOne]
-        }
-       
-        setQuestion(
-            
-            {
-                question: formQ.updatedQ.question,
-                correctAnswer: formA.updatedA.correctAnswer,
-                incorrectAnswers: incArr,
-                type: formType.type,
-                category: formCat.category,
-                difficulty: formDiff.difficulty,
-            }
-        )
-
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault()
         let incArr
@@ -168,7 +146,7 @@ const NewQuestionModal = (props) => {
         } else {
             incArr = [formIncA1.updatedInc1.incorrectAnswerOne]
         }
-       
+        
         setQuestion(
             
             {
@@ -182,29 +160,25 @@ const NewQuestionModal = (props) => {
         )
         
 
-
-        console.log("the question",question)
-
-
         createQuestion(user, game._id, question)
-        .then(()=> {
-            msgAlert({
-                heading: "Question added",
-                message: 'Question added to game!',
-                variant: 'success'
+            .then(()=> {
+                msgAlert({
+                    heading: "Question added",
+                    message: 'Question added to game!',
+                    variant: 'success'
+                })
             })
-        })
-        .then(() => triggerRefresh())
-        .then(()=> handleClose(
-            setQuestion({
-                question: null,
-                correctAnswer: null,
-                incorrectAnswers: [null],
-                category: null,
-                type: null,
-                difficulty: null
-            })
-        ))
+            .then(() => triggerRefresh())
+            .then(()=> handleClose(
+                setQuestion({
+                    question: null,
+                    correctAnswer: null,
+                    incorrectAnswers: [null],
+                    category: null,
+                    type: null,
+                    difficulty: null
+                })
+            ))
             .catch(
                 msgAlert({
                     heading: "Error",
@@ -212,7 +186,12 @@ const NewQuestionModal = (props) => {
                     variant: 'danger'
                 })
             )
-            
+        
+       
+       
+
+        
+                
     }
     return(
 
@@ -228,7 +207,6 @@ const NewQuestionModal = (props) => {
                 handleSubmit={handleSubmit}
                 user={user}
                 question={question}
-                handleQuestionObject={handleQuestionObject}
             />
         </Modal>
     )

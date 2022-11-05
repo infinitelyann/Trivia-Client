@@ -6,7 +6,7 @@ import { categories } from '../Categories'
 
 
 const QuestionForm = (props) => {
-    const { question, handleChange, handleSubmit, index, handleQuestionObject } = props
+    const { question, handleChange, handleSubmit, index } = props
 
     
     // const [category, setCategory] = useState("")
@@ -161,7 +161,7 @@ const QuestionForm = (props) => {
                     Easy
                 </option>
                 <option
-                    value='Medium'
+                    
                     // onClick={handleChange}
                     name="difficulty"
                 >
@@ -178,7 +178,7 @@ const QuestionForm = (props) => {
             
            
             <br/>
-            <Button type='submit' onClick={handleQuestionObject}>Add</Button>
+            <Button type='submit'>Add</Button>
             </Form>
         </Container>
     )

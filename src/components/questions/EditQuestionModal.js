@@ -1,100 +1,173 @@
 import React, { useState, useEffect } from 'react'
 import { Modal } from 'react-bootstrap'
 import QuestionForm from './QuestionForm'
-import EditQuestionForm from '../EditQuestionForm'
 import { updateQuestion } from '../../api/question'
 
 
 const EditQuestionModal = (props) => {
     const {user,  handleClose, msgAlert, triggerRefresh, game, show, index, showModal, questionForEdit } = props
 
-
+    console.log("lool",game)
     // console.log("edit", questionForEdit)
-    const [question, setQuestion] = useState({})
-    // const [updated, setUpdated] = useState(false)
-    useEffect(()=> {
-        // set state with question prop
-        setQuestion(questionForEdit)
-        // console.log("set question on", question)
-    })
-
-    
-
-    const handleChange =  (e) => {
-        // console.log(e.target.value)
-
-        if(e.target.name.includes('incorrectAnswer') && question.type === 'Multiple Choice'){
-            
-            let updatedIncorrect = question.incorrectAnswers
-            switch (e.target.name){
-                case "incorrectAnswerOne":
-                    updatedIncorrect[0]=e.target.value
-                    break
-                case "incorrectAnswerTwo":
-                    updatedIncorrect[1]=e.target.value
-                    break
-                case "incorrectAnswerThree":
-                    updatedIncorrect[2]=e.target.value
-                    break
+        const [question, setEditQuestion] = useState(
+            {
+                
+                
             }
-            setQuestion(prevQuestion => {
-                
-                const updatedQuestion = { ['incorrectAnswers']: updatedIncorrect}
-                return {
-                    ...prevQuestion, ...updatedQuestion
-                }  
-            })
-        } else {
-            
-            setQuestion(prevQuestion => {
-                /// set for difficulty
-                let name = e.target.name
-                let value = e.target.value
-                
-                if (value === undefined){
-                    value = e.target.innerText 
-                }
-                
-                if (question.type === 'True / False' && e.target.name === 'incorrectAnswerOne'){
-                    value = [e.target.value]
-                    name = 'incorrectAnswers'
-                }
-                if(value === 'True / False'){
-                    console.log("huh?")
-                    
 
+        )
+
+        const [formQ, setFormQ] = useState(null)
+        const [formType, setFormType] = useState({type:'Multiple Choice'})
+        const [formA, setFormA] = useState(null)
+        const [formIncA1, setFormIncA1] = useState(null)
+        const [formIncA2, setFormIncA2] = useState(null)
+        const [formIncA3, setFormIncA3] = useState(null)
+        const [formCat, setFormCat] = useState({category:'Any'})
+        const [formDiff, setFormDiff] = useState({difficulty:'Easy'})
+
+        
+        
+        const handleChange = (e) => {
+            if(e.target.name === 'question'){
+                setFormQ(prevQ => {
+                    const updatedName = e.target.name
+                    let updatedValue = e.target.value
+
+                    const updatedQ = {[updatedName]:updatedValue }
+                    return {...prevQ, updatedQ}
                 }
+                ) 
+            }
+            if(e.target.name === 'type'){
+                setFormType(prevType => {
+                    const updatedName = e.target.name
+                    let updatedValue = e.target.value
+
+                    const updatedType = {[updatedName]:updatedValue }
+                    return {...prevType, ...updatedType}
+                }
+                ) 
+            }
+            if(e.target.name === 'correctAnswer'){
+                setFormA(prevA => {
+                    const updatedName = e.target.name
+                    let updatedValue = e.target.value
+
+                    const updatedA = {[updatedName]:updatedValue }
+                    return {...prevA, updatedA}
+                }
+                ) 
+            }
+            if(e.target.name === 'incorrectAnswerOne'){
+                console.log(e.target.value)
+                setFormIncA1(prevInc1 => {
+                    const updatedName = e.target.name
+                    let updatedValue = e.target.value
+
+                    const updatedInc1 = {[updatedName]:updatedValue }
+                    return {...prevInc1, updatedInc1}
+                })
+            }
+            if(e.target.name === 'incorrectAnswerTwo'){
+                setFormIncA2(prevInc2 => {
+                        const updatedName = e.target.name
+                        let updatedValue = e.target.value
     
-                const updatedQuestion = { [name]: value}
-                return {
-                    ...prevQuestion, ...updatedQuestion
-                }  
-            })
+                        const updatedInc2 = {[updatedName]:updatedValue }
+                        return {...prevInc2, updatedInc2}
+                    })
+            }
+            if(e.target.name === 'incorrectAnswerThree'){
+                setFormIncA3(prevInc3 => {
+                        const updatedName = e.target.name
+                        let updatedValue = e.target.value
+    
+                        const updatedInc3 = {[updatedName]:updatedValue }
+                        return {...prevInc3, updatedInc3}
+                    })
+            }
+            if(e.target.name === 'category'){
+                setFormCat(prevCat => {
+                    const updatedName = e.target.name
+                        let updatedValue = e.target.value
+                        
+                        const updatedCat = {
+                            [updatedName]:updatedValue
+                        }
+                        return {
+                            ...prevCat, ...updatedCat
+                        }
+                })
+            }
+            if(e.target.name === 'difficulty'){
+                setFormDiff(prevDiff => {
+                    const updatedName = e.target.name
+                        let updatedValue = e.target.value
+                        
+                        const updatedDiff = {
+                            [updatedName]:updatedValue
+                        }
+                        return {
+                            ...prevDiff, ...updatedDiff
+                        }
+                })
+            }
         }
-    }
+        const handleSubmit = (e) => {
+            e.preventDefault()
+            let incArr
+            if(formType.type === 'Multiple Choice'){
+                incArr = [formIncA1.updatedInc1.incorrectAnswerOne, formIncA2.updatedInc2.incorrectAnswerTwo, formIncA3.updatedInc3.incorrectAnswerThree]
+            } else {
+                incArr = [formIncA1.updatedInc1.incorrectAnswerOne]
+            }
+           
+            setEditQuestion(
+                
+                {
+                    question: formQ.updatedQ.question,
+                    correctAnswer: formA.updatedA.correctAnswer,
+                    incorrectAnswers: incArr,
+                    type: formType.type,
+                    category: formCat.category,
+                    difficulty: formDiff.difficulty,
+                }
+            )
+            
     
-    const handleSubmit = (e) => {
-        e.preventDefault()
-       
-        console.log("the question",question)
-        updateQuestion(user, game._id, question)
-            .then(()=> handleClose())
+    
+            console.log("the question",question)
+    
+    
+            updateQuestion(user, game._id, question)
             .then(()=> {
                 msgAlert({
-                    heading: "Question updated",
-                    message: 'Question updated',
+                    heading: "Question added",
+                    message: 'Question added to game!',
                     variant: 'success'
                 })
             })
             .then(() => triggerRefresh())
-            .catch(
-                msgAlert({
-                    heading: "Error",
-                    message: 'Something went wrong',
-                    variant: 'danger'
+            .then(()=> handleClose(
+                setEditQuestion({
+                    question: null,
+                    correctAnswer: null,
+                    incorrectAnswers: [null],
+                    category: null,
+                    type: null,
+                    difficulty: null
                 })
-            )
-    }
+            ))
+                .catch(
+                    msgAlert({
+                        heading: "Error",
+                        message: 'Something went wrong',
+                        variant: 'danger'
+                    })
+                )
+                
+        }
     return(
 
         <Modal show={ show } onHide = { handleClose } user={user}>
@@ -104,7 +177,7 @@ const EditQuestionModal = (props) => {
             
             </Modal.Header>
         
-        <EditQuestionForm
+        <QuestionForm
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             user={user}
