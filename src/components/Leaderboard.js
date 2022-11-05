@@ -66,7 +66,8 @@ const Leaderboard = (props) => {
     ))
 
     return (
-        <>
+        <div style={{backgroundColor: '#240046', height: '100vh', color: 'white', paddingTop: '100px'}}>
+            <div className="leaderboardContainer">
             <div className="dropdown">
                 <select value={category} onChange={handleCategoryChange}>
                     {categories.map(category => (
@@ -77,13 +78,14 @@ const Leaderboard = (props) => {
                 </select>
             </div>
 
-            <table>
-                <tr>
-                    <th>Rank</th><th>Username</th><th>Score</th>
+            <table style={{margin: '20px'}}>
+                <tr >
+                    <th>Rank</th><th className="leaderUsername">Username</th><th>Score</th>
                 </tr>
                 {leaderboardJSX}
             </table>
-        </>
+        </div>
+        </div>
     )
 }
 
