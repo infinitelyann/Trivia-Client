@@ -26,7 +26,9 @@ const GamePlay = (props) => {
 
         <button onClick={handleClick} className='fetchButton'>Start</button>
 
-        {isLoading && <h2>Loading...</h2>}
+        {isLoading && <h2 className='loadingGame'>...</h2>}
+
+        
         
     
        </div>
