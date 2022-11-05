@@ -69,7 +69,7 @@ const Leaderboard = (props) => {
         <div style={{backgroundColor: '#240046', height: '100vh', color: 'white', paddingTop: '100px'}}>
             <div className="leaderboardContainer">
             <div className="dropdown">
-                <select value={category} onChange={handleCategoryChange}>
+                <select value={category} onChange={handleCategoryChange} className='leaderDropdown'>
                     {categories.map(category => (
                         <option value={category}>
                             {category}
@@ -80,9 +80,11 @@ const Leaderboard = (props) => {
 
             <table style={{margin: '20px'}}>
                 <tr >
-                    <th>Rank</th><th className="leaderUsername">Username</th><th>Score</th>
+                    <th className="leaderRank">Rank</th><th className="leaderUsername">Username</th><th>Score</th>
                 </tr>
+               
                 {leaderboardJSX}
+                
             </table>
         </div>
         </div>
