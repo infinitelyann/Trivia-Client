@@ -48,8 +48,6 @@ const Leaderboard = (props) => {
     useEffect(() => {
         getLeaderboard(category)
             .then((res) => {
-
-                console.log(category)
                 setBoard(res.data.leaderboard)
             })
             .catch((error) => {
@@ -61,19 +59,15 @@ const Leaderboard = (props) => {
             })
     }, [category])
 
-    console.log(category)
-    console.log(board)
-
-    let leaderboardJSX = board.map((entry, key) => (
-        <tr key={key}>
-            <td>{entry.username}</td><td>{entry.score}</td><td>{category}</td>
+    let leaderboardJSX = board.map((entry, rank) => (
+        <tr key={rank + 1}>
+            <td>{rank + 1}</td><td>{entry.username}</td><td>{entry.score}</td>
         </tr>
     ))
 
     return (
         <>
             <div className="dropdown">
-
                 <select value={category} onChange={handleCategoryChange}>
                     {categories.map(category => (
                         <option value={category}>
@@ -83,10 +77,9 @@ const Leaderboard = (props) => {
                 </select>
             </div>
 
-
             <table>
                 <tr>
-                    <th>Username</th><th>Score</th><th>Category</th>
+                    <th>Rank</th><th>Username</th><th>Score</th>
                 </tr>
                 {leaderboardJSX}
             </table>

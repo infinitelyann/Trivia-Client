@@ -107,7 +107,7 @@ const UserGameShow = ({ user, msgAlert }) => {
         <>
             <Container className='m-2'>
                 
-                <Card>
+                <Card className='m-3'>
                     <Card.Header>{game.name}</Card.Header>
                     <Card.Body>
                         
@@ -128,13 +128,12 @@ const UserGameShow = ({ user, msgAlert }) => {
                             onClick={() =>setQuestionModalShow(true)}>
                                 New Question
                         </Button>
-                        {/* <Button
+                        <Button
                             variant='warning'
-                            key="Change title"
-                            // onClick={() => handleShowTitleModal()}
-                            >
+                            key="new Question"
+                            onClick={() =>setQuestionModalShow(true)}>
                                 Change Quiz Title
-                        </Button> */}
+                        </Button>
                         <Button 
                             variant='danger' 
                             onClick={() => handleGameDelete()}>
