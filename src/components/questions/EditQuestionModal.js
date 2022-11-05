@@ -9,7 +9,7 @@ const EditQuestionModal = (props) => {
 
     console.log("lool",game)
     // console.log("edit", questionForEdit)
-        const [question, setEditQuestion] = useState(
+        const [editQuestion, setEditQuestion] = useState(
             // {
             //     question: game.questions[index].question
                 
@@ -137,10 +137,10 @@ const EditQuestionModal = (props) => {
             
     
     
-            console.log("the question",question)
+            console.log("the question",editQuestion)
     
     
-            updateQuestion(user, game._id, question)
+            updateQuestion(user, game._id, editQuestion)
             .then(()=> {
                 msgAlert({
                     heading: "Question added",
@@ -181,7 +181,7 @@ const EditQuestionModal = (props) => {
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             user={user}
-            question={question}
+            question={editQuestion}
             index = { index }
         />
     </Modal>
