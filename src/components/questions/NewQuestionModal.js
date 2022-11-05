@@ -26,8 +26,9 @@ const NewQuestionModal = (props) => {
         const [formIncA1, setFormIncA1] = useState(null)
         const [formIncA2, setFormIncA2] = useState(null)
         const [formIncA3, setFormIncA3] = useState(null)
-        const [formCat, setFormCat] = useState(null)
-        const [formDiff, setFormDiff] = useState(null)
+        const [formCat, setFormCat] = useState({category:'Any'})
+        const [formDiff, setFormDiff] = useState({difficulty:'Easy'})
+
         
         
         const handleChange = (e) => {
@@ -123,7 +124,7 @@ const NewQuestionModal = (props) => {
             // console.log(formIncA2)
             // console.log(formIncA3)
             // console.log(formCat.category)
-
+         
         }
    
     // question: null,
@@ -133,16 +134,18 @@ const NewQuestionModal = (props) => {
     // type: null,
     // difficulty: null
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(formA, "test")
+    // use effect
+    // change the bool of submitted to true
+    // 
+
+    const handleQuestionObject = () => {
         let incArr
-        if(formType === 'Multiple Choice'){
+        if(formType.type === 'Multiple Choice'){
             incArr = [formIncA1.updatedInc1.incorrectAnswerOne, formIncA2.updatedInc2.incorrectAnswerTwo, formIncA3.updatedInc3.incorrectAnswerThree]
         } else {
             incArr = [formIncA1.updatedInc1.incorrectAnswerOne]
         }
-        /// question values are not ===
+       
         setQuestion(
             
             {
@@ -155,32 +158,53 @@ const NewQuestionModal = (props) => {
             }
         )
 
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        let incArr
+        if(formType.type === 'Multiple Choice'){
+            incArr = [formIncA1.updatedInc1.incorrectAnswerOne, formIncA2.updatedInc2.incorrectAnswerTwo, formIncA3.updatedInc3.incorrectAnswerThree]
+        } else {
+            incArr = [formIncA1.updatedInc1.incorrectAnswerOne]
+        }
+       
+        setQuestion(
+            
+            {
+                question: formQ.updatedQ.question,
+                correctAnswer: formA.updatedA.correctAnswer,
+                incorrectAnswers: incArr,
+                type: formType.type,
+                category: formCat.category,
+                difficulty: formDiff.difficulty,
+            }
+        )
+        
+
 
         console.log("the question",question)
 
 
         createQuestion(user, game._id, question)
-            .then(()=> handleClose(
-                setQuestion(
-                    {
-                        question: null,
-                        correctAnswer: null,
-                        incorrectAnswers: [null],
-                        category: null,
-                        type: null,
-                        difficulty: null
-                    }
-
-                )
-            ))
-            .then(()=> {
-                msgAlert({
-                    heading: "Question added",
-                    message: 'Question added to game!',
-                    variant: 'success'
-                })
+        .then(()=> {
+            msgAlert({
+                heading: "Question added",
+                message: 'Question added to game!',
+                variant: 'success'
             })
-            .then(() => triggerRefresh())
+        })
+        .then(() => triggerRefresh())
+        .then(()=> handleClose(
+            setQuestion({
+                question: null,
+                correctAnswer: null,
+                incorrectAnswers: [null],
+                category: null,
+                type: null,
+                difficulty: null
+            })
+        ))
             .catch(
                 msgAlert({
                     heading: "Error",
@@ -204,7 +228,7 @@ const NewQuestionModal = (props) => {
                 handleSubmit={handleSubmit}
                 user={user}
                 question={question}
-            
+                handleQuestionObject={handleQuestionObject}
             />
         </Modal>
     )

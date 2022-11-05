@@ -6,7 +6,7 @@ import { categories } from '../Categories'
 
 
 const QuestionForm = (props) => {
-    const { question, handleChange, handleSubmit, index } = props
+    const { question, handleChange, handleSubmit, index, handleQuestionObject } = props
 
     
     // const [category, setCategory] = useState("")
@@ -178,7 +178,7 @@ const QuestionForm = (props) => {
             
            
             <br/>
-            <Button type='submit'>Add</Button>
+            <Button type='submit' onClick={handleQuestionObject}>Add</Button>
             </Form>
         </Container>
     )
