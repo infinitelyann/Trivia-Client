@@ -11,7 +11,7 @@ const EditQuestionModal = (props) => {
     // console.log("edit", questionForEdit)
         const [question, setEditQuestion] = useState(
             {
-                
+                question: game.questions[index].question
                 
             }
 
