@@ -1,10 +1,12 @@
-import { Link } from 'react'
+import { Link, useState } from 'react'
 import GameInputs from "./GameInputs";
 import GameCarousel from "./GameCarousel";
 import { Card } from "react-bootstrap"; 
 
 
 const GamePlay = (props) => {
+
+  const [resultSettings, setResultSettings] = useState({})
  
   const { setFilterOptions, err, handleClick, isLoading, data} = props;
   // const handleEnd = () =>{
@@ -13,7 +15,7 @@ const GamePlay = (props) => {
   if (data.length < 1) {
     return (
       <>
-        <GameInputs setFilterOptions={setFilterOptions} />
+        <GameInputs setFilterOptions={setFilterOptions} setResultSettings={setResultSettings}/>
         {err && <h2>{err}</h2>}
 
         <button onClick={handleClick}>Fetch data</button>
@@ -24,7 +26,7 @@ const GamePlay = (props) => {
   } else {
     return (
       <>
-        <GameCarousel  data={props.data} />
+        <GameCarousel  data={props.data} resultSettings={resultSettings} />
         <Card>
           <Card.Header>
             Finished?
@@ -37,8 +39,8 @@ const GamePlay = (props) => {
         </Card>
 
       </>
-    );
+    )
   }
-};
+}
 
 export default GamePlay;

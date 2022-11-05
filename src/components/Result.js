@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { postResult } from "../api/result"
 
-const Results = (props) => {
+const Result = (props) => {
     const { user, msgAlert, category, score } = props
 
     const [newScore, setNewScore] = useState(null)
@@ -27,4 +27,4 @@ const Results = (props) => {
     )
 }
 
-export default Results
+export default Result
