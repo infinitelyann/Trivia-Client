@@ -67,7 +67,7 @@ const UserGameShow = ({ user, msgAlert }) => {
         <>
             <Container className='m-2'>
                 
-                <Card>
+                <Card className='m-3'>
                     <Card.Header>{game.name}</Card.Header>
                     <Card.Body>
                         

@@ -149,9 +149,16 @@ const App = () => {
 			<Route
 			path='/game'
 		  element={
+<<<<<<< HEAD
+        
+			  <GamePlay setFilterOptions={setFilterOptions} err={err} handleClick={handleClick} isLoading={isLoading} data={data} />
+       
+      }
+=======
 			  <GamePlay setFilterOptions={setFilterOptions} err={err} handleClick={handleClick} isLoading={isLoading} data={data} 
         />
 		  }
+>>>>>>> main
 		  />
 
         <Route
