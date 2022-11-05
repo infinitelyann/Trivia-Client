@@ -5,56 +5,52 @@ import { Card } from "react-bootstrap";
 const GameCarousel = (props) => {
   const { data } = props;
   const correct = [];
-  const [answer, setAnswer] = useState("");
-  const [correctAns, setCorrectAns] = useState("");
-  const [isCorrect, setIsCorrect] = useState(false);
-  const [questionIndex, setQuestionIndex]  = useState(0)
-  let [userScore, setUserScore] = useState(0)
-  
   for(let i = 0; i < data.length; i++){
     correct.push(data[i].correct_answer)
   }
-  console.log(correct)
+
+  const [questionIndex, setQuestionIndex]  = useState(0)
+  const [answer, setAnswer] = useState("");
+  const [correctAns, setCorrectAns] = useState(correct[questionIndex]);
+  const [isCorrect, setIsCorrect] = useState(false)
+  const [userScore, setUserScore] = useState(0)
   
-  useEffect(() =>{
+  
+  useEffect(() => {
     setAnswer(answer)
-    setIsCorrect(() => {
-      if (answer == correctAns) {
-      
-        return true;
-      } else {
-       
-        return false;
-      }
+
+    // might need to turn this inside out
+    if (answer === correctAns) {
+      setIsCorrect(true)
     }
-    );
-   
-    setCorrectAns(() => {
-     
-      return correct[questionIndex].correct_answer;
-    })
+    else {
+      setIsCorrect(false)
+    }
 
   }, [isCorrect, answer, correctAns, userScore, setUserScore])
-  const handleClick = (e, idx) => {
-  
-    console.log(e.target);
-    idx = e.target.id;
-    setAnswer(() => {
-      return e.target.innerText;
-    });
- ;
-    setUserScore(() =>{
-      if(isCorrect){
-        return(userScore + 1)
-      }else{
-        return(userScore - 1)
-      }
-    })
-    setQuestionIndex(()=>{
-      return(questionIndex + 1)
-    })
 
-  
+  const handleClick = (e) => {
+    console.log("THIS IS THE CORRECT ANSWER!!!!!! : ", correctAns)
+    setAnswer(e.target.innerText)
+
+    if (answer === correctAns) {
+      setIsCorrect(true)
+    }
+    else {
+      setIsCorrect(false)
+    }
+
+    if (isCorrect) {
+      let num = userScore
+      setUserScore(num + 1)
+    }
+    else {
+      let num = userScore
+      setUserScore(num - 1)
+    }
+
+    let newIndex = questionIndex + 1
+    setQuestionIndex(newIndex)
   }
 
 
