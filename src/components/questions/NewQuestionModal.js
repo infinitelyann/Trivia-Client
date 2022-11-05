@@ -141,23 +141,29 @@ const NewQuestionModal = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         let incArr
-        if(formType.type === 'Multiple Choice'){
-            incArr = [formIncA1.updatedInc1.incorrectAnswerOne, formIncA2.updatedInc2.incorrectAnswerTwo, formIncA3.updatedInc3.incorrectAnswerThree]
-        } else {
-            incArr = [formIncA1.updatedInc1.incorrectAnswerOne]
+        
+        if(question.question === null){
+
+            if(formType.type === 'Multiple Choice'){
+                incArr = [formIncA1.updatedInc1.incorrectAnswerOne, formIncA2.updatedInc2.incorrectAnswerTwo, formIncA3.updatedInc3.incorrectAnswerThree]
+            } else {
+                incArr = [formIncA1.updatedInc1.incorrectAnswerOne]
+            }
+
+            setQuestion(
+                
+                {
+                    question: formQ.updatedQ.question,
+                    correctAnswer: formA.updatedA.correctAnswer,
+                    incorrectAnswers: incArr,
+                    type: formType.type,
+                    category: formCat.category,
+                    difficulty: formDiff.difficulty,
+                }
+            )
         }
         
-        setQuestion(
-            
-            {
-                question: formQ.updatedQ.question,
-                correctAnswer: formA.updatedA.correctAnswer,
-                incorrectAnswers: incArr,
-                type: formType.type,
-                category: formCat.category,
-                difficulty: formDiff.difficulty,
-            }
-        )
+        
         
 
         createQuestion(user, game._id, question)
