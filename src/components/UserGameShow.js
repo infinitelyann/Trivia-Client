@@ -12,7 +12,8 @@ const UserGameShow = ({ user, msgAlert }) => {
     const [updated, setUpdated] = useState(false)
     const [questionModalShow, setQuestionModalShow] =useState(false)
     const [deleted, setDeleted] = useState(false)
-
+    const [index, setIndex]= useState(null)
+    const [questionForEdit, setQuestion] = useState(null)
     const  { id } = useParams()
     const navigate = useNavigate()
 
@@ -20,6 +21,7 @@ const UserGameShow = ({ user, msgAlert }) => {
         gameShow(user, id)
             .then((res) => {
                 setGame(res.data.game)
+                setQuestion(res.data.game.questions[0])
             })
             .catch((error) => {
                 msgAlert({
@@ -29,6 +31,13 @@ const UserGameShow = ({ user, msgAlert }) => {
                 })
             })
     }, [updated])
+
+    useEffect(() => {
+        if (index !== null){
+            setQuestion(game.questions[index])
+            console.log("q for edit on user game show",questionForEdit)
+        }
+        })
 
     const handleGameDelete = () => {
         

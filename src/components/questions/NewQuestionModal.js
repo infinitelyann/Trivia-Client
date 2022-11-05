@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import { createQuestion } from '../../api/question'
 import QuestionForm from './QuestionForm'
@@ -28,7 +28,7 @@ const NewQuestionModal = (props) => {
         const [formIncA3, setFormIncA3] = useState(null)
         const [formCat, setFormCat] = useState({category:'Any'})
         const [formDiff, setFormDiff] = useState({difficulty:'Easy'})
-
+        const [updated, setUpdated] = useState(false)
         
         
         const handleChange = (e) => {
@@ -116,27 +116,33 @@ const NewQuestionModal = (props) => {
                         }
                 })
             }
-
-            // console.log(formQ.updatedQ.question)
-            // console.log(formA.updatedA.correctAnswer)
-            // console.log(formType.type)
-            // console.log(formIncA1.updatedInc1.incorrectAnswerOne)
-            // console.log(formIncA2)
-            // console.log(formIncA3)
-            // console.log(formCat.category)
-         
+                    
         }
-   
-    // question: null,
-    // correctAnswer: null,
-    // incorrectAnswers: [null],
-    // category: null,
-    // type: null,
-    // difficulty: null
 
-    // use effect
-    // change the bool of submitted to true
-    // 
+        // useEffect(() => {
+        //     let incArr
+    
+        //     if(question.question === null){
+        //         if(formType.type === 'Multiple Choice'){
+        //             incArr = [formIncA1.updatedInc1.incorrectAnswerOne, formIncA2.updatedInc2.incorrectAnswerTwo, formIncA3.updatedInc3.incorrectAnswerThree]
+        //         } else {
+        //             incArr = [formIncA1.updatedInc1.incorrectAnswerOne]
+        //         }
+
+        //         setQuestion(
+                    
+        //             {
+        //                 question: formQ.updatedQ.question,
+        //                 correctAnswer: formA.updatedA.correctAnswer,
+        //                 incorrectAnswers: incArr,
+        //                 type: formType.type,
+        //                 category: formCat.category,
+        //                 difficulty: formDiff.difficulty,
+        //             }
+        //         )
+        //     }
+        // } , [updated])
+   
 
     const handleSubmit = (e) => {
         e.preventDefault()
