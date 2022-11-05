@@ -1,44 +1,20 @@
 import React, { useState } from 'react'
 import { Form, Button, Container, Dropdown } from 'react-bootstrap'
-// import {categories } from '../GameInputs'
+import { categories } from '../Categories'
 
-const categories = [
-    "Any",
-    "General Knowledge",
-    "Entertainment: Books",
-    "Entertainment: Film",
-    "Entertainment: Music",
-    "Entertainment: Musicals & Theatres",
-    "Entertainment: Television",
-    "Entertainment: Video Games",
-    "Entertainment: Board Games",
-    "Science & Nature",
-    "Science: Computers",
-    "Science: Mathematics",
-    "Science: Gadgets",
-    "Mythology",
-    "Sports",
-    "Geography",
-    "History",
-    "Politics",
-    "Art",
-    "Celebrities",
-    "Animals",
-    "Vehicles",
-    "Entertainment: Comics",
-    "Entertainment: Japanese Anime & Manga",
-    "Entertainment: Cartoon & Animations",
-  ]
+
+
 
 const QuestionForm = (props) => {
     const { question, handleChange, handleSubmit, index } = props
+
     
-    const [category, setCategory] = useState("")
-    const [difficulty, setDifficulty] = useState('Easy')
-    const [incorrectAnswerSubmissions, setIncorrectAnswers] = useState([])
+    // const [category, setCategory] = useState("")
+    // const [difficulty, setDifficulty] = useState('Easy')
+    // const [incorrectAnswerSubmissions, setIncorrectAnswers] = useState([])
     const [checked, setRadioValue] = useState({typeOfQuestion: "Multiple Choice", another: "another"})
     const { typeOfQuestion } = checked
-    console.log(question, index, props, "form")
+
 
 
         /// setting state for radio buttons
@@ -53,25 +29,7 @@ const QuestionForm = (props) => {
           }
 
 
-        const addIncorrectAnswers = (e) => {
-            setIncorrectAnswers(
-                incorrectAnswerSubmissions.push(e.target.value)
-            )
-            console.log(incorrectAnswerSubmissions)
-        }
 
-        
-        const handleCategoryChange = (e) => {
-            
-            console.log(e.target)
-            setCategory(e.target.innerText)
-          }
-        
-        const handleDifficultyChange = (e) => {
-            console.log(question)
-            console.log(e.target)
-            setDifficulty(e.target.innerText)
-          }
 
         // make an if statement for showing more or answer boxes
         let incorrectAnswers 
@@ -85,6 +43,8 @@ const QuestionForm = (props) => {
                             name='incorrectAnswerOne'
                             id='incorrect answer'
                             onChange={handleChange}
+                            // value={question.incorrectAnswers[1]}
+                            
                         />
                     <Form.Control
                             key="incorrect3"
@@ -92,6 +52,7 @@ const QuestionForm = (props) => {
                             name='incorrectAnswerTwo'
                             id='incorrect answer'
                             onChange={handleChange}
+                            // value={question.incorrectAnswers[2]}
                         />
                     <Form.Control 
                             key="incorrect4"
@@ -99,6 +60,8 @@ const QuestionForm = (props) => {
                             name='incorrectAnswerThree'
                             id='incorrect answer'
                             onChange={handleChange}
+                            // value={question.incorrectAnswers[3]}
+                            // required
                         />
 
                 </>       
@@ -112,6 +75,7 @@ const QuestionForm = (props) => {
                             name='incorrectAnswerOne'
                             id='incorrect answer'
                             onChange={handleChange}
+                            
                         />
             </>
         }
@@ -125,7 +89,10 @@ const QuestionForm = (props) => {
                     name='question'
                     id='question'
                     onChange={handleChange}
+                    key='question'
+                    value={question.question}
                     
+                    required
                 />
             <Form.Group controlId="questionType">
                 <Form.Check
@@ -137,6 +104,7 @@ const QuestionForm = (props) => {
                 onClick={handleButtonChange}
                 onChange={handleChange}
                 checked={typeOfQuestion ==="Multiple Choice"}
+                key='Multiple Choice'
                 />
                 <Form.Check
                 value="True / False"
@@ -154,55 +122,62 @@ const QuestionForm = (props) => {
                     placeholder='enter the answer'
                     name='correctAnswer'
                     id='answer'
+                    value={question.correctAnswer}
                     onChange={handleChange}
+                    required
+                    
                 />
             <>
                 {incorrectAnswers}
             </>
      
-            <Dropdown>
-                <Dropdown.Toggle variant="light" id="categories" key="categories">
-                    {category.length > 0 ? category : 'Choose Category'}
-                </Dropdown.Toggle>
 
-                <Dropdown.Menu value={category} onClick={handleCategoryChange} >
-                    {categories.map((category, index) => (
-                        <Dropdown.Item 
+            <select className='m-2' value={question.category} name='category' onChange={handleChange} required>
+            {categories.map((category, index) => (
+                        <option
                         value={category} 
                         index={index}
                         onClick={handleChange}
                         name="category"
+                        
                         >
                             {category} 
-                        </Dropdown.Item>
+                        </option>
+                        
                     ))}
-                </Dropdown.Menu>
-            </Dropdown>
-            <Dropdown>
-                <Dropdown.Toggle variant="light" id="difficulty">
-                    Choose Difficulty
-                </Dropdown.Toggle>
-                        <Dropdown.Menu onClick={handleDifficultyChange}>
-                            <Dropdown.Item key="easy"
-                            value='Easy'
-                            onClick={handleChange}
-                            name="difficulty">
-                                Easy
-                            </Dropdown.Item>
-                            <Dropdown.Item
-                            value='Medium'
-                            onClick={handleChange}
-                            name="difficulty">
-                                Medium
-                            </Dropdown.Item>
-                            <Dropdown.Item
-                            value='Hard'
-                            onClick={handleChange}
-                            name="difficulty">
-                                Hard
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-            </Dropdown>
+            </select>
+            <br/>
+            <select className='m-2'
+            value={question.difficulty}
+            onChange={handleChange}
+            name='difficulty'
+            required>
+                <option
+                    key="easy"
+                    value='Easy'
+                    // onClick={handleChange}
+                    name="difficulty"
+                >
+                    Easy
+                </option>
+                <option
+                    value='Medium'
+                    // onClick={handleChange}
+                    name="difficulty"
+                >
+                    Medium
+                </option>
+                <option
+                    value='Hard'
+                    // onClick={handleChange}
+                    name="difficulty"
+                >
+                    Hard
+                </option>
+            </select>
+            
+           
+            <br/>
             <Button type='submit'>Add</Button>
             </Form>
         </Container>

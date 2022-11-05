@@ -14,12 +14,12 @@ const UserGameShow = ({ user, msgAlert }) => {
     // setter of game data
     const [game, setGame] = useState(null)
     const [updated, setUpdated] = useState(false)
-    const [questionModalShow, setQuestionModalShow] =useState(false)
+    const [questionModalShow, setQuestionModalShow] = useState(false)
     const [editQuestionModal, showModal] = useState(false)
-    const [currQuestion, setCurrQuestion] = useState(null)
+
     const [deleted, setDeleted] = useState(false)
-
-
+    const [index, setIndex]= useState(null)
+    const [questionForEdit, setQuestion] = useState(null)
     const [editGameTitleModalShow, setTitle] = useState(false)
     // modal state set to null
 
@@ -31,6 +31,7 @@ const UserGameShow = ({ user, msgAlert }) => {
         gameShow(user, id)
             .then((res) => {
                 setGame(res.data.game)
+                setQuestion(res.data.game.questions[0])
             })
             .catch((error) => {
                 msgAlert({
@@ -40,6 +41,14 @@ const UserGameShow = ({ user, msgAlert }) => {
                 })
             })
     }, [updated])
+    useEffect(() => {
+        if (index !== null){
+            setQuestion(game.questions[index])
+            console.log("q for edit on user game show",questionForEdit)
+        }
+        })
+
+        
 
     // delete function of game
     const handleGameDelete = () => {
@@ -63,6 +72,7 @@ const UserGameShow = ({ user, msgAlert }) => {
             })
     }
 
+    
     /// still needs work
     // const handleShowTitleModal = (e) => {
     //     console.log("clicked",e)
@@ -71,6 +81,7 @@ const UserGameShow = ({ user, msgAlert }) => {
     //set modal state
     const handleShowEditModal = (e) => {
         //useEffect will go here
+        
     }
     // let allQuestions
 
@@ -100,16 +111,15 @@ const UserGameShow = ({ user, msgAlert }) => {
                     <Card.Header>{game.name}</Card.Header>
                     <Card.Body>
                         
-                        {/* {allQuestions} */}
                         <ShowQuestion 
                             user={user}
                             game={game}
-                            // show={questionModalShow}
                             msgAlert={msgAlert}
                             triggerRefresh={() => setUpdated(prev=> !prev)}
                             handleClose = {() => setQuestionModalShow(false)}
-                            // pass down show modal function
                             showModal = { showModal }
+                            editQuestionModal ={ editQuestionModal}
+                            setIndex = { setIndex }
                         />
                     </Card.Body>
                     <Card.Footer>
@@ -118,13 +128,13 @@ const UserGameShow = ({ user, msgAlert }) => {
                             onClick={() =>setQuestionModalShow(true)}>
                                 New Question
                         </Button>
-                        <Button
+                        {/* <Button
                             variant='warning'
                             key="Change title"
                             // onClick={() => handleShowTitleModal()}
                             >
                                 Change Quiz Title
-                        </Button>
+                        </Button> */}
                         <Button 
                             variant='danger' 
                             onClick={() => handleGameDelete()}>
@@ -135,6 +145,7 @@ const UserGameShow = ({ user, msgAlert }) => {
                 
             </Container>
            <NewQuestionModal 
+                key = "create question modal"
                 user={user}
                 game={game}
                 show={questionModalShow}
@@ -151,8 +162,15 @@ const UserGameShow = ({ user, msgAlert }) => {
                handleClose = {() => setQuestionModalShow(false)} 
             />
             <EditQuestionModal 
-
-            
+                key="edit question modal"
+                show = { editQuestionModal }
+                msgAlert={msgAlert}
+                user={user}
+                game={game}
+                index={index}
+                triggerRefresh={() => setUpdated(prev=> !prev)}
+                handleClose = {() => showModal(false)}
+                questionForEdit = {questionForEdit}
             />
             {/* modal pass down state
                 form is inside modal

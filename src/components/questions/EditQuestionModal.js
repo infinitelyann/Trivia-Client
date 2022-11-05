@@ -1,45 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { Modal } from 'react-bootstrap'
-import GameForm from '../GameForm'
 import QuestionForm from './QuestionForm'
+import EditQuestionForm from '../EditQuestionForm'
 import { updateQuestion } from '../../api/question'
-import { gameShow } from '../../api/game'
 
 
 const EditQuestionModal = (props) => {
-    const {user,  handleClose, msgAlert, triggerRefresh, game, show, index } = props
+    const {user,  handleClose, msgAlert, triggerRefresh, game, show, index, showModal, questionForEdit } = props
 
-    // let gameId = game._id
-    // console.log("gameId on modal",gameId)
-    // console.log("index on modal", index)
-    /// do a get request for individual question and setstate to that
-    // query for a single question, get req for game, extract that single question
-    // that will have the id which can be used for api delete req
-    /// get request for game and filter
-    /// api call goes here
-    
+
+    // console.log("edit", questionForEdit)
     const [question, setQuestion] = useState({})
     // const [updated, setUpdated] = useState(false)
+    useEffect(()=> {
+        // set state with question prop
+        setQuestion(questionForEdit)
+        // console.log("set question on", question)
+    })
 
-    // useEffect(() => {
-    //     gameShow( user, gameId)
-    //         .then((res) => {
-    //             let currQuestion = res.data.game.questions[index]
-    //             setQuestion(currQuestion)
-    //             console.log("question from the modal", currQuestion)
-    //         })
-    //         .catch((error) => {
-    //             msgAlert({
-    //                 heading: 'Failure',
-    //                 message: 'Show Question Failure' + error,
-    //                 variant: 'danger'
-    //             })
-    //         })
-    // }, [])
+    
 
     const handleChange =  (e) => {
-        console.log(e.target.value)
-        console.log(question.difficulty, "change?")
+        // console.log(e.target.value)
+
         if(e.target.name.includes('incorrectAnswer') && question.type === 'Multiple Choice'){
             
             let updatedIncorrect = question.incorrectAnswers
@@ -115,17 +98,20 @@ const EditQuestionModal = (props) => {
     return(
 
         <Modal show={ show } onHide = { handleClose } user={user}>
-                <Modal.Title className='m2'>Add a question to your quiz</Modal.Title>
-            <Modal.Header/>
+        <Modal.Header>
+            <Modal.Title className='m2'>Edit this question</Modal.Title>
+        
             
-            <QuestionForm
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                user={user}
-                question={question}
-                index={index}
-            />
-        </Modal>
+            </Modal.Header>
+        
+        <EditQuestionForm
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            user={user}
+            question={question}
+            index = { index }
+        />
+    </Modal>
     )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import EditQuestionModal from './EditQuestionModal'
 import { deleteQuestion } from '../../api/question'
@@ -7,9 +7,9 @@ import { gameDelete } from '../../api/game'
 
 // this might be used later to display individual questions??
 const ShowQuestion = (props) => {
-    const {  game, user, msgAlert, triggerRefresh, handleClose, question, showModal  } = props
+    const {  game, user, msgAlert, triggerRefresh, handleClose, question, showModal, editQuestionModal, setIndex } = props
 
-    
+
     const [element, setElement] = useState()
 
     const handleGameDelete = (e) => {
@@ -31,15 +31,19 @@ const ShowQuestion = (props) => {
                 })
             })
     }
-
+    let clickedIndex
+    // calls the setter for data 
+    // passes index for curr question clicked
     const handleClick = (e) => {
-        console.log("edit")
+        
         showModal(true)
-        // id needs to be sent up
-        console.log(e.target.id)
-        // calls the setter for data 
-        // passes index for curr question clicked
+        setIndex(e.target.id)
+        clickedIndex = e.target.id
     }
+    // useEffect(() => {
+    //     index(clickedIndex)
+    // })
+    
 
     if(!game){
         return (
@@ -68,10 +72,11 @@ const ShowQuestion = (props) => {
             <Button
                 className="m-2" 
                 variant="warning"
+                key={index + ' edit'}
                 // value={question._id}
                 id={index}
                 onClick={(e) => handleClick (e)}  
-                // setter function
+                setIndex = {(e) => e.target.id}
                 >
                 Edit this Question
             </Button>
@@ -81,6 +86,7 @@ const ShowQuestion = (props) => {
                 onClick={(e) => handleGameDelete(e)}
                 id={question._id}
                 gameId={game._id}
+                key= {index + ' delete'}
             >
                 Delete Question
             </Button>
