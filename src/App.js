@@ -22,6 +22,7 @@ import { getOpenDBUrl } from "./utils/openDB";
 import GameInputs from "./components/trivia-api/GameInputs";
 import GamePlay from "./components/trivia-api/GamePlay";
 import Leaderboard from "./components/Leaderboard";
+import UserGamePlay from "./components/UserGamePlay";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -139,13 +140,19 @@ const App = () => {
 				}
 			/>		  
 
-
+        
 					<Route
 			path='/games/:id'
 			element={
 				<UserGameShow msgAlert={msgAlert} user={user} />
 				}
 			/>	
+      <Route
+      path='/play-game/:id'
+      element={
+        <UserGamePlay/>
+      }
+      />
 			<Route
 			path='/game'
 		  element={
@@ -172,6 +179,7 @@ const App = () => {
           }
         />
       </Routes>
+
       {msgAlerts.map((msgAlert) => (
         <AutoDismissAlert
           key={msgAlert.id}

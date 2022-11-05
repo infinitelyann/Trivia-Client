@@ -26,7 +26,7 @@ const GamePlay = (props) => {
 
         <button onClick={handleClick} className='fetchButton'>Start</button>
 
-        {isLoading && <h2>Loading...</h2>}
+        {isLoading && <h2 style={{color: "#ffc300"}} className="spinner-border" role="status"></h2>}
         
     
        </div>
