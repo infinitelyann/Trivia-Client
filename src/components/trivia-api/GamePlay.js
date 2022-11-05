@@ -1,7 +1,8 @@
 import { Link } from 'react'
 import GameInputs from "./GameInputs";
 import GameCarousel from "./GameCarousel";
-import { Card } from "react-bootstrap";
+import { Card } from "react-bootstrap"; 
+
 
 const GamePlay = (props) => {
  
