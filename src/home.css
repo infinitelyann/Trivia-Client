@@ -12,9 +12,9 @@ div .background {
     position: flex;
     justify-content: center;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 50px;
     font-size: 100px;
-    color: #7552f2;
+    color: white;
     font-family: 'Rubik Mono One', sans-serif;
 }
 

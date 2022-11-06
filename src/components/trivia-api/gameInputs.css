@@ -1,0 +1,221 @@
+
+/* ////////////// GAME INPUTS ////////////////// */
+.firstContainer {
+    padding-top: 20px;
+    background-color: #240046;
+    height: 100vh;
+    padding-top: 70px ;
+    margin: 0 auto;
+
+} 
+
+.inputsContainer {
+    margin: 0 auto;
+    width: 650px;
+    height: 450px;
+    text-align: center;
+    padding-top: 30px;
+    border-radius: 10px;
+    border: 2px solid lightgrey;
+    background-image: linear-gradient(0deg, rgba(36, 0, 70, 0.71) 12%, rgba(151, 117, 250, 0.6) 100%);
+}
+
+.gameTitle {
+    color: white;
+    font-size: 40px;
+}
+
+ #category {
+    width: 250px;
+    height: 50px;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+ 
+} 
+
+#gameDifficulty {
+    width: 250px;
+    height: 50px;
+    border: 3px solid black;
+    border-radius: 10px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 25px;
+}
+
+#amount {
+    width: 250px;
+    height: 50px;
+    border: 3px solid black;
+    border-radius: 10px;
+   margin-left: 10px;
+    float: left;
+    margin-top: 25px;
+}
+
+.fetchButton {
+    border: 3px solid #ffc300;
+    margin-top: 130px;
+    border-radius: 10px;
+    background-color: #ffc300;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.loadingGame {
+    color: #ffc300;
+    font-size: 80px;
+}
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+/* ////////////// LEADERBOARD ////////////////// */
+.leaderboardContainer {
+    width: 600px;
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto;
+    height: 300px;
+    padding-top: 20px;
+    background-image: linear-gradient(0deg, rgba(36, 0, 70, 0.71) 12%, rgba(151, 117, 250, 0.6) 100%);
+    overflow-y: auto;
+}
+
+.leaderboardContainer::-webkit-scrollbar-track {
+    border: 1px solid white;
+    padding: 2px 0;
+    background-color: white;
+    border-radius: 10px;
+  }
+  
+  .leaderboardContainer::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+  }
+  
+  .leaderboardContainer::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #ffc300;
+    border: 1px solid white;
+  }
+
+.leaderUsername {
+    margin-left: 20px;
+}
+
+table {
+    display: inline-block;
+    margin-left: 50px;
+}
+
+.learderRank {
+    float: left;
+}
+
+.leaderDropdown {
+    width: 250px;
+    height: 30px;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////// */
+
+/* ////////////// CHANGE PASSWORD FORM////////////////// */
+.passwordContainer {
+    background-color: #240046;
+    height: 100vh;
+}
+
+.changePassword {
+    text-align: center;
+    padding-top: 50px;
+    color: white;
+}
+
+.passwordTitle {
+    padding-top: 10px;
+}
+
+.passwordForm {
+    padding: 20px;
+}
+
+.formControl {
+    border: 5px solid lightgrey;
+}
+
+.passwordSubmit {
+    background-color: #240046;
+    color: white;
+    border: 2px solid #ffc300;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////// */
+
+/* ////////////// SIGN OUT PAGE////////////////// */
+.signoutButton:hover {
+       background-color: green;
+       border: 1px solid red;
+}
+
+.cancelButton:hover {
+    background-color: red;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////// */
+
+/* ////////////// QUESTIONS ////////////////// */
+.questionContainer {
+    background-color: #240046;
+    height: 100vh;
+    padding-top: 80px;
+}
+
+.triviaUserscore {
+    text-align: center;
+    color: white; 
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.cardContainer::-webkit-scrollbar-track {
+    border: 1px solid white;
+    padding: 2px 0;
+    background-color: white;
+    border-radius: 10px;
+  }
+  
+  .cardContainer::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+  }
+  
+  .cardContainer::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #ffc300;
+    border: 1px solid white;
+  }
+
+
+.answerbtn:hover {
+    background-color: #ffc300;
+}
+
+.skipQuestion {
+    background-color: #50b4f2;
+    border: 2px solid #50b4f2;
+    border-radius: 10px;
+}

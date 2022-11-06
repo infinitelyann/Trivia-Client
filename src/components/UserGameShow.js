@@ -3,23 +3,30 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
 import { gameShow, gameDelete } from '../api/game'
 import NewQuestionModal from '../components/questions/NewQuestionModal'
-// import EditQuestionModal from './questions/EditQuestionModal'
+import EditQuestionModal from './questions/EditQuestionModal'
 import ShowQuestion from './questions/ShowQuestion'
 
 
 const UserGameShow = ({ user, msgAlert }) => {
     const [game, setGame] = useState(null)
     const [updated, setUpdated] = useState(false)
-    const [questionModalShow, setQuestionModalShow] =useState(false)
+    const [questionModalShow, setQuestionModalShow] = useState(false)
+    const showEdit = [questionModalShow, setQuestionModalShow]
+    const [editModalShow, setEditModalShow]= useState(false)
     const [deleted, setDeleted] = useState(false)
-
+    const [index, setIndex]= useState(null)
+    const [questionForEdit, setQuestion] = useState(null)
     const  { id } = useParams()
     const navigate = useNavigate()
+
+    
 
     useEffect(() => {
         gameShow(user, id)
             .then((res) => {
                 setGame(res.data.game)
+                
+                
             })
             .catch((error) => {
                 msgAlert({
@@ -29,6 +36,13 @@ const UserGameShow = ({ user, msgAlert }) => {
                 })
             })
     }, [updated])
+
+    useEffect(() => {
+        if (index !== null){
+            setQuestion(game.questions[index])
+            console.log("q for edit on user game show",questionForEdit)
+        }
+        })
 
     const handleGameDelete = () => {
         
@@ -67,7 +81,7 @@ const UserGameShow = ({ user, msgAlert }) => {
         <>
             <Container className='m-2'>
                 
-                <Card>
+                <Card className='m-3'>
                     <Card.Header>{game.name}</Card.Header>
                     <Card.Body>
                         
@@ -75,10 +89,11 @@ const UserGameShow = ({ user, msgAlert }) => {
                         <ShowQuestion 
                             user={user}
                             game={game}
-                            show={questionModalShow}
+                            show={setEditModalShow}
                             msgAlert={msgAlert}
                             triggerRefresh={() => setUpdated(prev=> !prev)}
                             handleClose = {() => setQuestionModalShow(false)}
+                            setIndex={setIndex}
                         />
                     </Card.Body>
                     <Card.Footer>
@@ -104,6 +119,18 @@ const UserGameShow = ({ user, msgAlert }) => {
                 triggerRefresh={() => setUpdated(prev=> !prev)}
                 handleClose = {() => setQuestionModalShow(false)}
            /> 
+           <EditQuestionModal 
+                key="edit question modal"
+                show = { editModalShow }
+                showEdit =  {showEdit}
+                msgAlert={msgAlert}
+                user={user}
+                game={game}
+                index={index}
+                triggerRefresh={() => setUpdated(prev=> !prev)}
+                handleClose = {() => setEditModalShow(false)}
+                questionForEdit = {questionForEdit}
+            />
 
         </>
     )

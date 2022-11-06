@@ -1,7 +1,12 @@
 import { Link, useState } from 'react'
 import GameInputs from "./GameInputs";
-import GameCarousel from "./GameCarousel";
-import { Card } from "react-bootstrap"; 
+
+import GameCarousel from './GameCarousel'
+
+
+
+
+
 
 
 const GamePlay = (props) => {
@@ -14,19 +19,33 @@ const GamePlay = (props) => {
   // }
   if (data.length < 1) {
     return (
-      <>
-        <GameInputs setFilterOptions={setFilterOptions} setResultSettings={setResultSettings}/>
+      <div className='firstContainer'>
+      <div className="inputsContainer">
+      <p className='gameTitle'>Pick your set of questions:</p>
+      
+        <GameInputs setFilterOptions={setFilterOptions} />
+        setFilterOptions(
+          difficulty:
+          category:
+          amount:
+        )
         {err && <h2>{err}</h2>}
 
-        <button onClick={handleClick}>Fetch data</button>
+        <button onClick={handleClick} className='fetchButton'>Start</button>
 
-        {isLoading && <h2>Loading...</h2>}
-      </>
+        {isLoading && <h2 className='loadingGame'>...</h2>}
+
+        
+        
+    
+       </div>
+     </div>
+     
     );
   } else {
     return (
       <>
-        <GameCarousel  data={props.data} resultSettings={resultSettings} />
+        <GameCarousel  data={props.data} />
         <Card>
           <Card.Header>
             Finished?
