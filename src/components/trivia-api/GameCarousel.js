@@ -48,7 +48,7 @@ const GameCarousel = (props) => {
       <div className="questionContainer">
       <h1 className="triviaUserscore"> UserScore: {userScore}</h1>
       <div className="cardContainer">
-      <Card className="p-3 m-3 triviaCard">
+      <Card className="p-3 m-3 triviaCard" style={{ width: '600px', height: '300px', textAlign: 'center', border: '4px solid lightgray', padding: '20px'}}>
         Question: {questionIndex + 1}
         <Card.Header style={{backgroundColor: '#e1d5f2', borderRadius: '5px'}}>
           {data[questionIndex].question}
