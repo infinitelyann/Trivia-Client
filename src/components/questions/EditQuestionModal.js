@@ -9,10 +9,13 @@ const EditQuestionModal = (props) => {
 
     console.log("lool",index)
     // console.log("edit", questionForEdit)
-        const [editQuestion, setEditQuestion] = useState(
+    
+        const [question, setQuestion] = useState(
             {
-                // question: game.questions[index].question
-                
+                // question: game.questions[index].question,
+                // correctAnswer: game.questions[index].correctAnswer,
+                // incorrectAnswers: game.questions[index].incorrectAnswers,
+                // category: game.questions[index].category
             }
 
         )
@@ -123,7 +126,7 @@ const EditQuestionModal = (props) => {
                 incArr = [formIncA1.updatedInc1.incorrectAnswerOne]
             }
            
-            setEditQuestion(
+            setQuestion(
                 
                 {
                     question: formQ.updatedQ.question,
@@ -137,10 +140,10 @@ const EditQuestionModal = (props) => {
             
     
     
-            console.log("the question",editQuestion)
+            console.log("the question",question)
     
     
-            updateQuestion(user, game._id, editQuestion)
+            updateQuestion(user, game._id, question)
             .then(()=> {
                 msgAlert({
                     heading: "Question added",
@@ -150,7 +153,7 @@ const EditQuestionModal = (props) => {
             })
             .then(() => triggerRefresh())
             .then(()=> handleClose(
-                setEditQuestion({
+                setQuestion({
                     question: null,
                     correctAnswer: null,
                     incorrectAnswers: [null],
@@ -181,7 +184,7 @@ const EditQuestionModal = (props) => {
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             user={user}
-            question={editQuestion}
+            question={question}
             index = { index }
         />
     </Modal>

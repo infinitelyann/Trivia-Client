@@ -7,7 +7,8 @@ import { gameDelete } from '../../api/game'
 
 // this might be used later to display individual questions??
 const ShowQuestion = (props) => {
-    const {  game, user, msgAlert, triggerRefresh, handleClose, question, setShow, setQuestionModalShow, setIndex } = props
+    console.log(props)
+    const {  game, user, msgAlert, triggerRefresh, handleClose, question, setShow, show, showEdit,  setQuestionModalShow, setIndex } = props
 
     
     const [element, setElement] = useState()
@@ -37,9 +38,9 @@ const ShowQuestion = (props) => {
     const handleClick = (e) => {
         console.log("hi")
         console.log(e.target.id)
-        setQuestionModalShow(true)
+        show(true)
         setIndex(e.target.id)
-        
+        show(true)
     }
     // useEffect(() => {
     //     index(clickedIndex)
