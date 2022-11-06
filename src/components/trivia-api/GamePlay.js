@@ -1,12 +1,23 @@
-import { Link, useState } from 'react'
+import { Link, useEffect, useState } from 'react'
 import GameInputs from "./GameInputs";
 import GameCarousel from './GameCarousel'
 
 const GamePlay = (props) => {
  
-  const { setFilterOptions, err, handleClick, isLoading, data, user, msgAlert } = props
+  const { setFilterOptions, err, handleClick, isLoading, data, user, userID, setUserID, msgAlert } = props
 
   const [resultSettings, setResultSettings] = useState({})
+  const [key, setKey] = useState(0)
+
+
+  setUserID(user._id)
+
+
+  console.log("THIS IS USER ID FROM GAMEPLAY!!!!!!!: ", userID)
+
+  useEffect(() => {
+    console.log("SET KEY FIRED!!!!!!!!!!!!!!")
+  }, [key])
 
   if (data.length < 1) {
     return (
@@ -14,7 +25,7 @@ const GamePlay = (props) => {
       <div className="inputsContainer">
       <p className='gameTitle'>Pick your set of questions:</p>
       
-        <GameInputs setResultSettings={setResultSettings} setFilterOptions={setFilterOptions} />
+        <GameInputs key={key} setResultSettings={setResultSettings} setFilterOptions={setFilterOptions} />
      
         {err && <h2>{err}</h2>}
 
@@ -29,7 +40,7 @@ const GamePlay = (props) => {
   } else {
     return (
       <>
-        <GameCarousel user={user} msgAlert={msgAlert} data={props.data} resultSettings={resultSettings} />     
+        <GameCarousel key={key} setKey={setKey} userID={userID} msgAlert={msgAlert} data={props.data} resultSettings={resultSettings} />     
       </>
     )
   }

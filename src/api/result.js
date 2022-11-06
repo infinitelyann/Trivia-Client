@@ -1,16 +1,11 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const postResult = (data, user) => {
-    console.log('!!!!!!!!!!!!!! THIS IS THE USER from result axios: ', user)
-    console.log("user ID: ",user._id)
+export const postResult = (data, userID) => {
+    console.log("user ID: ",userID)
     return axios({
         method: 'PATCH',
         data: {category: data.category, score: data.score},
-        url: apiUrl + '/' + user._id,
-        headers: {
-			Authorization: `Token token=${user.token}`,
-		}
-
+        url: apiUrl + '/' + userID
     })
 }

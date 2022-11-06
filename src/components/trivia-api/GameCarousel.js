@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Result from "../Result";
 
 const GameCarousel = (props) => {
-  const { data, resultSettings, user, msgAlert } = props
+  const { data, resultSettings, userID, msgAlert, key, setKey } = props
   let correct = []
   let scrambledAnswers = []
   let renderedAnswers = []
@@ -19,8 +19,6 @@ const GameCarousel = (props) => {
   const [userScore, setUserScore] = useState(0)
   const [playing, setPlaying] = useState(false)
 
-  
-  console.log('!!!!!!!!!!!!!! THIS IS THE USER from carousel: ', user)
 
   useEffect(() => {
     if (playing) {
@@ -95,12 +93,12 @@ const GameCarousel = (props) => {
             <Card style={{ width: '500px', height: '300px', textAlign: 'center', padding: '100px', border: '4px solid lightgray' }}>
               <Card.Header style={{ backgroundColor: '#e1d5f2', borderRadius: '5px' }}>
 
-              <Result score={userScore} category={resultSettings.category} user={user} msgAlert={msgAlert} />
+              <Result score={userScore} category={resultSettings.category} userID={userID} msgAlert={msgAlert} />
               
               </Card.Header>
               <Card.Body>
 
-                <Link to="/homepage" className="btn endgamebtn" style={{ border: '2px solid red' }}>End Game</Link>
+                <Link to="/homepage" onClick={() => setKey(key++)} className="btn endgamebtn" style={{ border: '2px solid red' }}>End Game</Link>
 
               </Card.Body>
             </Card>

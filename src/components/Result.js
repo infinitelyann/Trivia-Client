@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react"
 import { postResult } from "../api/result"
 
 const Result = (props) => {
-    const { user, msgAlert, category, score } = props
+    const { userID, msgAlert, category, score } = props
 
     const [newScore, setNewScore] = useState(null)
 
     useEffect(() => {
-        postResult({category: category, score: score}, user)
+        postResult({category: category, score: score}, userID)
             .then(res => {
                 setNewScore(res.data)
             })

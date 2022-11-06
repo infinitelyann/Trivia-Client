@@ -23,6 +23,7 @@ import GameInputs from "./components/trivia-api/GameInputs";
 import GamePlay from "./components/trivia-api/GamePlay";
 import Leaderboard from "./components/Leaderboard";
 import UserGamePlay from "./components/UserGamePlay";
+import Result from "./components/Result";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -31,6 +32,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
   const [filterOptions, setFilterOptions] = useState({});
+  const [userID, setUserID] = useState('')
 
 
   const handleClick = async () => {
@@ -83,7 +85,7 @@ const App = () => {
     <Fragment >
       <Header user={user} />
       <Routes>
-        <Route path='/result' element={<Leaderboard user={user} msgAlert={msgAlert} />} />
+        <Route path='/result' element={<Result userID={userID} msgAlert={msgAlert} />} />
         <Route path='/leaderboard' element={<Leaderboard msgAlert={msgAlert} />} />
         <Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
         <Route
@@ -154,7 +156,7 @@ const App = () => {
         <Route
           path='/game'
           element={
-            <GamePlay user={user} setFilterOptions={setFilterOptions} err={err} handleClick={handleClick} isLoading={isLoading} data={data}
+            <GamePlay user={user} userID={userID} setUserID={setUserID} setFilterOptions={setFilterOptions} err={err} handleClick={handleClick} isLoading={isLoading} data={data}
             />
           }
         />
