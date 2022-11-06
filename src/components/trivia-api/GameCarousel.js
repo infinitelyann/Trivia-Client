@@ -91,17 +91,20 @@ const GameCarousel = (props) => {
   }else{
     return(
       <>
-       <Card>
-          <Card.Header>
+      <div style={{backgroundColor: '#240046', height: '100vh', paddingTop: '40px'}}>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+       <Card style={{ width: '500px', height: '300px', textAlign: 'center', padding: '100px', border: '4px solid lightgray'}}>
+          <Card.Header style={{backgroundColor: '#e1d5f2', borderRadius: '5px'}}>
             Finished?
           </Card.Header>
           <Card.Body>
 
-             <Link to="/homepage"  className="btn btn-outline-dark">End Game</Link>
+             <Link to="/homepage"  className="btn endgamebtn" style={{border: '2px solid red'}}>End Game</Link>
 
           </Card.Body>
         </Card>
-
+        </div>
+        </div>
       </>
     )
   }
