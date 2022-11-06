@@ -23,9 +23,7 @@ export const updateQuestion = (user, gameId, updatedQuestion) => {
     return axios({
         method:'PATCH',
         url: `${apiUrl}/questions/${gameId}/${updatedQuestion._id}`,
-        headers: {
-			Authorization: `Token token=${user.token}`,
-		},
+
         data: { question: updatedQuestion}
     })
 }

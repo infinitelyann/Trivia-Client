@@ -5,7 +5,7 @@ import { categories } from '../Categories'
 
 
 
-const QuestionForm = (props) => {
+const EditQuestionForm = (props) => {
     const { question, handleChange, handleSubmit, index, updateFieldChanged } = props
 
     
@@ -189,4 +189,4 @@ const QuestionForm = (props) => {
     )
 }
 
-export default QuestionForm
+export default EditQuestionForm
