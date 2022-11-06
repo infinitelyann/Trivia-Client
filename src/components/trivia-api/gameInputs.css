@@ -69,6 +69,8 @@
     font-size: 80px;
 }
 
+
+
 /* ///////////////////////////////////////////////////////////////////////////////////// */
 
 
@@ -169,3 +171,35 @@ table {
     background-color: red;
 }
 /* ///////////////////////////////////////////////////////////////////////////////////// */
+
+.questionContainer {
+    background-color: #240046;
+    height: 100vh;
+}
+
+.triviaUserscore {
+    text-align: center;
+    color: white; 
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.triviaCard {
+    width: 500px;
+    text-align: center;
+    border: 4px solid lightgray;
+}
+
+
+.answerbtn:hover {
+    background-color: #ffc300;
+}
+
+.skipQuestion {
+    background-color: #50b4f2;
+    border: 2px solid #50b4f2;
+    border-radius: 10px;
+}
