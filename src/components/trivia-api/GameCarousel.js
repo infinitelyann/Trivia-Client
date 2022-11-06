@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 const GameCarousel = (props) => {
-  const { data, resultSettings } = props
+  const { data } = props
   const correct = []
   for (let i = 0; i < data.length; i++) {
     correct.push(data[i].correct_answer)
@@ -25,10 +25,10 @@ const GameCarousel = (props) => {
       let num = userScore
       let index = questionIndex
       if (playerAnswer === correctAns) {
-        setUserScore(num + points)
+        setUserScore(num + 1)
       }
       else {
-        setUserScore(num - points)
+        setUserScore(num - 1)
       }
       setQuestionIndex(index + 1)
     }

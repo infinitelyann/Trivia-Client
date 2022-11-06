@@ -9,7 +9,7 @@ const Result = (props) => {
     useEffect(() => {
         postResult({category: category, score: score}, user)
             .then(res => {
-                setNewScore(res)
+                setNewScore(res.data)
             })
             .catch(error => {
                 msgAlert({

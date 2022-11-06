@@ -1,19 +1,11 @@
-import { Link, useState } from 'react'
+import { Link } from 'react'
 import GameInputs from "./GameInputs";
 
 import GameCarousel from './GameCarousel'
 
-
-
-
-
-
-
 const GamePlay = (props) => {
-
-  const [resultSettings, setResultSettings] = useState({})
  
-  const { setFilterOptions, err, handleClick, isLoading, data} = props;
+  const { setFilterOptions, err, handleClick, isLoading, data} = props
   // const handleEnd = () =>{
   //   setData([])
   // }
@@ -35,9 +27,6 @@ const GamePlay = (props) => {
 
         {isLoading && <h2 className='loadingGame'>...</h2>}
 
-        
-        
-    
        </div>
      </div>
      
@@ -46,17 +35,7 @@ const GamePlay = (props) => {
     return (
       <>
         <GameCarousel  data={props.data} />
-        <Card>
-          <Card.Header>
-            Finished?
-          </Card.Header>
-          <Card.Body>
-           
-             <button  className="btn btn-outline-dark">End Game</button>
-            
-          </Card.Body>
-        </Card>
-
+     
       </>
     )
   }
