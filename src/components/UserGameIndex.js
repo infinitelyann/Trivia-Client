@@ -9,9 +9,7 @@ const UserGameIndex = ({ user, msgAlert }) => {
     const [playing, setPlaying] = useState(false)
     //handleclick function to send user to UserGamePlay component
    
-    const handleClick = () =>{
-        setPlaying(true)
-    }
+   
     //state
     const [allGames, setAllGames] = useState([])
 
@@ -45,26 +43,25 @@ const UserGameIndex = ({ user, msgAlert }) => {
                            
                         </>
                         :
-                        <button onClick={handleClick}className='btn btn-info'
-                     > Play</button>
-                     
+                        null
+                        
+                        
                     }
                     
                 </Card.Text>
                 
+                    <UserGamePlay game={game}/>
                 <Card.Footer></Card.Footer>
         </Card>
     ))
-    if(!playing){
+    
         return (
             <div>
                 { gamePreview }
             </div>
         )
 
-    }else{
-        return <UserGamePlay allGames={allGames}/>
-    }
+   
 
 }
 

@@ -11,7 +11,7 @@ import GameCarousel from './GameCarousel'
 
 const GamePlay = (props) => {
  
-  const { setFilterOptions, err, handleClick, isLoading, data} = props;
+  const { setFilterOptions, err, handleClick, isLoading, data} = props
   // const handleEnd = () =>{
   //   setData([])
   // }
