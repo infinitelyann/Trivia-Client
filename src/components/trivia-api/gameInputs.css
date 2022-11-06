@@ -187,22 +187,25 @@ table {
 .cardContainer {
     display: flex;
     justify-content: center;
+}
+
+.triviaCard {
     overflow-y: auto;
 }
 
-.cardContainer::-webkit-scrollbar-track {
+.triviaCard::-webkit-scrollbar-track {
     border: 1px solid white;
     padding: 2px 0;
     background-color: white;
     border-radius: 10px;
   }
   
-  .cardContainer::-webkit-scrollbar {
+  .triviaCard::-webkit-scrollbar {
     width: 10px;
     border-radius: 10px;
   }
   
-  .cardContainer::-webkit-scrollbar-thumb {
+  .triviaCard::-webkit-scrollbar-thumb {
     border-radius: 10px;
     box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #ffc300;
@@ -222,8 +225,10 @@ table {
 
 /* ///////////////////////////////////////////////////////////////////////////////////// */
 
-
+/* ////////////// END GAME PAGE ////////////////// */
 .endgamebtn:hover {
     background-color: red;
     color: white;
 }
+
+/* ///////////////////////////////////////////////////////////////////////////////////// */
