@@ -20,16 +20,8 @@ const NewQuestionModal = (props) => {
             difficulty: null
         })
 
-        const [formQ, setFormQ] = useState(null)
-        const [formType, setFormType] = useState({type:'Multiple Choice'})
-        const [formA, setFormA] = useState(null)
-        const [formIncA1, setFormIncA1] = useState(null)
-        const [formIncA2, setFormIncA2] = useState(null)
-        const [formIncA3, setFormIncA3] = useState(null)
-        const [formCat, setFormCat] = useState({category:'Any'})
-        const [formDiff, setFormDiff] = useState({difficulty:'Easy'})
-        const [submitted, setSubmitted] = useState(false)
-        const [built, buildQuestion] = useState()
+        
+   
         
         const updateFieldChanged = e => {
             
@@ -54,10 +46,26 @@ const NewQuestionModal = (props) => {
                         ...prevQuestion, ...updatedQuestion
                     }  
                 })
+            } else if (e.target.name.includes('incorrectAnswer') && question.type === 'True / False'){
+                
+                let updatedIncorrect = question.incorrectAnswers
+                switch (e.target.name){
+                    case "incorrectAnswerOne":
+                        updatedIncorrect[0]=e.target.value
+                        
+                        break
+                   
+                }
+                setQuestion(prevQuestion => {
+    
+                    const updatedQuestion = { ['incorrectAnswers']: updatedIncorrect}
+                    return {
+                        ...prevQuestion, ...updatedQuestion
+                    }  
+                })
             }
+        } 
 
-
-        }
         
         const handleChange = (e) => {
         
@@ -86,28 +94,9 @@ const NewQuestionModal = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        let incArr
         
-        if(question.question === null){
-
-            if(formType.type === 'Multiple Choice'){
-                incArr = [formIncA1.updatedInc1.incorrectAnswerOne, formIncA2.updatedInc2.incorrectAnswerTwo, formIncA3.updatedInc3.incorrectAnswerThree]
-            } else {
-                incArr = [formIncA1.updatedInc1.incorrectAnswerOne]
-            }
-
-            setQuestion(
-                
-                {
-                    question: formQ.updatedQ.question,
-                    correctAnswer: formA.updatedA.correctAnswer,
-                    incorrectAnswers: incArr,
-                    type: formType.type,
-                    category: formCat.category,
-                    difficulty: formDiff.difficulty,
-                }
-            )
-        }
+        
+       
         
         createQuestion(user, game._id, question)
             .then(()=> {
@@ -152,7 +141,7 @@ const NewQuestionModal = (props) => {
                 handleSubmit={handleSubmit}
                 user={user}
                 question={question}
-                setSubmitted = { setSubmitted }
+
                 setQuestion = { setQuestion }
                 updateFieldChanged = { updateFieldChanged }
             />
