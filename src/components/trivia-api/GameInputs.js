@@ -36,16 +36,22 @@ const amounts = ["5", "10", "15", "20"];
 
 const GameInputs = ({ setFilterOptions }, props) => {
   // const { filterOptions } = props
-  const [difficulty, setDifficulty] = useState('');
-  const [category, setCategory] = useState('');
-  const [categoryName, setCategoryName] = useState('');
-  const [amount, setAmount] = useState('');
+  const [difficulty, setDifficulty] = useState('Easy');
+  const [category, setCategory] = useState('8');
+  const [categoryName, setCategoryName] = useState('Any');
+  const [amount, setAmount] = useState('5');
 
-  useEffect(() => {
+  useEffect(() =>{
     console.log(`this is the amount ${amount}`)
     console.log(`this is the category ${category}`)
     console.log(`this is the difficulty ${difficulty}`)
-  }, [amount, difficulty, category])
+    setFilterOptions({
+      difficulty: difficulty,
+      category: category,
+      amount: amount
+    })
+    setResultSettings({category: categoryName, difficulty: difficulty, amount: amount})
+  }, [amount, difficulty, category]) 
 
   const handleCategoryChange = (e) => {
     let catObject = categories.find(category => {

@@ -2,12 +2,13 @@ import { useState, useEffect } from "react"
 import { Card } from "react-bootstrap"
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { Link } from "react-router-dom";
-
-
+import Result from "../Result";
 
 const GameCarousel = (props) => {
-  const { data } = props
-  const correct = []
+  const { data, resultSettings, user, msgAlert } = props
+  let correct = []
+  let scrambledAnswers = []
+  let renderedAnswers = []
   for (let i = 0; i < data.length; i++) {
     correct.push(data[i].correct_answer)
   }
@@ -17,7 +18,6 @@ const GameCarousel = (props) => {
   const [correctAns, setCorrectAns] = useState(correct[questionIndex])
   const [userScore, setUserScore] = useState(0)
   const [playing, setPlaying] = useState(false)
-  let scrambledAnswers = []
   
 
   useEffect(() => {
@@ -35,9 +35,9 @@ const GameCarousel = (props) => {
   }, [playerAnswer])
 
   useEffect(() => {
-  
-  
-    setCorrectAns(data[questionIndex].correct_answer)
+    if (questionIndex < resultSettings.amount) {
+      setCorrectAns(data[questionIndex].correct_answer)
+    }
   }, [questionIndex])
 
   const handleClick = (e) => {
@@ -48,14 +48,11 @@ const GameCarousel = (props) => {
     
   }
 
-  let stopGameIndex = Number(correct.length) -1
-  if(questionIndex != stopGameIndex){
-    const renderedAnswers = [...data[questionIndex].incorrect_answers, data[questionIndex].correct_answer];
+  if (questionIndex < resultSettings.amount) {
+    renderedAnswers = [...data[questionIndex].incorrect_answers, data[questionIndex].correct_answer];
     scrambledAnswers = renderedAnswers.map((value) => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
-    console.log(scrambledAnswers)
-    console.log(correct[questionIndex])
+    .map(({ value }) => value)
     
       return (
         <>
