@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Card, Button } from 'react-bootstrap'
 import { gameShow, gameDelete } from '../api/game'
 import NewQuestionModal from '../components/questions/NewQuestionModal'
-// import EditQuestionModal from './questions/EditQuestionModal'
+import EditQuestionModal from './questions/EditQuestionModal'
 import ShowQuestion from './questions/ShowQuestion'
 
 
@@ -113,6 +113,17 @@ const UserGameShow = ({ user, msgAlert }) => {
                 triggerRefresh={() => setUpdated(prev=> !prev)}
                 handleClose = {() => setQuestionModalShow(false)}
            /> 
+           {/* <EditQuestionModal 
+                key="edit question modal"
+                show = { editQuestionModal }
+                msgAlert={msgAlert}
+                user={user}
+                game={game}
+                index={index}
+                triggerRefresh={() => setUpdated(prev=> !prev)}
+                handleClose = {() => showModal(false)}
+                questionForEdit = {questionForEdit}
+            /> */}
 
         </>
     )

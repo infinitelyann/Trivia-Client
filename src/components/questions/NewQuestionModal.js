@@ -14,9 +14,9 @@ const NewQuestionModal = (props) => {
         {
             question: null,
             correctAnswer: null,
-            incorrectAnswers: [null],
+            incorrectAnswers: [],
             category: null,
-            type: null,
+            type: "Multiple Choice",
             difficulty: null
         })
 
@@ -28,94 +28,57 @@ const NewQuestionModal = (props) => {
         const [formIncA3, setFormIncA3] = useState(null)
         const [formCat, setFormCat] = useState({category:'Any'})
         const [formDiff, setFormDiff] = useState({difficulty:'Easy'})
-        const [updated, setUpdated] = useState(false)
+        const [submitted, setSubmitted] = useState(false)
+        const [built, buildQuestion] = useState()
         
+        const updateFieldChanged = e => {
+            
+            if(e.target.name.includes('incorrectAnswer') && question.type === 'Multiple Choice'){
+
+                let updatedIncorrect = question.incorrectAnswers
+                switch (e.target.name){
+                    case "incorrectAnswerOne":
+                        updatedIncorrect[0]=e.target.value
+                        break
+                    case "incorrectAnswerTwo":
+                        updatedIncorrect[1]=e.target.value
+                        break
+                    case "incorrectAnswerThree":
+                        updatedIncorrect[2]=e.target.value
+                        break
+                }
+                setQuestion(prevQuestion => {
+    
+                    const updatedQuestion = { ['incorrectAnswers']: updatedIncorrect}
+                    return {
+                        ...prevQuestion, ...updatedQuestion
+                    }  
+                })
+            }
+
+
+        }
         
         const handleChange = (e) => {
-            if(e.target.name === 'question'){
-                setFormQ(prevQ => {
-                    const updatedName = e.target.name
-                    let updatedValue = e.target.value
+        
+            setQuestion(
+                prevQ => {
+                    const name = e.target.name
+                    let value = e.target.value
 
-                    const updatedQ = {[updatedName]:updatedValue }
-                    return {...prevQ, updatedQ}
+                    const updatedQ = {
+                        [name]: value
+                    }
+                    return {
+                        ...prevQ, ...updatedQ
+                    }
                 }
-                ) 
-            }
-            if(e.target.name === 'type'){
-                setFormType(prevType => {
-                    const updatedName = e.target.name
-                    let updatedValue = e.target.value
+            )
+            
 
-                    const updatedType = {[updatedName]:updatedValue }
-                    return {...prevType, ...updatedType}
-                }
-                ) 
-            }
-            if(e.target.name === 'correctAnswer'){
-                setFormA(prevA => {
-                    const updatedName = e.target.name
-                    let updatedValue = e.target.value
+            
 
-                    const updatedA = {[updatedName]:updatedValue }
-                    return {...prevA, updatedA}
-                }
-                ) 
-            }
-            if(e.target.name === 'incorrectAnswerOne'){
-                console.log(e.target.value)
-                setFormIncA1(prevInc1 => {
-                    const updatedName = e.target.name
-                    let updatedValue = e.target.value
 
-                    const updatedInc1 = {[updatedName]:updatedValue }
-                    return {...prevInc1, updatedInc1}
-                })
-            }
-            if(e.target.name === 'incorrectAnswerTwo'){
-                setFormIncA2(prevInc2 => {
-                        const updatedName = e.target.name
-                        let updatedValue = e.target.value
-    
-                        const updatedInc2 = {[updatedName]:updatedValue }
-                        return {...prevInc2, updatedInc2}
-                    })
-            }
-            if(e.target.name === 'incorrectAnswerThree'){
-                setFormIncA3(prevInc3 => {
-                        const updatedName = e.target.name
-                        let updatedValue = e.target.value
-    
-                        const updatedInc3 = {[updatedName]:updatedValue }
-                        return {...prevInc3, updatedInc3}
-                    })
-            }
-            if(e.target.name === 'category'){
-                setFormCat(prevCat => {
-                    const updatedName = e.target.name
-                        let updatedValue = e.target.value
-                        
-                        const updatedCat = {
-                            [updatedName]:updatedValue
-                        }
-                        return {
-                            ...prevCat, ...updatedCat
-                        }
-                })
-            }
-            if(e.target.name === 'difficulty'){
-                setFormDiff(prevDiff => {
-                    const updatedName = e.target.name
-                        let updatedValue = e.target.value
-                        
-                        const updatedDiff = {
-                            [updatedName]:updatedValue
-                        }
-                        return {
-                            ...prevDiff, ...updatedDiff
-                        }
-                })
-            }
                     
         }
 
@@ -141,8 +104,23 @@ const NewQuestionModal = (props) => {
         //             }
         //         )
         //     }
-        // } , [updated])
+        // } , [submitted])
    
+        // setQuestion(
+                
+        //     {
+        //         question: formQ.updatedQ.question,
+        //         correctAnswer: formA.updatedA.correctAnswer,
+        //         incorrectAnswers: incArr,
+        //         type: formType.type,
+        //         category: formCat.category,
+        //         difficulty: formDiff.difficulty,
+        //     }
+        // )
+    // const buildQuestion = () => {
+    //     console.log("hi")
+    // }
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -169,9 +147,6 @@ const NewQuestionModal = (props) => {
             )
         }
         
-        
-        
-
         createQuestion(user, game._id, question)
             .then(()=> {
                 msgAlert({
@@ -185,7 +160,7 @@ const NewQuestionModal = (props) => {
                 setQuestion({
                     question: null,
                     correctAnswer: null,
-                    incorrectAnswers: [null],
+                    incorrectAnswers: [],
                     category: null,
                     type: null,
                     difficulty: null
@@ -197,14 +172,9 @@ const NewQuestionModal = (props) => {
                     message: 'Something went wrong',
                     variant: 'danger'
                 })
-            )
-        
-       
-       
-
-        
-                
+            )          
     }
+
     return(
 
         <Modal show={ show } onHide = { handleClose } user={user}>
@@ -219,6 +189,9 @@ const NewQuestionModal = (props) => {
                 handleSubmit={handleSubmit}
                 user={user}
                 question={question}
+                setSubmitted = { setSubmitted }
+                setQuestion = { setQuestion }
+                updateFieldChanged = { updateFieldChanged }
             />
         </Modal>
     )

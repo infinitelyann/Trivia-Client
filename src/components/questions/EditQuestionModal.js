@@ -5,7 +5,7 @@ import { updateQuestion } from '../../api/question'
 
 
 const EditQuestionModal = (props) => {
-    const {user,  handleClose, msgAlert, triggerRefresh, game, show, index, showModal, questionForEdit } = props
+    const {user,  handleClose, msgAlert, triggerRefresh, game, show, index, questionModalShow, questionForEdit } = props
 
     console.log("lool",game)
     // console.log("edit", questionForEdit)
