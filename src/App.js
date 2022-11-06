@@ -32,40 +32,37 @@ const App = () => {
   const [err, setErr] = useState("");
   const [filterOptions, setFilterOptions] = useState({});
 
-  
+
   const handleClick = async () => {
 
-    
-		if (filterOptions === {}) return;
-		setIsLoading(true);
-	
-		try {
-		  const response = await fetch(getOpenDBUrl(filterOptions), {
-			method: "GET",
-			headers: {
-			  Accept: "application/json;charset=utf-8",
-			},
-		  });
-	
-		  if (!response.ok) {
-			throw new Error(`Error! status: ${response.status}`);
-		  }
-	
-		  const result = await response.json();
-	
-		  setData(result.results);
-		} catch (err) {
-		  setErr(err.message);
-		} finally {
-		  setIsLoading(false);
-		}
-	
+
+    if (filterOptions === {}) return;
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(getOpenDBUrl(filterOptions), {
+        method: "GET",
+        headers: {
+          Accept: "application/json;charset=utf-8",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      setData(result.results);
+    } catch (err) {
+      setErr(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+
   };
 
-  console.log("user in app", user);
-  console.log("message alerts", msgAlerts);
   const clearUser = () => {
-    console.log("clear user ran");
     setUser(null);
   };
 
@@ -82,49 +79,50 @@ const App = () => {
     });
   };
 
-		return (
-			<Fragment >
-				<Header user={user} />
-				<Routes>
-          <Route path='/leaderboard' element={<Leaderboard msgAlert={msgAlert} />} />
-					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
-					<Route
-						path='/sign-up'
-						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
-					/>
-					<Route
-						path='/sign-in'
-						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
-					/>
-					<Route
-					path='/'
-					/>
-					
-          <Route
-            path='/sign-out'
-            element={
-              <RequireAuth user={user}>
-                <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/change-password'
-            element={
-              <RequireAuth user={user}>
-                <ChangePassword msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
-		  <Route
-		  	path='/timer'
-			element={
-				<Timer/>
-			}
+  return (
+    <Fragment >
+      <Header user={user} />
+      <Routes>
+        <Route path='/result' element={<Leaderboard user={user} msgAlert={msgAlert} />} />
+        <Route path='/leaderboard' element={<Leaderboard msgAlert={msgAlert} />} />
+        <Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
+        <Route
+          path='/sign-up'
+          element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
+        />
+        <Route
+          path='/sign-in'
+          element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
+        />
+        <Route
+          path='/'
+        />
 
-			
+        <Route
+          path='/sign-out'
+          element={
+            <RequireAuth user={user}>
+              <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/change-password'
+          element={
+            <RequireAuth user={user}>
+              <ChangePassword msgAlert={msgAlert} user={user} />
+            </RequireAuth>}
+        />
+        <Route
+          path='/timer'
+          element={
+            <Timer />
+          }
 
-			/>
-					  {/* <Route
+
+
+        />
+        {/* <Route
 		  	path='/create-question'
 			element={
 				<QuestionCreate user={user}/>
@@ -133,33 +131,33 @@ const App = () => {
 
         <Route path="/homepage" element={<PlayerLanding />} />
 
-           <Route
-				path='/homepage'
-				element={
-					<PlayerLanding/>
-				}
-			/>		  
+        <Route
+          path='/homepage'
+          element={
+            <PlayerLanding />
+          }
+        />
 
-        
-					<Route
-			path='/games/:id'
-			element={
-				<UserGameShow msgAlert={msgAlert} user={user} />
-				}
-			/>	
-      {/* <Route
+
+        <Route
+          path='/games/:id'
+          element={
+            <UserGameShow msgAlert={msgAlert} user={user} />
+          }
+        />
+        {/* <Route
       path='/play-game/:id'
       element={
         <UserGamePlay msgAlert={msgAlert} user={user}/>
       }
       /> */}
-			<Route
-			path='/game'
-		  element={
-			  <GamePlay setFilterOptions={setFilterOptions} err={err} handleClick={handleClick} isLoading={isLoading} data={data} 
+        <Route
+          path='/game'
+          element={
+            <GamePlay user={user} setFilterOptions={setFilterOptions} err={err} handleClick={handleClick} isLoading={isLoading} data={data}
+            />
+          }
         />
-		  }
-		  />
 
         <Route
           path="/create-game"

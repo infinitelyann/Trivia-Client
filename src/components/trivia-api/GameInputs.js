@@ -34,7 +34,7 @@ const difficulties = ["Easy", "Medium", "Hard"];
 
 const amounts = ["5", "10", "15", "20"];
 
-const GameInputs = ({ setFilterOptions }, props) => {
+const GameInputs = ({ setFilterOptions, setResultSettings }, props) => {
   // const { filterOptions } = props
   const [difficulty, setDifficulty] = useState('Easy');
   const [category, setCategory] = useState('8');
