@@ -22,6 +22,11 @@ const GamePlay = (props) => {
       <p className='gameTitle'>Pick your set of questions:</p>
       
         <GameInputs setFilterOptions={setFilterOptions} />
+        setFilterOptions(
+          difficulty:
+          category:
+          amount:
+        )
         {err && <h2>{err}</h2>}
 
         <button onClick={handleClick} className='fetchButton'>Start</button>
