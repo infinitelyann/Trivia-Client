@@ -5,15 +5,15 @@ import { updateQuestion } from '../../api/question'
 
 
 const EditQuestionModal = (props) => {
-    const {user,  handleClose, msgAlert, triggerRefresh, game, show, index, questionModalShow, questionForEdit } = props
+    const {user,  handleClose, msgAlert, triggerRefresh, game, show, index, setEditModalShow, questionForEdit } = props
 
-    console.log("lool",game)
+    console.log("lool",index)
     // console.log("edit", questionForEdit)
         const [editQuestion, setEditQuestion] = useState(
-            // {
-            //     question: game.questions[index].question
+            {
+                // question: game.questions[index].question
                 
-            // }
+            }
 
         )
 
