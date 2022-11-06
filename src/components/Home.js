@@ -13,7 +13,9 @@ const Home = (props) => {
 
 		
 		<div className='background'>
+			<div style={{fontSize: '150px', textAlign: 'center', marginBottom: '0'}}>🌕</div>
 		<div className='title1'>
+		
 			<span>Q</span>
 			<span>U</span>
 			<span>I</span>
