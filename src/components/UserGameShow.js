@@ -11,17 +11,20 @@ const UserGameShow = ({ user, msgAlert }) => {
     const [game, setGame] = useState(null)
     const [updated, setUpdated] = useState(false)
     const [questionModalShow, setQuestionModalShow] =useState(false)
+    const [editQuestionModal, setEditQuestion]= useState(false)
     const [deleted, setDeleted] = useState(false)
     const [index, setIndex]= useState(null)
     const [questionForEdit, setQuestion] = useState(null)
     const  { id } = useParams()
     const navigate = useNavigate()
 
+
     useEffect(() => {
         gameShow(user, id)
             .then((res) => {
                 setGame(res.data.game)
-                setQuestion(res.data.game.questions[0])
+                
+                
             })
             .catch((error) => {
                 msgAlert({
@@ -88,6 +91,7 @@ const UserGameShow = ({ user, msgAlert }) => {
                             msgAlert={msgAlert}
                             triggerRefresh={() => setUpdated(prev=> !prev)}
                             handleClose = {() => setQuestionModalShow(false)}
+                            setIndex={setIndex}
                         />
                     </Card.Body>
                     <Card.Footer>
@@ -113,17 +117,18 @@ const UserGameShow = ({ user, msgAlert }) => {
                 triggerRefresh={() => setUpdated(prev=> !prev)}
                 handleClose = {() => setQuestionModalShow(false)}
            /> 
-           {/* <EditQuestionModal 
+           <EditQuestionModal 
                 key="edit question modal"
                 show = { editQuestionModal }
                 msgAlert={msgAlert}
                 user={user}
                 game={game}
                 index={index}
+
                 triggerRefresh={() => setUpdated(prev=> !prev)}
-                handleClose = {() => showModal(false)}
+                handleClose = {() => setEditQuestion(false)}
                 questionForEdit = {questionForEdit}
-            /> */}
+            />
 
         </>
     )

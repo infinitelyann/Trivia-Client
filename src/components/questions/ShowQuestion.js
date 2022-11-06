@@ -35,10 +35,11 @@ const ShowQuestion = (props) => {
     // calls the setter for data 
     // passes index for curr question clicked
     const handleClick = (e) => {
-        
-        showModal(true)
+        console.log("hi")
+        console.log(e.target.id)
+        // editQuestionModal(true)
         setIndex(e.target.id)
-        clickedIndex = e.target.id
+        
     }
     // useEffect(() => {
     //     index(clickedIndex)
@@ -75,8 +76,8 @@ const ShowQuestion = (props) => {
                 key={index + ' edit'}
                 // value={question._id}
                 id={index}
-                onClick={(e) => handleClick (e)}  
-                setIndex = {(e) => e.target.id}
+                onClick={(e) => handleClick(e)}  
+                
                 >
                 Edit this Question
             </Button>
