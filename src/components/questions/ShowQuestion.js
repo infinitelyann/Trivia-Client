@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import EditQuestionModal from './EditQuestionModal'
 import { deleteQuestion } from '../../api/question'
@@ -7,9 +7,9 @@ import { gameDelete } from '../../api/game'
 
 // this might be used later to display individual questions??
 const ShowQuestion = (props) => {
-    const {  game, user, msgAlert, triggerRefresh, handleClose, question, show  } = props
+    const {  game, user, msgAlert, triggerRefresh, handleClose, question, setShow, setQuestionModalShow, setIndex } = props
 
-    const [editModalShow, setEditModalShow] = useState(false)
+    
     const [element, setElement] = useState()
 
     const handleGameDelete = (e) => {
@@ -31,13 +31,20 @@ const ShowQuestion = (props) => {
                 })
             })
     }
-
+    let clickedIndex
+    // calls the setter for data 
+    // passes index for curr question clicked
     const handleClick = (e) => {
-        setElement((e.target.id))
-        // console.log("id",e.target)
-        setEditModalShow(true)
-        // console.log(element, "the element")
+        console.log("hi")
+        console.log(e.target.id)
+        setQuestionModalShow(true)
+        setIndex(e.target.id)
+        
     }
+    // useEffect(() => {
+    //     index(clickedIndex)
+    // })
+    
 
     if(!game){
         return (
@@ -60,25 +67,17 @@ const ShowQuestion = (props) => {
                 {question.category}
                 {question.difficulty}
                 {question.type}
-            <EditQuestionModal 
-                user={user}
-                show={editModalShow}
-                handleClose={()=> setEditModalShow(false)}
-                triggerRefresh={triggerRefresh}
-                msgAlert={msgAlert}
-                question={'put id here'}
-                index={element}
-                game={game}
-            />
+ 
             </div>
         
             <Button
                 className="m-2" 
                 variant="warning"
+                key={index + ' edit'}
                 // value={question._id}
                 id={index}
+                onClick={(e) => handleClick(e)}  
                 
-                onClick={handleClick}  
                 >
                 Edit this Question
             </Button>
@@ -88,6 +87,7 @@ const ShowQuestion = (props) => {
                 onClick={(e) => handleGameDelete(e)}
                 id={question._id}
                 gameId={game._id}
+                key= {index + ' delete'}
             >
                 Delete Question
             </Button>

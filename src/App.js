@@ -86,7 +86,7 @@ const App = () => {
 			<Fragment >
 				<Header user={user} />
 				<Routes>
-          <Route path='/leaderboard' element={<Leaderboard />} />
+          <Route path='/leaderboard' element={<Leaderboard msgAlert={msgAlert} />} />
 					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
 					<Route
 						path='/sign-up'
@@ -147,12 +147,12 @@ const App = () => {
 				<UserGameShow msgAlert={msgAlert} user={user} />
 				}
 			/>	
-      <Route
+      {/* <Route
       path='/play-game/:id'
       element={
-        <UserGamePlay/>
+        <UserGamePlay msgAlert={msgAlert} user={user}/>
       }
-      />
+      /> */}
 			<Route
 			path='/game'
 		  element={

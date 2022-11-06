@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import { createQuestion } from '../../api/question'
 import QuestionForm from './QuestionForm'
+
 
 
 const NewQuestionModal = (props) => {
@@ -11,89 +12,94 @@ const NewQuestionModal = (props) => {
 
     const [question, setQuestion] = useState(
         {
-            question:"",
-            correctAnswer: "",
-            incorrectAnswers: ["","",""],
-            category: '',
-            type: 'Multiple Choice',
-            difficulty: ''
+            question: null,
+            correctAnswer: null,
+            incorrectAnswers: [],
+            category: null,
+            type: "Multiple Choice",
+            difficulty: null
         })
 
- 
-    const handleChange =  (e) => {
-        console.log(e.target.value)
-        console.log(question.question)
-        console.log(question.difficulty, "change?")
-        if(e.target.name.includes('incorrectAnswer') && question.type === 'Multiple Choice'){
+        
+   
+        
+        const updateFieldChanged = e => {
             
-            let updatedIncorrect = question.incorrectAnswers
-            switch (e.target.name){
-                case "incorrectAnswerOne":
-                    updatedIncorrect[0]=e.target.value
-                    break
-                case "incorrectAnswerTwo":
-                    updatedIncorrect[1]=e.target.value
-                    break
-                case "incorrectAnswerThree":
-                    updatedIncorrect[2]=e.target.value
-                    break
-            }
-            setQuestion(prevQuestion => {
-                
-                const updatedQuestion = { ['incorrectAnswers']: updatedIncorrect}
-                return {
-                    ...prevQuestion, ...updatedQuestion
-                }  
-            })
-        } else {
-            
-            setQuestion(prevQuestion => {
-                /// set for difficulty
-                let name = e.target.name
-                let value = e.target.value
-                
-                if (value === undefined){
-                    value = e.target.innerText 
-                }
-                
-                if (question.type === 'True / False' && e.target.name === 'incorrectAnswerOne'){
-                    console.log('hi there')
-                    value = [e.target.value]
-                    name = 'incorrectAnswers'
-                }
-                if(value === 'True / False'){
-                    console.log("huh?")
-                    // resetIncorrectAnswers()
+            if(e.target.name.includes('incorrectAnswer') && question.type === 'Multiple Choice'){
 
+                let updatedIncorrect = question.incorrectAnswers
+                switch (e.target.name){
+                    case "incorrectAnswerOne":
+                        updatedIncorrect[0]=e.target.value
+                        break
+                    case "incorrectAnswerTwo":
+                        updatedIncorrect[1]=e.target.value
+                        break
+                    case "incorrectAnswerThree":
+                        updatedIncorrect[2]=e.target.value
+                        break
                 }
+                setQuestion(prevQuestion => {
     
-                const updatedQuestion = { [name]: value}
-                return {
-                    ...prevQuestion, ...updatedQuestion
-                }  
-            })
-        }
-    }
-    const resetIncorrectAnswers = () => {
-        setQuestion(prevQuestion => {
-            const updatedQuestion = {
-                'incorrectAnswers': ["","",""]
+                    const updatedQuestion = { ['incorrectAnswers']: updatedIncorrect}
+                    return {
+                        ...prevQuestion, ...updatedQuestion
+                    }  
+                })
+            } else if (e.target.name.includes('incorrectAnswer') && question.type === 'True / False'){
+                
+                let updatedIncorrect = []
+                console.log(updatedIncorrect)
+                switch (e.target.name){
+                    case "incorrectAnswerOne":
+                        updatedIncorrect[0]=e.target.value
+                        
+                        break
+                   
+                }
+                setQuestion(prevQuestion => {
+    
+                    const updatedQuestion = { ['incorrectAnswers']: updatedIncorrect}
+                    return {
+                        ...prevQuestion, ...updatedQuestion
+                    }  
+                })
             }
-            return {
-                ...prevQuestion, ...updatedQuestion
-            } 
-        })
-    }
+        } 
+
+        
+        const handleChange = (e) => {
+        
+            setQuestion(
+                prevQ => {
+                    const name = e.target.name
+                    let value = e.target.value
+
+                    const updatedQ = {
+                        [name]: value
+                    }
+                    return {
+                        ...prevQ, ...updatedQ
+                    }
+                }
+            )
+            
+
+            
+
+
+                    
+        }
 
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // if ()
-        // /// question values are not ===
-        console.log("the question",question)
+        
+        
+       
+        
         createQuestion(user, game._id, question)
-            .then(()=> handleClose())
             .then(()=> {
                 msgAlert({
                     heading: "Question added",
@@ -101,27 +107,44 @@ const NewQuestionModal = (props) => {
                     variant: 'success'
                 })
             })
+            .then(setQuestion(
+                {
+                    question: null,
+                    correctAnswer: null,
+                    incorrectAnswers: [],
+                    category: null,
+                    type: "Multiple Choice",
+                    difficulty: null
+                }
+            ))
             .then(() => triggerRefresh())
+            .then(()=> handleClose())
             .catch(
                 msgAlert({
                     heading: "Error",
                     message: 'Something went wrong',
                     variant: 'danger'
                 })
-            )
+            )          
     }
+
     return(
 
         <Modal show={ show } onHide = { handleClose } user={user}>
+            <Modal.Header>
                 <Modal.Title className='m2'>Add a question to your quiz</Modal.Title>
-            <Modal.Header/>
+            
+                
+                </Modal.Header>
             
             <QuestionForm
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
                 user={user}
                 question={question}
-            
+
+                setQuestion = { setQuestion }
+                updateFieldChanged = { updateFieldChanged }
             />
         </Modal>
     )
