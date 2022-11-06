@@ -1,4 +1,4 @@
-import { Link, useEffect, useState } from 'react'
+import { Link, useState } from 'react'
 import GameInputs from "./GameInputs";
 import GameCarousel from './GameCarousel'
 
