@@ -6,9 +6,16 @@ import UserGamePlay from './UserGamePlay'
 
 // this is the component to index all games
 const UserGameIndex = ({ user, msgAlert }) => {
+    
     const [playing, setPlaying] = useState(false)
+    const [id, setId] = useState(null)
     //handleclick function to send user to UserGamePlay component
+   const handleClick = (e) =>{
+    setPlaying(true)
+    setId(e.target.id)
+
    
+   }
    
     //state
     const [allGames, setAllGames] = useState([])
@@ -29,6 +36,7 @@ const UserGameIndex = ({ user, msgAlert }) => {
     }, [])
 
     const gamePreview = allGames.map(game => (
+        
        
         <Card key= {game.id} className='m-4' style={{width: '400px', display: 'flex', padding: '5px'}}>
             <Card.Header>{ game.name }</Card.Header>
@@ -43,26 +51,34 @@ const UserGameIndex = ({ user, msgAlert }) => {
                            
                         </>
                         :
-                        null
+                      
+                       <button id={game.id} onClick={handleClick} className='btn btn-info'>Play</button>
+
                         
+                        // <UserGamePlay game={game}/>
                         
                     }
                     
                 </Card.Text>
                 
-                    <UserGamePlay game={game}/>
                 <Card.Footer></Card.Footer>
         </Card>
     ))
-    
+    if(!playing){
+
         return (
             <div>
-                { gamePreview }
-            </div>
-        )
+                    { gamePreview }
+                </div>
+            )
 
-   
-
+}else{
+    return(
+        <>
+        <UserGamePlay user={user} msgAlert={msgAlert} id={id}/>
+        </>
+    )
+}
 }
 
 export default UserGameIndex
