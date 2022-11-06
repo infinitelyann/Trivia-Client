@@ -2,8 +2,11 @@ import { useState, useEffect } from "react"
 import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom";
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 
 
 const GameCarousel = (props) => {
@@ -48,6 +51,7 @@ const GameCarousel = (props) => {
     setPlayerAnswer(e.target.innerText)
     
   }
+<<<<<<< Updated upstream
   let stopGameIndex = Number(correct.length) -1
   if(questionIndex != stopGameIndex){
     const renderedAnswers = [...data[questionIndex].incorrect_answers, data[questionIndex].correct_answer];
@@ -92,10 +96,57 @@ const GameCarousel = (props) => {
     return(
       <>
        <Card>
+=======
+  let stopGameIndex = Number(correct.length) - 1
+  
+  console.log('this is the question index', questionIndex)
+  console.log('this is the length of the data', stopGameIndex)
+  
+  
+  if(questionIndex != stopGameIndex){
+    const renderedAnswers = [...data[questionIndex].incorrect_answers, data[questionIndex].correct_answer];
+    const scrambledAnswers =[]
+  
+    return (
+      <>
+        <Card>
+          Question: {questionIndex + 1}
+          <Card.Header>
+            {data[questionIndex].question}
+          </Card.Header>
+          <Card.Body>
+            
+            {renderedAnswers.map((answer, idx) => (
+              <p
+              onClick={handleClick}
+              id={questionIndex}
+              className="btn btn-outline-dark"
+              key={idx}
+              value={answer}
+              >
+                {answer}
+              </p>
+            ))}
+          </Card.Body>
+          <button onClick={handleClick}>next ?</button>
+        </Card>
+      </>
+    );
+    
+    <br/>
+    
+  }else{ 
+    return(
+      <>
+      
+            <h1> UserScore: {userScore}</h1>
+            <Card>
+>>>>>>> Stashed changes
           <Card.Header>
             Finished?
           </Card.Header>
           <Card.Body>
+<<<<<<< Updated upstream
 
              <Link to="/homepage"  className="btn btn-outline-dark">End Game</Link>
 
@@ -106,6 +157,24 @@ const GameCarousel = (props) => {
     )
   }
  
+=======
+           
+             <Link to='/homepage' className="btn btn-outline-dark">End Game</Link> 
+            
+          </Card.Body>
+        </Card>
+
+       
+      </>
+    )
+
+}
+    
+
+ 
+
+  
+>>>>>>> Stashed changes
 };
 
 export default GameCarousel;
