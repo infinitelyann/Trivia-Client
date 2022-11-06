@@ -13,7 +13,9 @@ const Home = (props) => {
 
 		
 		<div className='background'>
+			<div style={{fontSize: '150px', textAlign: 'center', marginBottom: '0'}}>🌕</div>
 		<div className='title1'>
+		
 			<span>Q</span>
 			<span>U</span>
 			<span>I</span>
@@ -27,6 +29,7 @@ const Home = (props) => {
 		    <Link className='btn' to='sign-up' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #ffc300', fontSize: '20px'}}>Sign-Up</Link>
 			
 			<Link className='btn' to='sign-in' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #ffc300', fontSize: '20px'}}>Sign-In</Link>
+			
 		</div>
 		</div>
 		

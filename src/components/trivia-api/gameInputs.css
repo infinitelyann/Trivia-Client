@@ -69,6 +69,8 @@
     font-size: 80px;
 }
 
+
+
 /* ///////////////////////////////////////////////////////////////////////////////////// */
 
 
@@ -168,4 +170,65 @@ table {
 .cancelButton:hover {
     background-color: red;
 }
+/* ///////////////////////////////////////////////////////////////////////////////////// */
+
+/* ////////////// QUESTIONS ////////////////// */
+.questionContainer {
+    background-color: #240046;
+    height: 100vh;
+    padding-top: 80px;
+}
+
+.triviaUserscore {
+    text-align: center;
+    color: white; 
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.triviaCard {
+    overflow-y: auto;
+}
+
+.triviaCard::-webkit-scrollbar-track {
+    border: 1px solid white;
+    padding: 2px 0;
+    background-color: white;
+    border-radius: 10px;
+  }
+  
+  .triviaCard::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+  }
+  
+  .triviaCard::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #ffc300;
+    border: 1px solid white;
+  }
+
+
+.answerbtn:hover {
+    background-color: #ffc300;
+}
+
+.skipQuestion {
+    background-color: #50b4f2;
+    border: 2px solid #50b4f2;
+    border-radius: 10px;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////// */
+
+/* ////////////// END GAME PAGE ////////////////// */
+.endgamebtn:hover {
+    background-color: red;
+    color: white;
+}
+
 /* ///////////////////////////////////////////////////////////////////////////////////// */
