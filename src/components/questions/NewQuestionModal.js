@@ -48,7 +48,8 @@ const NewQuestionModal = (props) => {
                 })
             } else if (e.target.name.includes('incorrectAnswer') && question.type === 'True / False'){
                 
-                let updatedIncorrect = question.incorrectAnswers
+                let updatedIncorrect = []
+                console.log(updatedIncorrect)
                 switch (e.target.name){
                     case "incorrectAnswerOne":
                         updatedIncorrect[0]=e.target.value
