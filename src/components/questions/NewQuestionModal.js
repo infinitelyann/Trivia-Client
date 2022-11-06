@@ -82,44 +82,6 @@ const NewQuestionModal = (props) => {
                     
         }
 
-        // useEffect(() => {
-        //     let incArr
-    
-        //     if(question.question === null){
-        //         if(formType.type === 'Multiple Choice'){
-        //             incArr = [formIncA1.updatedInc1.incorrectAnswerOne, formIncA2.updatedInc2.incorrectAnswerTwo, formIncA3.updatedInc3.incorrectAnswerThree]
-        //         } else {
-        //             incArr = [formIncA1.updatedInc1.incorrectAnswerOne]
-        //         }
-
-        //         setQuestion(
-                    
-        //             {
-        //                 question: formQ.updatedQ.question,
-        //                 correctAnswer: formA.updatedA.correctAnswer,
-        //                 incorrectAnswers: incArr,
-        //                 type: formType.type,
-        //                 category: formCat.category,
-        //                 difficulty: formDiff.difficulty,
-        //             }
-        //         )
-        //     }
-        // } , [submitted])
-   
-        // setQuestion(
-                
-        //     {
-        //         question: formQ.updatedQ.question,
-        //         correctAnswer: formA.updatedA.correctAnswer,
-        //         incorrectAnswers: incArr,
-        //         type: formType.type,
-        //         category: formCat.category,
-        //         difficulty: formDiff.difficulty,
-        //     }
-        // )
-    // const buildQuestion = () => {
-    //     console.log("hi")
-    // }
 
 
     const handleSubmit = (e) => {
@@ -155,17 +117,18 @@ const NewQuestionModal = (props) => {
                     variant: 'success'
                 })
             })
-            .then(() => triggerRefresh())
-            .then(()=> handleClose(
-                setQuestion({
+            .then(setQuestion(
+                {
                     question: null,
                     correctAnswer: null,
                     incorrectAnswers: [],
                     category: null,
-                    type: null,
+                    type: "Multiple Choice",
                     difficulty: null
-                })
+                }
             ))
+            .then(() => triggerRefresh())
+            .then(()=> handleClose())
             .catch(
                 msgAlert({
                     heading: "Error",
