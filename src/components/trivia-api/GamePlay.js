@@ -2,7 +2,7 @@ import { Link } from 'react'
 import GameInputs from "./GameInputs";
 
 import GameCarousel from './GameCarousel'
-import { Card } from "react-bootstrap";
+
 
 
 
@@ -39,17 +39,7 @@ const GamePlay = (props) => {
     return (
       <>
         <GameCarousel  data={props.data} />
-        <Card>
-          <Card.Header>
-            Finished?
-          </Card.Header>
-          <Card.Body>
-           
-             <button  className="btn btn-outline-dark">End Game</button>
-            
-          </Card.Body>
-        </Card>
-
+     
       </>
     );
   }

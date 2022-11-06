@@ -147,12 +147,12 @@ const App = () => {
 				<UserGameShow msgAlert={msgAlert} user={user} />
 				}
 			/>	
-      <Route
+      {/* <Route
       path='/play-game/:id'
       element={
-        <UserGamePlay/>
+        <UserGamePlay msgAlert={msgAlert} user={user}/>
       }
-      />
+      /> */}
 			<Route
 			path='/game'
 		  element={

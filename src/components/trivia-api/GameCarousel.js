@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react"
 import { Card } from "react-bootstrap"
+import { Link } from "react-router-dom";
+
+<<<<<<< Updated upstream
+
+
+=======
+>>>>>>> Stashed changes
 
 
 const GameCarousel = (props) => {
@@ -14,6 +21,8 @@ const GameCarousel = (props) => {
   const [correctAns, setCorrectAns] = useState(correct[questionIndex])
   const [userScore, setUserScore] = useState(0)
   const [playing, setPlaying] = useState(false)
+  let scrambledAnswers = []
+  
 
   useEffect(() => {
     if (playing) {
@@ -30,6 +39,8 @@ const GameCarousel = (props) => {
   }, [playerAnswer])
 
   useEffect(() => {
+  
+  
     setCorrectAns(data[questionIndex].correct_answer)
   }, [questionIndex])
 
@@ -38,36 +49,132 @@ const GameCarousel = (props) => {
       setPlaying(true)
     }
     setPlayerAnswer(e.target.innerText)
+    
   }
-
-  const renderedAnswers = [...data[questionIndex].incorrect_answers, data[questionIndex].correct_answer];
-
-  return (
-    <>
-
-      <h1> UserScore: {userScore}</h1>
-      <Card>
-        Question: {questionIndex + 1}
-        <Card.Header>
-          {data[questionIndex].question}
-        </Card.Header>
-        <Card.Body>
-          {renderedAnswers.map((answer, idx) => (
-            <p
+<<<<<<< Updated upstream
+  let stopGameIndex = Number(correct.length) -1
+  if(questionIndex != stopGameIndex){
+    const renderedAnswers = [...data[questionIndex].incorrect_answers, data[questionIndex].correct_answer];
+    scrambledAnswers = renderedAnswers.map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+    console.log(scrambledAnswers)
+    console.log(correct[questionIndex])
+    
+      return (
+        <>
+          <div className="questionContainer">
+          <h1 className="triviaUserscore"> UserScore: {userScore}</h1>
+          <div className="cardContainer">
+          <Card className="p-3 m-3 triviaCard" style={{ width: '600px', height: '300px', textAlign: 'center', border: '4px solid lightgray', padding: '20px'}}>
+            Question: {questionIndex + 1}
+            <Card.Header style={{backgroundColor: '#e1d5f2', borderRadius: '5px'}}>
+              {data[questionIndex].question}
+            </Card.Header>
+            <Card.Body>
+              {scrambledAnswers.map((answer, idx) => (
+                <p
+                  onClick={handleClick}
+                  id={questionIndex}
+                  className="btn answerbtn"
+                  key={idx}
+                  value={answer}
+                  style={{border: '3px solid #ffc300', borderRadius: '10px'}}
+                >
+                  {answer}
+                </p>
+              ))}
+            </Card.Body>
+            <button onClick={handleClick} className="skipQuestion">Skip</button>
+          </Card>
+          </div>
+          </div>
+        </>
+      );
+          
+  }else{
+    return(
+      <>
+       <Card>
+=======
+  let stopGameIndex = Number(correct.length) - 1
+  
+  console.log('this is the question index', questionIndex)
+  console.log('this is the length of the data', stopGameIndex)
+  
+  
+  if(questionIndex != stopGameIndex){
+    const renderedAnswers = [...data[questionIndex].incorrect_answers, data[questionIndex].correct_answer];
+    const scrambledAnswers =[]
+  
+    return (
+      <>
+        <Card>
+          Question: {questionIndex + 1}
+          <Card.Header>
+            {data[questionIndex].question}
+          </Card.Header>
+          <Card.Body>
+            
+            {renderedAnswers.map((answer, idx) => (
+              <p
               onClick={handleClick}
               id={questionIndex}
               className="btn btn-outline-dark"
               key={idx}
               value={answer}
-            >
-              {answer}
-            </p>
-          ))}
-        </Card.Body>
-        <button onClick={handleClick}>next ?</button>
-      </Card>
-    </>
-  );
+              >
+                {answer}
+              </p>
+            ))}
+          </Card.Body>
+          <button onClick={handleClick}>next ?</button>
+        </Card>
+      </>
+    );
+    
+    <br/>
+    
+  }else{ 
+    return(
+      <>
+      
+            <h1> UserScore: {userScore}</h1>
+            <Card>
+>>>>>>> Stashed changes
+          <Card.Header>
+            Finished?
+          </Card.Header>
+          <Card.Body>
+<<<<<<< Updated upstream
+
+             <Link to="/homepage"  className="btn btn-outline-dark">End Game</Link>
+
+          </Card.Body>
+        </Card>
+
+      </>
+    )
+  }
+ 
+=======
+           
+             <Link to='/homepage' className="btn btn-outline-dark">End Game</Link> 
+            
+          </Card.Body>
+        </Card>
+
+       
+      </>
+    )
+
+}
+    
+
+ 
+
+  
+>>>>>>> Stashed changes
 };
 
 export default GameCarousel;
