@@ -232,3 +232,9 @@ table {
 }
 
 /* ///////////////////////////////////////////////////////////////////////////////////// */
+
+.playUserGame {
+    background-color: #ffc300;
+    border: 2px solid #ffc300;
+    border-radius: 10px;
+}

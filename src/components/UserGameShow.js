@@ -78,12 +78,12 @@ const UserGameShow = ({ user, msgAlert }) => {
 
 
     return (
-        <>
+      
         <div style={{backgroundColor: '#240046', height: '100vh', paddingTop: '40px'}}>
             <Container className='cardContainer m-2' >
                 
-                <Card className='m-3'>
-                    <Card.Header>{game.name}</Card.Header>
+                <Card className='m-3' style={{fontWeight: '20px', padding: '10px'}}>
+                    <Card.Header style={{}}>{game.name}</Card.Header>
                     <Card.Body>
                         
                         {/* {allQuestions} */}
@@ -113,7 +113,7 @@ const UserGameShow = ({ user, msgAlert }) => {
                 
             </Container>
 
-        </div>
+        
            <NewQuestionModal 
                 user={user}
                 game={game}
@@ -135,7 +135,7 @@ const UserGameShow = ({ user, msgAlert }) => {
                 questionForEdit = {questionForEdit}
             />
 
-        </>
+        </div>
     )
 }
 
