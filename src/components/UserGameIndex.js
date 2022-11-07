@@ -37,22 +37,24 @@ const UserGameIndex = ({ user, msgAlert }) => {
 
     const gamePreview = allGames.map(game => (
         
-       
-        <Card key= {game.id} className='m-4' style={{width: '400px', display: 'flex', padding: '5px'}}>
-            <Card.Header>{ game.name }</Card.Header>
+        <div style={{backgroundColor: '#240046', padding: '20px', display: 'flex'}}>
+    <div>
+        <Card key= {game.id} style={{width: '400px', display: 'flex', padding: '5px', justifyContent: 'center', textAlign: 'center', border: '2px solid lightgray'}}>
+            <Card.Header style={{ backgroundColor: '#e1d5f2', borderRadius: '5px' }}>{ game.name }</Card.Header>
                 <Card.Text>
                      This is a game 
+                     <br/>
                      { 
                         user && game.owner && user._id === game.owner._id 
                         ?
                         <>
                             <Link className='btn btn-info'
-                            to={`/games/${game.id}`}>Edit</Link>
+                            to={`/games/${game.id}`} style={{backgroundColor: 'white', border:'2px solid #50b4f2', marginTop: '10px'}}>Edit</Link>
                            
                         </>
                         :
                       
-                       <button id={game.id} onClick={handleClick} className='btn btn-info'>Play</button>
+                       <button id={game.id} onClick={handleClick} className='btn' style={{backgroundColor: '#ffc300', border: '2px solid #ffc300', borderRadius: '10px'}}>Play</button>
 
                         
                         // <UserGamePlay game={game}/>
@@ -63,6 +65,10 @@ const UserGameIndex = ({ user, msgAlert }) => {
                 
                 <Card.Footer></Card.Footer>
         </Card>
+        </div>
+        </div>
+       
+        
     ))
     if(!playing){
 

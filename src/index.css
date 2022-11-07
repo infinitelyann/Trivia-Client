@@ -17,3 +17,7 @@ code {
 .navbar-item {
   margin: 15px;
 }
+
+body {
+  background-color: aqua;
+}

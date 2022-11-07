@@ -78,11 +78,11 @@ const UserGameShow = ({ user, msgAlert }) => {
 
 
     return (
-        <>
-            <Container className='m-2'>
+        <div style={{backgroundColor: '#240046', height: '100vh', padding: '50px'}}>
+            <Container style={{textAlign: 'center'}}>
                 
-                <Card className='m-3'>
-                    <Card.Header>{game.name}</Card.Header>
+                <Card className='m-3' style={{fontWeight: '20px', padding: '10px'}}>
+                    <Card.Header style={{}}>{game.name}</Card.Header>
                     <Card.Body>
                         
                         {/* {allQuestions} */}
@@ -132,7 +132,7 @@ const UserGameShow = ({ user, msgAlert }) => {
                 questionForEdit = {questionForEdit}
             />
 
-        </>
+        </div>
     )
 }
 
