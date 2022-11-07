@@ -24,6 +24,7 @@ import GamePlay from "./components/trivia-api/GamePlay";
 import Leaderboard from "./components/Leaderboard";
 import UserGamePlay from "./components/UserGamePlay";
 import Result from "./components/Result";
+import GameTitleEdit from "./components/GameTitleEdit";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -147,12 +148,13 @@ const App = () => {
             <UserGameShow msgAlert={msgAlert} user={user} />
           }
         />
-        {/* <Route
-      path='/play-game/:id'
-      element={
-        <UserGamePlay msgAlert={msgAlert} user={user}/>
-      }
-      /> */}
+        <Route
+          path='/games/edit'
+          element={
+            <GameTitleEdit msgAlert={msgAlert} user= {user}/>
+          }
+          />
+
         <Route
           path='/game'
           element={

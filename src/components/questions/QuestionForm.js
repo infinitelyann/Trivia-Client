@@ -6,7 +6,7 @@ import { categories } from '../Categories'
 
 
 const QuestionForm = (props) => {
-    const { question, handleChange, handleSubmit, index, updateFieldChanged } = props
+    const { question, handleChange, handleSubmit, index } = props
 
     
     // const [category, setCategory] = useState("")
@@ -39,30 +39,27 @@ const QuestionForm = (props) => {
                     <Form.Label>Enter the Incorrect Answer(s)</Form.Label>
                     <Form.Control 
                             key="incorrect2"
-                            placeholder='enter an incorrrect answer'
+                            placeholder='enter the incorrrect answer'
                             name='incorrectAnswerOne'
                             id='incorrect answer'
-                            onChange={updateFieldChanged}
-                            
+                            onChange={handleChange}
                             // value={question.incorrectAnswers[1]}
                             
                         />
                     <Form.Control
                             key="incorrect3"
-                            placeholder='enter an incorrrect answer'
+                            placeholder='enter the incorrrect answer'
                             name='incorrectAnswerTwo'
                             id='incorrect answer'
-                            onChange={updateFieldChanged}
-                            
+                            onChange={handleChange}
                             // value={question.incorrectAnswers[2]}
                         />
                     <Form.Control 
                             key="incorrect4"
-                            placeholder='enter an incorrrect answer'
+                            placeholder='enter the incorrrect answer'
                             name='incorrectAnswerThree'
-                            id='incorrectAnswerThree'
-                            onChange={updateFieldChanged}
-                           
+                            id='incorrect answer'
+                            onChange={handleChange}
                             // value={question.incorrectAnswers[3]}
                             // required
                         />
@@ -77,8 +74,8 @@ const QuestionForm = (props) => {
                             placeholder='enter the incorrrect answer'
                             name='incorrectAnswerOne'
                             id='incorrect answer'
-                            onChange={updateFieldChanged}
-                            index={0}
+                            onChange={handleChange}
+                            
                         />
             </>
         }
@@ -122,7 +119,7 @@ const QuestionForm = (props) => {
             </Form.Group>
             <Form.Label>Enter the Correct Answer</Form.Label>
             <Form.Control 
-                    placeholder='enter an answer'
+                    placeholder='enter the answer'
                     name='correctAnswer'
                     id='answer'
                     value={question.correctAnswer}
@@ -155,7 +152,6 @@ const QuestionForm = (props) => {
             onChange={handleChange}
             name='difficulty'
             required>
-                 <option disabled selected value>  -Difficulty- </option>
                 <option
                     key="easy"
                     value='Easy'
@@ -183,7 +179,6 @@ const QuestionForm = (props) => {
            
             <br/>
             <Button type='submit'>Add</Button>
-            
             </Form>
         </Container>
     )

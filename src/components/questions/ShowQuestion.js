@@ -7,8 +7,7 @@ import { gameDelete } from '../../api/game'
 
 // this might be used later to display individual questions??
 const ShowQuestion = (props) => {
-    console.log(props)
-    const {  game, user, msgAlert, triggerRefresh, handleClose, question, setShow, show, showEdit,  setQuestionModalShow, setIndex } = props
+    const {  game, user, msgAlert, triggerRefresh, handleClose, question, setShow, show, setIndex } = props
 
     
     const [element, setElement] = useState()
@@ -36,15 +35,12 @@ const ShowQuestion = (props) => {
     // calls the setter for data 
     // passes index for curr question clicked
     const handleClick = (e) => {
-        console.log("hi")
-        console.log(e.target.id)
-        show(true)
-        setIndex(e.target.id)
-        show(true)
+
+        console.log(e.target)
+        // setIndex(e.target.id)
+        // show(true)
+       
     }
-    // useEffect(() => {
-    //     index(clickedIndex)
-    // })
     
 
     if(!game){
@@ -75,10 +71,9 @@ const ShowQuestion = (props) => {
                 className="m-2" 
                 variant="warning"
                 key={index + ' edit'}
-                // value={question._id}
+                value={question._id}
                 id={index}
                 onClick={(e) => handleClick(e)}  
-                
                 >
                 Edit this Question
             </Button> */}
