@@ -52,7 +52,7 @@ const UserGameIndex = ({ user, msgAlert }) => {
                             <Link className='btn btn-info'
                             to={`/games/${game.id}`} style={{backgroundColor: 'white', border:'2px solid #50b4f2', marginTop: '10px'}}>Edit</Link>
                             <Link className='btn btn-info'
-                            to={`/games/edit`} state={{game: game}}> Edit Game Title </Link>
+                            to={`/games/edit`} state={{game: game}} style={{backgroundColor: 'white', border:'2px solid #50b4f2', marginTop: '10px'}}> Edit Game Title </Link>
                         </>
                         :
                       
