@@ -152,6 +152,7 @@ const QuestionForm = (props) => {
             onChange={handleChange}
             name='difficulty'
             required>
+                <option disabled selected value>  -Difficulty- </option>
                 <option
                     key="easy"
                     value='Easy'
