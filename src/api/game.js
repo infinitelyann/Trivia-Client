@@ -37,7 +37,7 @@ export const gameShow = (user, id) => {
 }
 
 // updating the name of the game
-export const gameUpdate = (data, user, id) => {
+export const gameUpdate = (data, id) => {
     return axios({
         method: 'PATCH',
         url: apiUrl + '/games/' + id,

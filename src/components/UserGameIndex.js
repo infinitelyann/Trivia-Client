@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { gameIndex } from '../api/game'
 import UserGamePlay from './UserGamePlay'
+import GameTitleEdit from './GameTitleEdit'
 
 // this is the component to index all games
 const UserGameIndex = ({ user, msgAlert }) => {
@@ -40,7 +41,8 @@ const UserGameIndex = ({ user, msgAlert }) => {
                         <>
                             <Link className='btn btn-info'
                             to={`/games/${game.id}`}>Edit</Link>
-                           
+                            <Link className='btn btn-info'
+                            to={`/games/edit`} state={{game: game}}> Edit Game Title </Link>
                         </>
                         :
                         null

@@ -5,8 +5,7 @@ import QuestionCreate from './QuestionCreate'
 const GameForm = (props) => {
 
 
-    const { game, handleChange, handleSubmit } = props
-
+    const { game, handleChange, handleSubmit, gameTitle } = props
 
         return (
             <>
@@ -17,7 +16,7 @@ const GameForm = (props) => {
                             placeholder='What is the theme of this game'
                             name='name'
                             id='name'
-                            value= { game.name }
+                            value= { gameTitle }
                             onChange={ handleChange }
                         
                         />
