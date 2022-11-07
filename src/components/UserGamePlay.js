@@ -123,7 +123,7 @@ if(loaded){
             </Card.Body>
           </Card>
 
-          <button className="skipQuestion" onClick={handleClick}>next</button>
+          <button onClick={handleClick}>next</button>
         </div>
       </>
     );

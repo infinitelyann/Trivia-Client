@@ -71,7 +71,7 @@ const ShowQuestion = (props) => {
  
             </div>
         
-            <Button
+            {/* <Button
                 className="m-2" 
                 variant="warning"
                 key={index + ' edit'}
@@ -81,7 +81,7 @@ const ShowQuestion = (props) => {
                 
                 >
                 Edit this Question
-            </Button>
+            </Button> */}
             <Button
                 className='m-2'
                 variant='danger'

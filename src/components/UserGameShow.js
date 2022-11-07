@@ -79,7 +79,8 @@ const UserGameShow = ({ user, msgAlert }) => {
 
     return (
         <>
-            <Container className='m-2'>
+        <div style={{backgroundColor: '#240046', height: '100vh', paddingTop: '40px'}}>
+            <Container className='cardContainer m-2' >
                 
                 <Card className='m-3'>
                     <Card.Header>{game.name}</Card.Header>
@@ -111,6 +112,8 @@ const UserGameShow = ({ user, msgAlert }) => {
                 </Card>
                 
             </Container>
+
+        </div>
            <NewQuestionModal 
                 user={user}
                 game={game}
