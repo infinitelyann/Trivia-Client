@@ -18,8 +18,8 @@ const GameCreate = ({user, msgAlert} ) => {
     const handleChange = (e) => {
         setGame(prevGame => {
             const updatedName = e.target.name
-            let updatedValue = e.target.value
-
+            let updatedValue = e.target.value // are we reassigning updateValue ? - use const 
+// inconsistent whitespace
             const updatedGame = { [updatedName]: updatedValue}
             return { ...prevGame, ...updatedGame}
         })
@@ -41,14 +41,14 @@ const GameCreate = ({user, msgAlert} ) => {
     }
 
     return (
-        <>
+        <> {/* don't need fragment here since we only have 1 element ti return*/}
             <GameForm
                 game = { game }
                 handleChange = { handleChange }
                 handleSubmit = { handleCreateGame }
             />
 
-
+{/* inconsistent whitespace*/}
         </>
     )
 }

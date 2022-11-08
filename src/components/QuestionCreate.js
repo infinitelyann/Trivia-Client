@@ -3,17 +3,17 @@ import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 
 
-const QuestionCreate = (props, user) => {
+const QuestionCreate = (props, user) => { // unused variable
         console.log(user)
 //     state = {}
 //   handleChange = (e, { value }) => this.setState({ value })
     return(
-
+// poor use of fragment we only have 1 element to return 
         <>
-
+{/* bad indentation */}
         <Form>
             <Form.Field>
-
+{/* empty element  */}
             </Form.Field>
             <Form.Field>
             <label>Question:</label>
@@ -31,7 +31,7 @@ const QuestionCreate = (props, user) => {
         </>
     )
 
-
+// WHITE SPACEEEEEEEEEEEEEE
     
 
 }

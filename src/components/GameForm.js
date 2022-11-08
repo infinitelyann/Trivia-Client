@@ -1,12 +1,13 @@
 import { Form, Button, Container } from 'react-bootstrap'
 import QuestionCreate from './QuestionCreate'
-
+// unused imports
 
 const GameForm = (props) => {
 
-
+// inconsistent white space throughout 
     const { game, handleChange, handleSubmit, gameTitle } = props
-
+// unused variable / import
+//bad indentation 
         return (
             <div style={{backgroundColor: '#240046', height: '100vh', padding: '50px'}}>
                 <Container style={{border: '2px solid lightgray', borderRadius: '10px', textAlign: 'center', height: '200px', padding: '30px'}}>

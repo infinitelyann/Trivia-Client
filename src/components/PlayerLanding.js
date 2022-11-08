@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const PlayerLanding = () => {
-    return (
+    return (// use classes in here 
         <>
             <div style={{ backgroundColor: '#240046', height: '100vh', textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
                 <div style={{ backgroundColor: '#240046', width: '200px', height: '200px', padding: '30px', border: '1px solid #7552f2', marginLeft: '20px', marginTop: '100px', borderRadius: '10px' }}>
