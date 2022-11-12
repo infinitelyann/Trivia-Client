@@ -1,3 +1,6 @@
+# <a href="https://quizard-by-tuneheads.netlify.app/">Quizard<a>
+<hr>
+
 # Trivia-Client
 
 # <a href="https://github.com/infinitelyann/Trivia-API">Trivia Back-End</a>
