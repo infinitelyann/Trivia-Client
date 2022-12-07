@@ -7,7 +7,7 @@ import { categories } from './Categories'
 const EditQuestionForm = (props) => {
     const  { question, handleChange, handleSubmit, index } = props
 
-    const [incorrectAnswerSubmissions, setIncorrectAnswers] = useState([])
+    const [incorrectAnswerSubmissions, setIncorrectAnswers] = useState([]) // totally unused 
     const [checked, setRadioValue] = useState({typeOfQuestion: "Multiple Choice", another: "another"})
     const { typeOfQuestion } = checked
 
@@ -29,7 +29,7 @@ const EditQuestionForm = (props) => {
                 <Form.Label>Enter the Incorrect Answer(s)</Form.Label>
                 <Form.Control 
                         key="incorrect2"
-                        placeholder='enter the incorrrect answer'
+                        placeholder='enter the incorrrect answer' // spelling rrr
                         name='incorrectAnswerOne'
                         id='incorrect answer'
                         onChange={handleChange}
@@ -71,7 +71,7 @@ const EditQuestionForm = (props) => {
     }
 
     return(
-
+// indentation is off from the start 
     <Container className='justify-content-center'>
         <Form onSubmit={handleSubmit}>
             <Form.Label>Question:</Form.Label>
@@ -84,7 +84,7 @@ const EditQuestionForm = (props) => {
                 value={question.question}
                 required
             />
-        <Form.Group controlId="questionType">
+        <Form.Group controlId="questionType">{/* fix indentation  */}
             <Form.Check
             value="Multiple Choice"
             type="radio"
@@ -115,14 +115,14 @@ const EditQuestionForm = (props) => {
                 onChange={handleChange}
                 required
                 value={question.correctAnswer}
-            />
-        <>
+            />{/* incorrect indentation  */}
+        <>{/* bad use of shards, we don't need them here to my knowledge */}
             {incorrectAnswers}
         </>
- 
+ {/* inconsistent white space */}
     
         <select className='m-2' required>
-        {categories.map((category, index) => (
+        {categories.map((category, index) => ( // bad indentation
                     <option
                     value={category} 
                     index={index}
@@ -137,7 +137,7 @@ const EditQuestionForm = (props) => {
         </select>
         <br/>
         <select className='m-2' required>
-                <option
+                <option // bad indentation 
                     key="easy"
                     value='Easy'
                     onClick={handleChange}
@@ -164,7 +164,7 @@ const EditQuestionForm = (props) => {
         <Button type='submit'>Add</Button>
             </Form>
         </Container>
-        
+        // T.T indentation ? 
 )}
 
 export default EditQuestionForm

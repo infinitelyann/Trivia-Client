@@ -1,7 +1,7 @@
 import React from "react"
 import { useTimer } from "react-timer-hook"
 
-// this is currently unimplemented but could be used to lock out of questions
+// this is currently unimplemented but could be used to lock out of questions,// V3+ should be in other branches and not deployed - more comments in here would be a great place to start 
 const Timer = (props, {expiryTimerstamp}) => {
 	// const { msgAlert, user } = props
 	console.log('props in timer', props)
@@ -16,7 +16,7 @@ const Timer = (props, {expiryTimerstamp}) => {
 
     } = useTimer({expiryTimerstamp, onExpire: () => console.log('done')})
 
-	return (
+	return (// bad indentation throughout, shouldn't use a fragment her because they don't get beocm ea part of the dom, should have been a div or other semantic element
 		<>
 			<h2>Timer Page</h2>
             <div style={{fontSize: '100px'}}>

@@ -13,16 +13,16 @@ import SignIn from "./components/auth/SignIn";
 import SignOut from "./components/auth/SignOut";
 import ChangePassword from "./components/auth/ChangePassword";
 import Timer from "./components/Timer";
-import QuestionCreate from "./components/QuestionCreate";
+import QuestionCreate from "./components/QuestionCreate"; // unused import
 import PlayerLanding from "./components/PlayerLanding";
 import GameCreate from "./components/GameCreate";
 import UserGameIndex from "./components/UserGameIndex";
 import UserGameShow from "./components/UserGameShow";
 import { getOpenDBUrl } from "./utils/openDB";
-import GameInputs from "./components/trivia-api/GameInputs";
+import GameInputs from "./components/trivia-api/GameInputs"; // unused import
 import GamePlay from "./components/trivia-api/GamePlay";
 import Leaderboard from "./components/Leaderboard";
-import UserGamePlay from "./components/UserGamePlay";
+import UserGamePlay from "./components/UserGamePlay"; // unused import
 import Result from "./components/Result";
 import GameTitleEdit from "./components/GameTitleEdit";
 
@@ -37,7 +37,7 @@ const App = () => {
 
 
   const handleClick = async () => {
-
+  // inconsistent white space 
 
     if (filterOptions === {}) return;
     setIsLoading(true);
@@ -85,7 +85,7 @@ const App = () => {
   return (
     <Fragment >
       <Header user={user} />
-      <Routes>
+      <Routes>{/* change your grouping here and stay organized, follow 1 style, be consistent */}
         <Route path='/result' element={<Result userID={userID} msgAlert={msgAlert} />} />
         <Route path='/leaderboard' element={<Leaderboard msgAlert={msgAlert} />} />
         <Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
@@ -100,7 +100,7 @@ const App = () => {
         <Route
           path='/'
         />
-
+{/* // inconsistent white space  */}
         <Route
           path='/sign-out'
           element={
@@ -121,18 +121,18 @@ const App = () => {
           element={
             <Timer />
           }
-
+// inconsistent white space 
 
 
         />
-        {/* <Route
+        {/* <Route remove zombie code
 		  	path='/create-question'
 			element={
 				<QuestionCreate user={user}/>
 			}
 			/> */}
-
-        <Route path="/homepage" element={<PlayerLanding />} />
+{/* duplicate path components !?  remove one with double quotes, BE consistent */}
+        <Route path="/homepage" element={<PlayerLanding />} /> 
 
         <Route
           path='/homepage'
@@ -140,7 +140,7 @@ const App = () => {
             <PlayerLanding />
           }
         />
-
+{/* // inconsistent white space  */}
 
         <Route
           path='/games/:id'
@@ -154,7 +154,7 @@ const App = () => {
             <GameTitleEdit msgAlert={msgAlert} user= {user}/>
           }
           />
-
+{/* // inconsistent white space  */}
         <Route
           path='/game'
           element={
@@ -162,7 +162,7 @@ const App = () => {
             />
           }
         />
-
+{/* // inconsistent white space  */}
         <Route
           path="/create-game"
           element={
@@ -171,7 +171,7 @@ const App = () => {
             </RequireAuth>
           }
         />
-
+{/* // inconsistent white space  */}
         <Route
           path="/user-created-games"
           element={
@@ -181,7 +181,7 @@ const App = () => {
           }
         />
       </Routes>
-
+{/* // inconsistent white space  */}
       {msgAlerts.map((msgAlert) => (
         <AutoDismissAlert
           key={msgAlert.id}
@@ -193,7 +193,7 @@ const App = () => {
         />
       ))}
     </Fragment>
-  );
-};
+  ); // ; ?
+}; // ; ?
 
 export default App;

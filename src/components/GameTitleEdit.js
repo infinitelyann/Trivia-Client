@@ -2,18 +2,18 @@ import React, { useState } from "react"
 import { gameIndex, gameUpdate } from "../api/game"
 import { useNavigate, useLocation } from "react-router-dom"
 import GameForm from "./GameForm"
-
+// unused imports
 const GameTitleEdit = (props) => {
     const location = useLocation()
     const { game } = location.state
 	const navigate = useNavigate()
 	const { gameId } = props
-
+// unused imports
 	const [gameTitle, setGameTitle] = useState()
-
-    console.log(game.name)
+// unused state variable
+    console.log(game.name) // put in a use effect to run on mount, otherwise will run too early
 	const handleChange = (e) => {
-
+// inconsistent whitespace
 		setGameTitle(prevTitle => {
             console.log(game.name)
 			let updatedName = e.target.name
@@ -32,7 +32,7 @@ const GameTitleEdit = (props) => {
 
 	const handleUpdate = (e) => {
 		e.preventDefault()
-
+// whhhiiiiittttte space
 		gameUpdate(game, game._id)
 			.then((res) => {
 				navigate(`/games/${game._id}`)

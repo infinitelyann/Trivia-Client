@@ -8,7 +8,7 @@ import ShowQuestion from './questions/ShowQuestion'
 
 
 const UserGameShow = ({ user, msgAlert }) => {
-    const [game, setGame] = useState(null)
+    const [game, setGame] = useState(null)// YES !
     const [updated, setUpdated] = useState(false)
     const [questionModalShow, setQuestionModalShow] = useState(false)
     const showEdit = [questionModalShow, setQuestionModalShow]
@@ -19,13 +19,13 @@ const UserGameShow = ({ user, msgAlert }) => {
     const  { id } = useParams()
     const navigate = useNavigate()
 
-    
+    //WS
 
     useEffect(() => {
         gameShow(user, id)
             .then((res) => {
                 setGame(res.data.game)
-                
+                //WS
                 
             })
             .catch((error) => {
@@ -65,20 +65,20 @@ const UserGameShow = ({ user, msgAlert }) => {
                 })
             })
     }
-    let allQuestions
+    let allQuestions//unused
 
-    if(deleted)navigate('/user-created-games')
-    if(!game){
-        return (
+    if(deleted)navigate('/user-created-games')// don't do this here at the top level of your component, add it to the handleGameDelete in a new then after the setDeleted - could even get rid of the set deleted and deleted bit entirely 
+    if(!game){ // we should be able to avoid this entirely 
+        return ( // do 1 return and do logic in it instead
             <>
             Nothing here
             </>
-        )
+        )// fragment in here should be something else ( p tag ? ) since it has a string value, and we're not sure what element it will be in 
     }
+// I HaVe NeVaR WrItTeN WhItE SpAcE sO mUcH iN mY lIfE (sarcasm/joke)
 
-
-    return (
-      
+    return (// lots of bad indentation throughout 
+      // WS
         <div style={{backgroundColor: '#240046', height: '100vh', paddingTop: '40px'}}>
             <Container className='cardContainer m-2' >
                 

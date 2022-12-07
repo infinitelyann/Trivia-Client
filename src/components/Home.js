@@ -9,7 +9,7 @@ const Home = (props) => {
 	// const { msgAlert, user } = props
 	console.log('props in home', props)
 
-	return (
+	return (// indentation and white space, why do you wound me so,  
 
 		
 		<div className='background'>
@@ -27,7 +27,7 @@ const Home = (props) => {
 		</div>
 		<div className='buttons'>
 		    <Link className='btn' to='sign-up' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #ffc300', fontSize: '20px'}}>Sign-Up</Link>
-			
+			{/* huge 1 liners could be reformatted to be more readable */}
 			<Link className='btn' to='sign-in' style={{backgroundColor: '#240046', color: 'white', border:'2px solid #ffc300', fontSize: '20px'}}>Sign-In</Link>
 			
 		</div>

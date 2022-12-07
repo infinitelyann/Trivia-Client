@@ -4,25 +4,25 @@ import { Link, useLocation } from 'react-router-dom'
 import { gameIndex } from '../api/game'
 import UserGamePlay from './UserGamePlay'
 import GameTitleEdit from './GameTitleEdit'
-
+// unused imports
 // this is the component to index all games
 const UserGameIndex = ({ user, msgAlert }) => {
     
     const [playing, setPlaying] = useState(false)
     const [id, setId] = useState(null)
     //handleclick function to send user to UserGamePlay component
-   const handleClick = (e) =>{
+   const handleClick = (e) =>{// indentation 
     setPlaying(true)
     setId(e.target.id)
 
-   
+   // whitespace
    }
    
-    //state
+    //state .... put all your state goodness together at the TOP of the component, in class components you can't even try to do it another way. 
     const [allGames, setAllGames] = useState([])
 
     useEffect(()=> {
-        
+        // W S 
         gameIndex(user)
             .then(res => {
                 setAllGames(res.data.games)
@@ -35,19 +35,19 @@ const UserGameIndex = ({ user, msgAlert }) => {
                 })
             })
     }, [])
-
+    //you have a collection reference in the singular here 
     const gamePreview = allGames.map(game => (
         
         <div style={{backgroundColor: '#240046', padding: '20px', display: 'flex'}}>
     <div>
         <Card key= {game.id} style={{width: '400px', display: 'flex', padding: '5px', justifyContent: 'center', textAlign: 'center', border: '2px solid lightgray'}}>
             <Card.Header style={{ backgroundColor: '#e1d5f2', borderRadius: '5px' }}>{ game.name }</Card.Header>
-                <Card.Text>
+                <Card.Text> {/* is a fancy p tag, nesting other elements inside it is not good practice:see button, use another card element */}
                      This is a game 
                      <br/>
                      { 
                         user && game.owner && user._id === game.owner._id 
-                        ?
+                        ? // when we have big blocks like this, it's better to use if else for legibility 
                         <>
                             <Link className='btn btn-info'
                             to={`/games/${game.id}`} style={{backgroundColor: 'white', border:'2px solid #50b4f2', marginTop: '10px'}}>Edit</Link>
@@ -59,15 +59,15 @@ const UserGameIndex = ({ user, msgAlert }) => {
                        <button id={game.id} onClick={handleClick} className='btn' style={{backgroundColor: '#ffc300', border: '2px solid #ffc300', borderRadius: '10px'}}>Play</button>
 
                         
-                        // <UserGamePlay game={game}/>
+                        // <wwwwhhhhhhiiiiiiitttttteeeeee space/>
                         
                     }
                     
                 </Card.Text>
                 
-                <Card.Footer></Card.Footer>
+                <Card.Footer></Card.Footer>{/* unused element */}
         </Card>
-        </div>
+        </div>{/* T.T - indentation */}
         </div>
        
         
@@ -76,13 +76,13 @@ const UserGameIndex = ({ user, msgAlert }) => {
 
         return (
             <div>
-                    { gamePreview }
+                    { gamePreview }{/* T.T - indentation */}
                 </div>
             )
 
-}else{
+}else{ // indentation !!!!!!!!!
     return(
-        <>
+        <> {/* T.T - indentation  V  */}
         <UserGamePlay user={user} msgAlert={msgAlert} id={id}/>
         </>
     )

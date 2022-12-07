@@ -19,11 +19,11 @@ export const createQuestion = (user, gameId, data) => {
 }
 
 // this is the api call to update a question
-export const updateQuestion = (user, gameId, updatedQuestion) => {
+export const updateQuestion = (user, gameId, updatedQuestion) => { // unused variable 
     return axios({
         method:'PATCH',
         url: `${apiUrl}/questions/${gameId}/${updatedQuestion._id}`,
-
+// inconsistent white space 
         data: { question: updatedQuestion}
     })
 }
@@ -33,6 +33,6 @@ export const deleteQuestion = ( gameId, questionId) => {
     return axios({
         method: 'DELETE',
         url: `${apiUrl}/questions/${gameId}/${questionId}`,
-
+// inconsistent white space 
     })
 }

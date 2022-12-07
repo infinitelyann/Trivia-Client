@@ -2,7 +2,7 @@
 <hr>
 
 # Trivia-Client
-
+<!-- v should not be a header, include a sentence describing how they are supposed to work together " to be used with / consume  x ". I almost missed it because of its size ironically -->
 # <a href="https://github.com/infinitelyann/Trivia-API">Trivia Back-End</a>
 
 ### Team Roles:
@@ -14,7 +14,7 @@
 ### Back-End: <a href="https://github.com/zyaffee">Zack Yaffee</a>
 
 ### Full-Stack: <a href="https://github.com/harrisimon">Harrison Simon,</a> Stephanie Parker
-
+<!-- Steph should be linked here as well  -->
 <hr>
 
 ## Technologies Used
@@ -55,7 +55,7 @@
 <hr>
 
 ## WireFrames
-
+<!-- alt text wireframe is less helpful when we have multiple - try and be slightly more descriptive  -->
 ![Wireframe](/images/image3.png)
 ![Wireframe](/images/image2.png)
 ![Wireframe](/images/image1.png)

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { getLeaderboard } from "../api/leaderboard"
-
+// replace with your import 
 const categories = [
     "Any",
     "General Knowledge",
@@ -30,7 +30,7 @@ const categories = [
 ]
 
 const Leaderboard = (props) => {
-
+// no comments in here at all and inconsistent whitespace
     const { msgAlert } = props
 
     const [category, setCategory] = useState('')
@@ -64,7 +64,7 @@ const Leaderboard = (props) => {
             <td>{rank + 1}</td><td>{entry.username}</td><td>{entry.score}</td>
         </tr>
     ))
-
+// inconsistent white space and bad indentation 
     return (
         <div style={{backgroundColor: '#240046', height: '100vh', color: 'white', paddingTop: '100px'}}>
             <div className="leaderboardContainer">

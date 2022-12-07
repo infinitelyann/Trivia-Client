@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { postResult } from "../api/result"
-
+// i find your lack of comments disturbing - Vader 
 const Result = (props) => {
     const { userID, msgAlert, category, score } = props
 

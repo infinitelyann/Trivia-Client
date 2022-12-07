@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 import { gameShow } from "../api/game";
 
 const UserGamePlay = (props) => {
-  const [game, setGame] = useState({})
+  const [game, setGame] = useState({})// ! should be null when we intend to do hard reassignment, bypasses need for your 'loaded' variable
   const { id, user, msgAlert } = props
   // useEffect(())
-
+  // why aren't these part of state ? at least give comments 
   let stopGame = ''
   let correct = [];
   let scrambledAnswers = [];
 
-
+// WHITE SPACE?!
   
-
+  // why is this not at top with other state variables
   const [questionIndex, setQuestionIndex] = useState(0)
   const [playerAnswer, setPlayerAnswer] = useState("")
   const [correctAns, setCorrectAns] = useState(correct[questionIndex])
@@ -40,7 +40,7 @@ const UserGamePlay = (props) => {
         })
 }, [loaded])
   
-if(loaded){
+if(loaded){// why not just check if game is truthy ?
   for(let i = 0; i < game.questions.length; i++){
     correct.push(game.questions[i].correctAnswer)
     
@@ -48,7 +48,7 @@ if(loaded){
    stopGame = Number(game.questions.length) -1
 }
 
-  useEffect(() => {
+  useEffect(() => { // should be commented since we're implementing game logic
     if(loaded){
       if (playing) {
         let num = userScore
@@ -61,16 +61,16 @@ if(loaded){
         }
         setQuestionIndex(index + 1)
       }
-
+// WS
     }
   }, [playerAnswer])
 
-  useEffect(() => {
+  useEffect(() => { // should be commented since we're implementing game logic
     if(loaded){
       if (questionIndex < stopGame) {
         setCorrectAns(game.questions[questionIndex].correctAnswer)
       }
-
+// WS
     }
   }, [questionIndex])
 
@@ -79,9 +79,10 @@ if(loaded){
       setPlaying(true)
     }
     setPlayerAnswer(e.target.innerText)
-    
+    //WS
   }
-
+// it's better practice to inverse the flow of this logic, do 1 return and have the conditionals inside it , white space, indentation, and unnecessary shards throughout 
+// break up your 3 component here to separate files and import them in 
   if (!playing) {
     return (
       <>

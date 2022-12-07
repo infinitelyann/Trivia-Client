@@ -1,4 +1,4 @@
-export const categories = [
+export const categories = [ // not a component, this should go in the lib
     "Any",
     "General Knowledge",
     "Entertainment: Books",
@@ -25,4 +25,3 @@ export const categories = [
     "Entertainment: Japanese Anime & Manga",
     "Entertainment: Cartoon & Animations",
   ]
-
